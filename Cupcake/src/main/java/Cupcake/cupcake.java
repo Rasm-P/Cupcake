@@ -11,10 +11,10 @@ package Cupcake;
  */
 public class cupcake {
     private String bottom;
-    private String top;
+    private Toppings top;
     private String price;
 
-    public cupcake(String bottom, String top, String price) {
+    public cupcake(String bottom, Toppings top, String price) {
         this.bottom = bottom;
         this.top = top;
         this.price = price;
@@ -29,11 +29,7 @@ public class cupcake {
     }
 
     public String getTop() {
-        return top;
-    }
-
-    public void setTop(String top) {
-        this.top = top;
+        return top.getName();
     }
 
     public int getPrice(int bottomPrice, int topPrice) {
