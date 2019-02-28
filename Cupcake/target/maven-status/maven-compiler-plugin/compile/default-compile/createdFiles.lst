@@ -1,2 +1,8 @@
-com/mycompany/cupcake/frontController.class
-Data/login.class
+Users\MakeNewUser.class
+Users\User.class
+Presentation\PageLoggedIn.class
+Presentation\FrontController.class
+Presentation\PageLogin.class
+Data\DBConnector.class
+Data\DataMapper.class
+Presentation\PageMain.class
