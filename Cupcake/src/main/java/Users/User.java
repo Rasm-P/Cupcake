@@ -10,12 +10,13 @@ package Users;
  * @author rh
  */
 public class User {
-private String userName, password, balance;
+private String userName, password, balance, email;
 
-    public User(String userName, String password, String balance) {
+    public User(String email, String userName, String password, String balance) {
         this.userName = userName;
         this.password = password;
         this.balance = balance;
+        this.email = email;
     }
 
     public String getUserName() {
@@ -42,6 +43,15 @@ private String userName, password, balance;
         this.balance = balance;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
 
 
 }
