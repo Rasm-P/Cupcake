@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.cupcake;
-
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,13 +11,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author rh
+ * @author Ludvig
  */
-@WebServlet(name = "frontController", urlPatterns = {"/frontController"})
-public class frontController extends HttpServlet {
+@WebServlet(name = "ProductControl", urlPatterns =
+{
+    "/ProductControl"
+})
+public class ProductControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,17 +35,17 @@ public class frontController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            String action=request.getParameter("action");
-
-            if(null == action){
-                System.out.println("er her");
-            } else{
-            switch(action){
-                case("login"):
-                Data.login.generateLogin(request, response);
-                break;
-            }
-        }
+        response.setContentType("text/html;charset=UTF-8");
+        //HttpSession session = request.getSession();
+        
+        PageShop.generateShop(response);
+        
+        String topping = request.getParameter("topping");
+//        String bottom = request.getParameter("bottom");
+//        String quantity = request.getParameter("quantity");
+//        if(topping != null){
+//            PageTest.generateTest(response, topping);
+//        }       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,5 +86,4 @@ public class frontController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
