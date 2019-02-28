@@ -44,6 +44,7 @@ public class DataMapper {
                     balance = rs.getDouble("balance");
 
                 }
+                connection.close();
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
@@ -98,6 +99,7 @@ public class DataMapper {
                     balance = rs.getDouble("balance");
 
                 }
+                connection.close();
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
