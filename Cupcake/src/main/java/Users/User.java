@@ -10,9 +10,10 @@ package Users;
  * @author rh
  */
 public class User {
+private int idUser;
 private String userName, password, balance, email;
 
-    public User(String email, String userName, String password, String balance) {
+    public User(int idUser, String email, String userName, String password, String balance) {
         this.userName = userName;
         this.password = password;
         this.balance = balance;

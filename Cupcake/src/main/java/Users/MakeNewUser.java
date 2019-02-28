@@ -11,9 +11,9 @@ package Users;
  */
 public class MakeNewUser {
     
-    public static User generateUser(String email, String userName, String password, String balance)
+    public static User generateUser(int idUser, String email, String userName, String password, String balance)
     {
-        User user = new User(email, userName, password, balance);
+        User user = new User(idUser, email, userName, password, balance);
         return user;
     }
     
