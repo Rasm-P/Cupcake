@@ -26,28 +26,30 @@ public class MakeNewUser {
     }
     
     public static void createNewUser(User user) throws Exception {
+        try {
         DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             
-            String query = "INSERT INTO Cupcake.user (username, password, balance) VALUES (?,?,?);";
+            String query = "INSERT INTO `cupcake`.`user` (`username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");";
+
                  
                 
 //                "INSERT INTO Cupcakes.Users VALUES " + "( ,"
 //                + ", " + user.getUserName() + ", " + user.getPassword() + ", " + user.getBalance() + ");";
-        try {
+        try (
             
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            Statement statement = connection.createStatement();
+            Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);  }
             
 
-
             
             
             
-            pstmt.setString(1, user.getUserName());
-            pstmt.setString(2, user.getPassword());
-            pstmt.setDouble(3, user.getBalance());
-            statement.executeUpdate(query);
+//            pstmt.setString(1, user.getUserName());
+//            pstmt.setString(2, user.getPassword());
+//            pstmt.setDouble(3, user.getBalance());
+//            statement.executeUpdate(query);
         
         } catch(Exception e) {
             e.getLocalizedMessage();
@@ -59,6 +61,7 @@ public class MakeNewUser {
     public static void main(String[] args) throws Exception {
         User user = generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
         System.out.println(user.getUserName() + user.getPassword());
+        System.out.println("INSERT INTO `cupcake`.`user` `username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");");
         createNewUser(user);
 
        
