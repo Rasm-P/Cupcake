@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.cupcake;
+package Presentation;
 
-
+import static Data.DataMapper.getInfo_Username_Password;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,13 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author rh
+ * @author Rasmus2
  */
-@WebServlet(name = "frontController", urlPatterns = {"/frontController"})
-public class frontController extends HttpServlet {
+@WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
+public class FrontController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +33,32 @@ public class frontController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            String action=request.getParameter("action");
+        response.setContentType("text/html;charset=UTF-8");
+        /* Check for login and so on... */
+        HttpSession session = request.getSession();
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        if (loggedIn == null || !loggedIn) {
+            PageLogin.generateLogin(response);
+        }
+        String action = request.getParameter("action");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-            if(null == action){
-                System.out.println("er her");
-            } else{
-            switch(action){
-                case("login"):
-                Data.login.generateLogin(request, response);
-                break;
+        if (null == action || loggedIn == true) {
+            PageMain.generateMain(response);
+        } else {
+            switch (action) {
+                case "makeLogin":
+                    PageMakeLogin.generateMakeLogin(response);
+                    break;
+                case "login":
+                    if (getInfo_Username_Password(username, password) == true) {
+                        session.setAttribute("loggedIn", true);
+                        PageLoggedIn.generateLoggedIn(response);
+                        break;
+                    } else {
+                        PageLogin.generateLogin(response);
+                    }
             }
         }
     }
