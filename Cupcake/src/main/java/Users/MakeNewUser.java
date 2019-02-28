@@ -25,38 +25,9 @@ public class MakeNewUser {
     }
 
     public static void createNewUser(User user) throws Exception {
-<<<<<<< HEAD
-        try {
-        DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
-            
-            String query = "INSERT INTO `cupcake`.`user` (`username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");";
 
-                 
-                
-//                "INSERT INTO Cupcakes.Users VALUES " + "( ,"
-//                + ", " + user.getUserName() + ", " + user.getPassword() + ", " + user.getBalance() + ");";
-        try (
-            
-            Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
-                ResultSet rs = st.executeQuery(query);  }
-            
 
-            
-            
-            
-//            pstmt.setString(1, user.getUserName());
-//            pstmt.setString(2, user.getPassword());
-//            pstmt.setDouble(3, user.getBalance());
-//            statement.executeUpdate(query);
-        
-        } catch(Exception e) {
-=======
-
-//                "INSERT INTO Cupcakes.Users VALUES " + "( ,"
-//                + ", " + user.getUserName() + ", " + user.getPassword() + ", " + user.getBalance() + ");";
-        try {
+            try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
 
@@ -72,7 +43,7 @@ public class MakeNewUser {
             pstmt.execute();
             connection.close();
         } catch (Exception e) {
->>>>>>> 9468639f36347c5a680ebcffce198a0d6611e9ad
+
             e.getLocalizedMessage();
         }
 
