@@ -43,6 +43,15 @@ private String userName, password, balance, email;
         this.balance = balance;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
 
 
 }

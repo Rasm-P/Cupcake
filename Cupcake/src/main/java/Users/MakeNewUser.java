@@ -17,4 +17,8 @@ public class MakeNewUser {
         return user;
     }
     
+    public static void createNewUser(User user) {
+        String query = "INSERT INTO Cupcakes.Users VALUES " + "(" + user.
+    }
+    
 }
