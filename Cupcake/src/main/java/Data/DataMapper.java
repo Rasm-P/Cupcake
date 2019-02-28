@@ -70,6 +70,11 @@ public class DataMapper {
         String password = "";
         String username = "";
         int id = 0;
+        
+        if (inputUsername == null || inputPassword == null) {
+            return false;
+        }
+        
         try {
 
             DBConnector conn = new DBConnector();

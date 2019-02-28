@@ -38,7 +38,7 @@ public class MakeNewUser {
             
             pstmt.setString(2, user.getUserName());
             pstmt.setString(3, user.getPassword());
-            pstmt.setString(4, user.getBalance());
+           // pstmt.setString(4, user.getBalance());
             pstmt.executeQuery();
         } catch(IOException | SQLException e) {
             e.getLocalizedMessage();

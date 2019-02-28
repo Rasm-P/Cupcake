@@ -22,6 +22,10 @@ private double balance;
         this.idUser = idUser;
     }
 
+    User(int idUser, String email, String userName, String password, String balance) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getUserName() {
         return username;
     }

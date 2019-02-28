@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import static Data.DataMapper.getInfo_Username_Password;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -42,21 +43,21 @@ public class FrontController extends HttpServlet {
         String action = request.getParameter("action");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
-        if (null == action) {
+
+        if (null == action || loggedIn == true) {
             PageMain.generateMain(response);
         } else {
             switch (action) {
-                case "makeLogin": 
+                case "makeLogin":
                     PageMakeLogin.generateMakeLogin(response);
                     break;
                 case "login":
-                    if () {
-                    session.setAttribute("loggedIn", true);
-                    PageLoggedIn.generateLoggedIn(response);
-                    break;
+                    if (getInfo_Username_Password(username, password) == true) {
+                        session.setAttribute("loggedIn", true);
+                        PageLoggedIn.generateLoggedIn(response);
+                        break;
                     } else {
-                         PageLogin.gen erateLogin(response);
+                        PageLogin.generateLogin(response);
                     }
             }
         }
