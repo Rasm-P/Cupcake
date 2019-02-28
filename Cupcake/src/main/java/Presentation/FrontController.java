@@ -40,14 +40,24 @@ public class FrontController extends HttpServlet {
             PageLogin.generateLogin(response);
         }
         String action = request.getParameter("action");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
         if (null == action) {
             PageMain.generateMain(response);
         } else {
             switch (action) {
+                case "makeLogin": 
+                    PageMakeLogin.generateMakeLogin(response);
+                    break;
                 case "login":
+                    if () {
                     session.setAttribute("loggedIn", true);
                     PageLoggedIn.generateLoggedIn(response);
                     break;
+                    } else {
+                         PageLogin.gen erateLogin(response);
+                    }
             }
         }
     }
