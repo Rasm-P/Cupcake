@@ -10,21 +10,24 @@ package Users;
  * @author rh
  */
 public class User {
-private String userName, password, balance, email;
+private int idUser;
+private String username, password, email;
+private double balance;
 
-    public User(String email, String userName, String password, String balance) {
-        this.userName = userName;
+    public User(int idUser,String userName, String password, Double balance) {
+        this.username = userName;
         this.password = password;
         this.balance = balance;
         this.email = email;
+        this.idUser = idUser;
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -35,11 +38,11 @@ private String userName, password, balance, email;
         this.password = password;
     }
 
-    public String getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
