@@ -26,9 +26,8 @@ public class MakeNewUser {
 
     public static void createNewUser(User user) throws Exception {
 
-//                "INSERT INTO Cupcakes.Users VALUES " + "( ,"
-//                + ", " + user.getUserName() + ", " + user.getPassword() + ", " + user.getBalance() + ");";
-        try {
+
+            try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
 
@@ -44,6 +43,7 @@ public class MakeNewUser {
             pstmt.execute();
             connection.close();
         } catch (Exception e) {
+
             e.getLocalizedMessage();
         }
 
@@ -52,6 +52,7 @@ public class MakeNewUser {
     public static void main(String[] args) throws Exception {
         User user = generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
         System.out.println(user.getUserName() + user.getPassword());
+        System.out.println("INSERT INTO `cupcake`.`user` `username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");");
         createNewUser(user);
 
     }
