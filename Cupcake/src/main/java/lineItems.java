@@ -1,3 +1,6 @@
+
+import Cupcake.cupcake;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,23 +12,24 @@
  * @author Ludvig
  */
 public class lineItems {
-    String topping;
-    String bottom;
     int quantity;
     int fullPrice;
+    cupcake cc;
     
-    public lineItems(int quantity, String topping, String bottom){
+    public lineItems(int quantity, cupcake cc){
         this.quantity = quantity;
-        this.topping = topping;
-        this.bottom = bottom;
+        this.cc = cc;
     }
     
-    public int getPrice(){
-        
+    public void editQuantity(int cha){
+        this.quantity = cha;
     }
     
-    @Override
-    public String toString() {
-        return "You ordered " + quantity + " cupcakes with topping" + topping + " and bottom " + bottom + " costing " + fullPrice;
+    public cupcake getCup(){
+        return this.cc;
+    }
+    
+    public double getPrice(){
+        return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
     }
 }
