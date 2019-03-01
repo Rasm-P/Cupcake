@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+=======
+Users\MakeNewUser.class
+Users\User.class
+Presentation\PageLoggedIn.class
+Presentation\FrontController.class
+Presentation\PageLogin.class
+Data\DBConnector.class
+Presentation\PageMakeLogin.class
+Data\DataMapper.class
+Presentation\PageMain.class
+>>>>>>> master
