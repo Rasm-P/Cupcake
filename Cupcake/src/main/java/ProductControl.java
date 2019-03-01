@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 
+import static Data.DataMapper.getInfo_Username_Password;
+import Presentation.PageLoggedIn;
+import Presentation.PageLogin;
+import Presentation.PageMain;
+import Presentation.PageMakeLogin;
+import static Users.MakeNewUser.createNewUser;
+import Users.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,10 +24,10 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ludvig
  */
-@WebServlet(name = "ProductControl", urlPatterns =
-{
-    "/ProductControl"
-})
+@WebServlet(name = "ProductControl", urlPatterns
+        = {
+            "/ProductControl"
+        })
 public class ProductControl extends HttpServlet {
 
     /**
@@ -34,13 +41,28 @@ public class ProductControl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html;charset=UTF-8");
         //HttpSession session = request.getSession();
-        
-        PageShop.generateShop(response);
-        
+        HttpSession session = request.getSession();
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        if (loggedIn == null || !loggedIn) {
+            PageLogin.generateLogin(response);
+        }
+
+        String action = request.getParameter("action");
         String topping = request.getParameter("topping");
+        String bottom = request.getParameter("bottom");
+        if (null == action) {
+            PageMain.generateMain(response);
+        } else {
+            System.out.println("2");
+            switch (action) {
+                case "shop":
+                    PageShop.generateShop(response);
+                    break;
+            }
+        }
 //        String bottom = request.getParameter("bottom");
 //        String quantity = request.getParameter("quantity");
 //        if(topping != null){

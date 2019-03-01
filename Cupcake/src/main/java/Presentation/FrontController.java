@@ -40,14 +40,18 @@ public class FrontController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         /* Check for login and so on... */
         HttpSession session = request.getSession();
-        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
-        if (loggedIn == null || !loggedIn) {
-            PageLogin.generateLogin(response);
-        }
-        System.out.println("1");
         String action = request.getParameter("action");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+               
+        if (loggedIn == null && username == null) {
+            System.out.println("0.5");
+            PageLogin.generateLogin(response);
+        }
+        System.out.println("1");
+   
         System.out.println("1.2");
         if (null == action) {
             PageMain.generateMain(response);
@@ -56,7 +60,7 @@ public class FrontController extends HttpServlet {
             switch (action) {
                 case "makeLogin":
                     System.out.println("2.5");
-                    if (getInfo_Username_Password(username, password) == false) {
+                    if (username != null && password != null && getInfo_Username_Password(username, password) == false) {
                         User u = new User(1, username, password, 0.0);
                         createNewUser(u);
                         PageLogin.generateLogin(response);
@@ -67,7 +71,7 @@ public class FrontController extends HttpServlet {
                     }
                 case "login":
                     System.out.println("3");
-                    if (getInfo_Username_Password(username, password) == true) {
+                    if (username != null && password != null && getInfo_Username_Password(username, password) == true) {
                         System.out.println("3.25");
                         session.setAttribute("loggedIn", true);
                         PageLoggedIn.generateLoggedIn(response);

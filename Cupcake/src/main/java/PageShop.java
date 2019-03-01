@@ -25,12 +25,12 @@ public class PageShop {
             out.println("<title> Shoppen</title>");
             out.println("</head>");
             
-            out.println("<body bgcolor=\"#00ffff\">");
+            out.println("<body>");
 
             out.println("<h1> Velkommen til cupcakeshoppen </h1>");
             
-            out.println(" <form id=\"addProduct\" action=\"Control\" method=\"POST\">");
-            out.println("<input type=\"hidden\" name=\"origin\" value=\"addProduct\">");
+            out.println(" <form>");
+            //out.println("<input type=\"hidden\" name=\"origin\" value=\"addProduct\">");
             out.println("<table class=\"table table-striped\">");
             out.println("<thead><tr><th>Bottom</th><th>Topping</th><th>Quantity</th><th>Select</th><th></th></tr></thead>");
             out.println("<tbody>");
@@ -42,17 +42,18 @@ public class PageShop {
             out.println("<td><select name=\"topping\" id=\"toppingSelect\">");
             out.println("<option value=\"0\">Choose topping</option>");
             out.println(" <option value=\"1\">Chocolate: 5.0</option><option value=\"2\">Vanilla: 5.0</option><option value=\"3\">Nutmeg: 5.0</option><option value=\"4\">Pistacio: 6.0</option><option value=\"5\">Almond: 7.0</option>");
-            out.println("</select></td>");
+            out.println("</select> <input type=\"hidden\" name=\"place\" value=\"300\" /> </td>");
             out.println(" <td><input type=\"text\" name=\"qty\" placeholder=\"quantity\" id=\"qtyInput\"></td>");
             out.println("<td><input type=\"submit\" name=\"submit\" value=\"Add to cart\"></td><td><span id=\"errorContainer\"></span></td>");
             out.println("</tr>");
             out.println(" </tbody>");
             out.println("</table>");
-            out.println("</form>");
+            
             out.println("<table class=\"table table-striped\"><thead><tr><th>Name</th><th>Quantity</th><th>Price</th><th>Total</th><th>Remove</th></tr></thead><tbody><tr><td><h4>Total price</h4></td><td></td><td></td><td id=\"totalprice\"></td><td><form id=\"checkoutForm\" action=\"Control\" method=\"POST\"><input type=\"hidden\" name=\"origin\" value=\"submitInvoice\"/><input type=\"submit\" value=\"Check out your order\"></form></td></tr>");
+            out.println("</form>");
             out.println("</tbody>");
             out.println("</table>");
-            out.println("<div id=\"errmsg\"></div>");
+            //out.println("<div id=\"errmsg\"></div>");
             out.println(" </div>");
             out.println("</div>");
             out.println("");

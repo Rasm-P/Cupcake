@@ -1,15 +1,18 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 Users\MakeNewUser.class
-Users\User.class
 Presentation\PageLoggedIn.class
+Cupcake\Toppings.class
+PageShop.class
+ProductControl.class
+PageTest.class
+Presentation\PageMakeLogin.class
+Data\DataMapper.class
+lineItems.class
+Cupcake\Bottoms.class
+Presentation\PageMain.class
+Users\User.class
+Data\CupcakeMapper.class
 Presentation\FrontController.class
 Presentation\PageLogin.class
 Data\DBConnector.class
-Presentation\PageMakeLogin.class
-Data\DataMapper.class
-Presentation\PageMain.class
->>>>>>> master
->>>>>>> origin/shop
+shoppingCart.class
+Cupcake\cupcake.class
