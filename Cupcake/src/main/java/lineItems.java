@@ -1,4 +1,3 @@
-
 import Cupcake.cupcake;
 
 /*
@@ -22,7 +21,7 @@ public class lineItems {
     }
     
     public void editQuantity(int cha){
-        this.quantity = cha;
+        this.quantity = quantity + cha;
     }
     
     public cupcake getCup(){
