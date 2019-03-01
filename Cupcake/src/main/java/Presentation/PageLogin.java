@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-class PageLogin {
+public class PageLogin {
 
-    static void generateLogin(HttpServletResponse response) throws IOException {
+    public static void generateLogin(HttpServletResponse response) throws IOException {
         try (PrintWriter out = response.getWriter())
         {
             /* TODO output your page here. You may use following sample code. */
@@ -28,14 +28,15 @@ class PageLogin {
             out.println("<h1>Login!</h1>");
             out.println("<p>");
             out.println("<form>" +
+            "<input type=\"hidden\" name=\"action\" value=\"login\"><br>" +
             "Username:<br>" +
             "<input type=\"text\" name=\"username\" value=\"\"><br>" +
             "Login:<br>" +
-            "<input type=\"text\" name=\"password\" value=\"\"><br><br>" +
+            "<input type=\"password\" name=\"password\" value=\"\"><br><br>" +
             "<input type=\"submit\" value=\"Login\">" +
             "</form>");
             out.println("</p>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=login\">Log in</a></p>");
+            //out.println("<p><a href=\"/Cupcake/FrontController?action=login\">Log in</a></p>");
             out.println("<p><a href=\"/Cupcake/FrontController?action=makeLogin\">Create an account</a></p>");
             out.println("</body>");
             out.println("</html>");

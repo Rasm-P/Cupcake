@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-class PageMain {
+public class PageMain {
 
-    static void generateMain(HttpServletResponse response) throws IOException {
+    public static void generateMain(HttpServletResponse response) throws IOException {
         try (PrintWriter out = response.getWriter())
         {
             /* TODO output your page here. You may use following sample code. */
@@ -26,8 +26,9 @@ class PageMain {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Main landing page!</h1>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=buy\">Buy something</a></p>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=hello\">Say hello!</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=buy\">No case yet!</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=hello\">No case yet!</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=logOut\">Logout!</a></p>");
             out.println("</body>");
             out.println("</html>");
         }
