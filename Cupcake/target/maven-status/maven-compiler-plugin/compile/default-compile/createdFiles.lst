@@ -1,5 +1,7 @@
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 Users\MakeNewUser.class
 Users\User.class
 Presentation\PageLoggedIn.class
@@ -10,3 +12,4 @@ Presentation\PageMakeLogin.class
 Data\DataMapper.class
 Presentation\PageMain.class
 >>>>>>> master
+>>>>>>> origin/shop

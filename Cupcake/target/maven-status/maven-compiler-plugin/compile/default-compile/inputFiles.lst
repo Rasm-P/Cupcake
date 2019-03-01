@@ -1,4 +1,19 @@
 <<<<<<< HEAD
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Data/DBConnector.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Data/CupcakeMapper.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Presentation/PageLogin.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Cupcake/cupcake.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Cupcake/Toppings.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Cupcake/Bottoms.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Presentation/PageMain.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Users/User.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Presentation/FrontController.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Users/MakeNewUser.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Data/DataMapper.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Presentation/PageLoggedIn.java
+/home/rh/Documents/Cupcake/cupcake/Cupcake/src/main/java/Presentation/PageMakeLogin.java
+=======
+<<<<<<< HEAD
 C:\Users\Ludvig\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\PageShop.java
 C:\Users\Ludvig\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\lineItems.java
 C:\Users\Ludvig\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\PageTest.java
@@ -15,3 +30,4 @@ C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\jav
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\Presentation\PageMakeLogin.java
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\Users\User.java
 >>>>>>> master
+>>>>>>> origin/shop
