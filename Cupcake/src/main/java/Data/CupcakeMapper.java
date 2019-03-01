@@ -105,7 +105,48 @@ public class CupcakeMapper {
         }
 
     
-    
+        public static Toppings getOneToppings(String toppingname) {
+        int id = 0;
+        String name;
+        Double price;
+        Toppings top = null;
+        
+         try {
+            
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            // our SQL SELECT query. 
+            // if you only need a few columns, specify them by name instead of using "*"
+            String query = "SELECT * FROM toppings where toppingname = '" + toppingname + "' ;";
+
+            // execute the query, and get a java resultset
+            try ( // create the java statement
+                Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (rs.next()) {
+                    id = rs.getInt("idtoppings");
+                    name = rs.getString("toppingname");
+                    price = rs.getDouble("price");
+                    top = new Toppings(name, price);
+                    
+
+                }
+                
+                
+                
+                
+                connection.close();
+            }
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        ;
+        return top;
+        }
     
     
     
