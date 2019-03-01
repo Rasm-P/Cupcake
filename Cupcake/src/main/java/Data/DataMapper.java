@@ -72,7 +72,7 @@ public class DataMapper {
         String username = "";
         int id = 0;
         
-        if (inputUsername == null || inputPassword == null) {
+        if (inputUsername.isEmpty() || inputPassword.isEmpty()) {
             return false;
         }
         

@@ -23,18 +23,18 @@ public class CupcakeMapper {
         String name;
         Double price;
         ArrayList<Toppings> toppings = new ArrayList();
-        
-         try {
+
+        try {
 
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM toppings";
+            String query = "SELECT * FROM toppings;";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
-                Statement st = connection.createStatement()) {
+                    Statement st = connection.createStatement()) {
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
 
@@ -43,44 +43,38 @@ public class CupcakeMapper {
                     id = rs.getInt("idtoppings");
                     name = rs.getString("toppingname");
                     price = rs.getDouble("price");
-                   Toppings top = new Toppings(name, price);
-                   toppings.add(top);
+                    Toppings top = new Toppings(name, price);
+                    toppings.add(top);
 
                 }
-                
-                
-                
-                
+
                 connection.close();
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
         }
-         System.out.println(toppings);
+        System.out.println(toppings);
         return toppings;
-        }
+    }
 
-    
-    
-    
-     public static ArrayList<Bottoms> getBottoms() {
+    public static ArrayList<Bottoms> getBottoms() {
         int id = 0;
         String name;
         Double price;
         ArrayList<Bottoms> bottoms = new ArrayList();
-        
-         try {
+
+        try {
 
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM bottoms";
+            String query = "SELECT * FROM bottoms;";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
-                Statement st = connection.createStatement()) {
+                    Statement st = connection.createStatement()) {
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
 
@@ -89,8 +83,8 @@ public class CupcakeMapper {
                     id = rs.getInt("idBottoms");
                     name = rs.getString("bottomname");
                     price = rs.getDouble("price");
-                   Bottoms bot = new Bottoms(name, price);
-                   bottoms.add(bot);
+                    Bottoms bot = new Bottoms(name, price);
+                    bottoms.add(bot);
 
                 }
 
@@ -100,19 +94,18 @@ public class CupcakeMapper {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
         }
-         System.out.println(bottoms);
+        System.out.println(bottoms);
         return bottoms;
-        }
+    }
 
-    
-        public static Toppings getOneToppings(String toppingname) {
+    public static Toppings getOneToppings(String toppingname) {
         int id = 0;
         String name;
         Double price;
         Toppings top = null;
-        
-         try {
-            
+
+        try {
+
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             // our SQL SELECT query. 
@@ -121,7 +114,7 @@ public class CupcakeMapper {
 
             // execute the query, and get a java resultset
             try ( // create the java statement
-                Statement st = connection.createStatement()) {
+                    Statement st = connection.createStatement()) {
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
 
@@ -131,32 +124,59 @@ public class CupcakeMapper {
                     name = rs.getString("toppingname");
                     price = rs.getDouble("price");
                     top = new Toppings(name, price);
-                    
 
                 }
-                
-                
-                
-                
+
                 connection.close();
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
         }
-        ;
         return top;
+    }
+
+    public static Bottoms getOneBottom(String Bottomname) {
+        int id = 0;
+        String name;
+        Double price;
+        Bottoms bot = null;
+
+        try {
+
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            // our SQL SELECT query. 
+            // if you only need a few columns, specify them by name instead of using "*"
+            String query = "SELECT * FROM toppings where toppingname = '" + Bottomname + "' ;";
+
+            // execute the query, and get a java resultset
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (rs.next()) {
+                    id = rs.getInt("idtoppings");
+                    name = rs.getString("toppingname");
+                    price = rs.getDouble("price");
+                    bot = new Bottoms(name, price);
+
+                }
+
+                connection.close();
+            }
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
         }
-    
-    
-    
-    
-    
-    
-    
-    
+            
+        return bot;
+    }
+
     public static void main(String[] args) {
         getBottoms();
-        
+
     }
 }
