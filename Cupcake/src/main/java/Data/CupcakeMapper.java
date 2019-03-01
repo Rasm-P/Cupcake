@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -21,8 +20,8 @@ public class CupcakeMapper {
 
     public static ArrayList<Toppings> getToppings() {
         int id = 0;
-        String name = "";
-        Double price = 0.0;
+        String name;
+        Double price;
         ArrayList<Toppings> toppings = new ArrayList();
         
          try {
@@ -67,8 +66,8 @@ public class CupcakeMapper {
     
      public static ArrayList<Bottoms> getBottoms() {
         int id = 0;
-        String name = "";
-        Double price = 0.0;
+        String name;
+        Double price;
         ArrayList<Bottoms> bottoms = new ArrayList();
         
          try {
