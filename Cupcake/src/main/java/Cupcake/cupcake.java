@@ -14,10 +14,10 @@ public class cupcake {
     private Toppings top;
     private String price;
 
-    public cupcake(Bottoms bottom, Toppings top, String price) {
+    public cupcake(Bottoms bottom, Toppings top, String totalPrice) {
         this.bottom = bottom;
         this.top = top;
-        this.price = price;
+        this.price = totalPrice;
     }
 
     public Bottoms getBottom() {
@@ -32,8 +32,8 @@ public class cupcake {
         return top.getName();
     }
 
-    public int getPrice(int bottomPrice, int topPrice) {
-       int totalprice = bottomPrice + topPrice;
+    public double getPrice(Bottoms bottom, Toppings top) {
+       double totalprice = bottom.getPrice() + top.getPrice();
        return totalprice;
     }
 
