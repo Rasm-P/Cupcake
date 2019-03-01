@@ -33,7 +33,5 @@ public class Bottoms {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-    
-    
+    }    
 }
