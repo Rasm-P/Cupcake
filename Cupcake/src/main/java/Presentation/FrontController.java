@@ -6,8 +6,11 @@
 package Presentation;
 
 import static Data.DataMapper.getInfo_Username_Password;
+import static Users.MakeNewUser.createNewUser;
+import Users.User;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +35,8 @@ public class FrontController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
+        System.out.println("-------------------------");
         response.setContentType("text/html;charset=UTF-8");
         /* Check for login and so on... */
         HttpSession session = request.getSession();
@@ -40,27 +44,46 @@ public class FrontController extends HttpServlet {
         if (loggedIn == null || !loggedIn) {
             PageLogin.generateLogin(response);
         }
+        System.out.println("1");
         String action = request.getParameter("action");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
-        if (null == action || loggedIn == true) {
+        System.out.println("1.2");
+        if (null == action) {
             PageMain.generateMain(response);
         } else {
+            System.out.println("2");
             switch (action) {
                 case "makeLogin":
-                    PageMakeLogin.generateMakeLogin(response);
-                    break;
+                    System.out.println("2.5");
+                    if (getInfo_Username_Password(username, password) == false) {
+                        User u = new User(1, username, password, 0.0);
+                        createNewUser(u);
+                        PageLogin.generateLogin(response);
+                        break;
+                    } else {
+                        PageMakeLogin.generateMakeLogin(response);
+                        break;
+                    }
                 case "login":
+                    System.out.println("3");
                     if (getInfo_Username_Password(username, password) == true) {
+                        System.out.println("3.25");
                         session.setAttribute("loggedIn", true);
                         PageLoggedIn.generateLoggedIn(response);
                         break;
                     } else {
                         PageLogin.generateLogin(response);
+                        break;
                     }
+                case "logOut":
+                    System.out.println("3.5");
+                    session.setAttribute("loggedIn", false);
+                    PageLogin.generateLogin(response);
+                    break;
             }
         }
+        System.out.println("4");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,7 +98,11 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -89,7 +116,11 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
