@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-class PageMakeLogin {
+public class PageMakeLogin {
 
-    static void generateMakeLogin(HttpServletResponse response) throws IOException {
-        
+    public static void generateMakeLogin(HttpServletResponse response) throws IOException {
+        System.out.println("makeing login");
         try (PrintWriter out = response.getWriter())
         {
             /* TODO output your page here. You may use following sample code. */
@@ -29,6 +29,7 @@ class PageMakeLogin {
             out.println("<h1>Create account!</h1>");
             out.println("<p>");
             out.println("<form>" +
+            "<input type=\"hidden\" name=\"action\" value=\"makeLogin\"><br>" +
             "Username:<br>" +
             "<input type=\"text\" name=\"username\" value=\"\"><br>" +
             "Login:<br>" +
@@ -40,6 +41,7 @@ class PageMakeLogin {
             out.println("</body>");
             out.println("</html>");
         }
+        System.out.println("made login");
     }
     
 }

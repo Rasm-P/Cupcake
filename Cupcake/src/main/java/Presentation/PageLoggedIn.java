@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-class PageLoggedIn {
+public class PageLoggedIn {
 
-    static void generateLoggedIn(HttpServletResponse response) throws IOException {
+    public static void generateLoggedIn(HttpServletResponse response) throws IOException {
         try (PrintWriter out = response.getWriter())
         {
             /* TODO output your page here. You may use following sample code. */
@@ -27,7 +27,8 @@ class PageLoggedIn {
             out.println("<body>");
             out.println("<h1>Logged in!</h1>");
             out.println("<p><a href=\"/Cupcake/FrontController?action=buy\">No case yet!</a></p>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=hello\">No case yet!</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=hello\">No case yet!</a></p>");            
+            out.println("<p><a href=\"/Cupcake/FrontController?action=logOut\">Logout!</a></p>");
             out.println("</body>");
             out.println("</html>");
         }
