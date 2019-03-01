@@ -28,8 +28,8 @@ public class cupcake {
         this.bottom = bottom;
     }
 
-    public String getTop() {
-        return top.getName();
+    public Toppings getTop() {
+        return top;
     }
 
     public double getPrice(Bottoms bottom, Toppings top) {
@@ -39,7 +39,5 @@ public class cupcake {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-    
-    
+    } 
 }
