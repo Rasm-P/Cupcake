@@ -21,6 +21,12 @@ public class lineItems {
         this.quantity = quantity;
         this.cc = cc;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    
     
     public void editQuantity(int cha){
         this.quantity = quantity + cha;
@@ -32,5 +38,9 @@ public class lineItems {
     
     public double getPrice(){
         return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
+    }
+    
+    public lineItems() {
+        
     }
 }
