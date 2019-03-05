@@ -14,7 +14,7 @@ import Cupcake.cupcake;
  */
 public class lineItems {
     int quantity;
-    int fullPrice;
+    double fullPrice;
     cupcake cc;
     
     public lineItems(int quantity, cupcake cc){
@@ -30,7 +30,14 @@ public class lineItems {
         return this.cc;
     }
     
-    public double getPrice(){
+    public double getFullPrice(){
         return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
     }
+
+    @Override
+    public String toString() {
+        return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
+    }
+    
+    
 }

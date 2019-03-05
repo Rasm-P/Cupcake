@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation;
+package OldCode;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +26,7 @@ public class PageMakeLogin {
             out.println("<title>Servlet FrontController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Create account!</h1>");
+            out.println("<h1>Make login</h1>");
             out.println("<p>");
             out.println("<form>" +
             "<input type=\"hidden\" name=\"action\" value=\"makeLogin\"><br>" +

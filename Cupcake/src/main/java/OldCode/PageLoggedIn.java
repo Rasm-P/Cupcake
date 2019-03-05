@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation;
+package OldCode;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,9 +26,8 @@ public class PageLoggedIn {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Logged in!</h1>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=buy\">No case yet!</a></p>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=hello\">No case yet!</a></p>");            
-            out.println("<p><a href=\"/Cupcake/FrontController?action=logOut\">Logout!</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=shop\">Shop</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=logOut\">Logout</a></p>");
             out.println("</body>");
             out.println("</html>");
         }

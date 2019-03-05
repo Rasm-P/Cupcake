@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation;
+package OldCode;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,10 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-public class PageMakeLogin {
+public class PageLogin {
 
-    public static void generateMakeLogin(HttpServletResponse response) throws IOException {
-        System.out.println("makeing login");
+    public static void generateLogin(HttpServletResponse response) throws IOException {
         try (PrintWriter out = response.getWriter())
         {
             /* TODO output your page here. You may use following sample code. */
@@ -26,22 +25,22 @@ public class PageMakeLogin {
             out.println("<title>Servlet FrontController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Create account!</h1>");
+            out.println("<h1>Login!</h1>");
             out.println("<p>");
             out.println("<form>" +
-            "<input type=\"hidden\" name=\"action\" value=\"makeLogin\"><br>" +
+            "<input type=\"hidden\" name=\"action\" value=\"login\"><br>" +
             "Username:<br>" +
             "<input type=\"text\" name=\"username\" value=\"\"><br>" +
             "Login:<br>" +
-            "<input type=\"text\" name=\"password\" value=\"\"><br><br>" +
-            "<input type=\"submit\" value=\"Create account\">" +
+            "<input type=\"password\" name=\"password\" value=\"\"><br><br>" +
+            "<input type=\"submit\" value=\"Login\">" +
             "</form>");
             out.println("</p>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=login\">Log in</a></p>");
+            //out.println("<p><a href=\"/Cupcake/FrontController?action=login\">Log in</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=makeLogin\">Create an account</a></p>");
             out.println("</body>");
             out.println("</html>");
         }
-        System.out.println("made login");
     }
     
 }
