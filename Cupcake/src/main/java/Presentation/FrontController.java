@@ -12,6 +12,7 @@ import static Data.CupcakeMapper.getOneBottom;
 import static Data.CupcakeMapper.getOneToppings;
 import static Data.DataMapper.getInfo_Username_Password;
 import Shop.lineItems;
+import Shop.shoppingCart;
 import static Users.MakeNewUser.createNewUser;
 import Users.User;
 import java.io.IOException;
@@ -114,7 +115,8 @@ public class FrontController extends HttpServlet {
                     System.out.println(bottom);
                     System.out.println(qty);
                     if (topping != null && !"".equals(topping) && bottom != null && !"".equals(bottom) && qty != null && !"".equals(qty) && Integer.parseInt(qty) >= 1) {
-                        ArrayList<lineItems> arList = new ArrayList<>();
+                        //ArrayList<lineItems> arList = new ArrayList<>();
+                        shoppingCart arList = new shoppingCart();
 
                         Bottoms b = getOneBottom(bottom);
                         Toppings t = getOneToppings(topping);
@@ -126,7 +128,7 @@ public class FrontController extends HttpServlet {
                         arList.add(l);
 
                         if (session.getAttribute("ArrayList<lineItems>") != null) {
-                            ArrayList<lineItems> arOld = (ArrayList<lineItems>) session.getAttribute("ArrayList<lineItems>");
+                            shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
                             for (int i = 0; i < arOld.size(); i++) {
                                 arList.add(arOld.get(i));
                                 session.setAttribute("ArrayList<lineItems>", arList);

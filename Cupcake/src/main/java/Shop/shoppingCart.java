@@ -15,21 +15,26 @@ import java.util.ArrayList;
  * @author Ludvig
  */
 public class shoppingCart {
+    
     static ArrayList<lineItems> cart = new ArrayList(); 
-  
-    public void addToCart(cupcake cup, int qua){
-        for(int i = 0; i < cart.size(); i++){
-            if(cart.get(i).getCup().getBottom().equals(cup.getBottom()) && cart.get(i).getCup().getTop().equals(cup.getTop())){
-                cart.get(i).editQuantity(qua);
-            }
-        }
-        
-        cart.add(new lineItems(qua, cup));
+    
+    public int size() {
+        return cart.size();
+    }
+    
+    public void add(lineItems l){
+              
+        cart.add(l);
     }
     
     public static ArrayList getCart(){
         return cart;               
-    }   
+    } 
+    
+     public lineItems get(int index){
+        return cart.get(index);               
+    }
+    
     
 //    public static void main(String [] args){
 //        Bottoms b = new Bottoms("Choco", 2.0);

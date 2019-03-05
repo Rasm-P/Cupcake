@@ -4,6 +4,7 @@
     Author     : Rasmus2
 --%>
 
+<%@page import="Shop.shoppingCart"%>
 <%@page import="Users.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Shop.lineItems"%>
@@ -44,7 +45,7 @@
             <%
                 double total = 0.0;
                 if (session.getAttribute("ArrayList<lineItems>") != null) {
-                    ArrayList<lineItems> arOld = (ArrayList<lineItems>) session.getAttribute("ArrayList<lineItems>");
+                    shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
                     for (int i = 0; i < arOld.size(); i++) {
                         out.println("<tr><td>" + arOld.get(i).toString() + "</td></tr>");
                         total = total + arOld.get(i).getFullPrice();
