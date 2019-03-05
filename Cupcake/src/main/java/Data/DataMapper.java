@@ -285,7 +285,7 @@ public static void createOrder(Invoice invoice) throws Exception {
 //        cart.getCart().add(it1);
 //        cart.getCart().add(it2);
 //        
-//        User user = new User(2, "Hans", "qwe", Double.NaN);
+//        User user = new User(3, "Hans", "qwe", Double.NaN);
 //        Invoice invoice = new Invoice(cart, user, LocalDate.now());
 //        //createOrder(invoice);
 //        createOrder(invoice);
@@ -339,7 +339,25 @@ public static void createOrder(Invoice invoice) throws Exception {
             e.getLocalizedMessage();
         
     }
+     }
+
+        
+     public static void removeFromBalance(User user, double money) {
+         String query = "UPDATE cupcake.user SET balance = balance -" + money + "where idUser= " + user.getIdUser() + ";";
+         try {
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.execute();
+            connection.close();
+            } catch (Exception e) {
+            e.getLocalizedMessage();
+        
+    }
         }
+     
+     
+     
      
 }
      
