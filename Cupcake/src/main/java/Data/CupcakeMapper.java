@@ -174,10 +174,82 @@ public class CupcakeMapper {
             
         return bot;
     }
+    
+    public static double getTopPriceFromName(String top) {
+        double price = 0.0;
+        try {
+
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            // our SQL SELECT query. 
+            // if you only need a few columns, specify them by name instead of using "*"
+            String query = "SELECT toppings.price FROM toppings where toppingname=" + "'" + top + "'" + ";";
+            
+            
+            // execute the query, and get a java resultset
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (rs.next()) {
+                    price = rs.getDouble("price");
+                    
+
+                }
+
+                connection.close();
+                
+            }
+        } catch (Exception e) {
+            System.err.println("Got an exception! b");
+            System.err.println(e.getMessage());
+        }
+       
+      
+         return price;
+    }
+    
+    public static double getBottomPriceFromName(String bottom) {
+        double price = 0.0;
+        try {
+
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            // our SQL SELECT query. 
+            // if you only need a few columns, specify them by name instead of using "*"
+            String query = "SELECT bottoms.price FROM bottoms where bottomname=" + "'" + bottom + "'" + ";";
+            
+            
+            // execute the query, and get a java resultset
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (rs.next()) {
+                    price = rs.getDouble("price");
+                    
+
+                }
+
+                connection.close();
+                
+            }
+        } catch (Exception e) {
+            System.err.println("Got an exception! b");
+            System.err.println(e.getMessage());
+        }
+        
+         return price;
+    }
 
     public static void main(String[] args) {
-        System.out.println(getOneBottom("Chocolate").toString());
-        System.out.println(getOneToppings("Chocolate").toString());
+//        System.out.println(getOneBottom("Chocolate").toString());
+//        System.out.println(getOneToppings("Chocolate").toString());
+            getBottomPriceFromName("Vanilla");
 
     }
 }
