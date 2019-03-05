@@ -13,7 +13,9 @@
     </head>
     <body>
         <h1>Ups something went wrong!</h1>
-        <p>Click <a herf = "">here</a>here to go back to the main page!</p>
-        <p><form action ="/Cupcake" method="post"> </form></p>
+        <p>Click here to go back to the main page!</p>
+        <form action="/Cupcake/" method="post">
+        <input type="submit" value="Back" />
+        </form>
     </body>
 </html>
