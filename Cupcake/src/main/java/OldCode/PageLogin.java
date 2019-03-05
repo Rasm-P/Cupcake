@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +6,16 @@
  */
 package OldCode;
 
+=======
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package OldCode;
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
@@ -43,4 +54,8 @@ public class PageLogin {
         }
     }
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97

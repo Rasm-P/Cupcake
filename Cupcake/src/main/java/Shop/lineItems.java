@@ -31,6 +31,10 @@ public class lineItems {
         return this.cc;
     }
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
     public double getFullPrice(){
         return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
     }
@@ -41,13 +45,26 @@ public class lineItems {
     }
     
     public double getPrice(){
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
         return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
     }
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
 
+=======
+
+        return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
+
+        
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
     }
     
     

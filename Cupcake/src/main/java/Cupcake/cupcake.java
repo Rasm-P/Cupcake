@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,6 +25,35 @@ public class cupcake {
         return bottom;
     }
 
+=======
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Cupcake;
+
+/**
+ *
+ * @author rh
+ */
+public class cupcake {
+    private Bottoms bottom;
+    private Toppings top;
+    private double price;
+
+    public cupcake(Bottoms bottom, Toppings top, double totalPrice) {
+        this.bottom = bottom;
+        this.top = top;
+        this.price = totalPrice;
+    }
+
+    public Bottoms getBottom() {
+        return bottom;
+    }
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
     public void setBottom(Bottoms bottom) {
         this.bottom = bottom;
     }
@@ -46,4 +76,9 @@ public class cupcake {
         return "Bottom " + bottom + ", Top " + top + ", Cupcake-Price " + price;
     }
     
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97

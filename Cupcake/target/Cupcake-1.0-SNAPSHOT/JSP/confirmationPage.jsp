@@ -22,7 +22,7 @@
                 ArrayList<lineItems> arOld = (ArrayList<lineItems>) session.getAttribute("ArrayList<lineItems>");
                 for (int i = 0; i < arOld.size(); i++) {
                     out.println("<p>" + arOld.get(i).toString() + "</p>");
-                    total = total + arOld.get(i).getFullPrice();
+                    total = total + arOld.get(i).getPrice();
                 }
 
                 out.println("<p>" + "Total: " + total + "</p>");

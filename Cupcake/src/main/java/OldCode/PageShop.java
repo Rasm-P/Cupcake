@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package OldCode;
 
 
@@ -11,6 +12,22 @@ import javax.servlet.http.HttpServletResponse;
  * and open the template in the editor.
  */
 
+=======
+
+package OldCode;
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
 /**
  *
  * @author Ludvig
@@ -61,4 +78,8 @@ public class PageShop {
             out.println("</html>");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97

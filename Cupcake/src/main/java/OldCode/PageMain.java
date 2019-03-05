@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,4 +37,8 @@ public class PageMain {
         }
     }
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9da7a381734e0924a0bc510faea8aa7fa5756a97
