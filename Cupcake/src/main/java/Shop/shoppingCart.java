@@ -19,17 +19,22 @@ public class shoppingCart {
     static ArrayList<lineItems> cart = new ArrayList(); 
   
     static public void addToCart(cupcake cup, int qua){
+
         boolean all = true;
-        for(int i = 0; i < cart.size(); i++){
-            if(cart.get(i).getCup().getBottom().equals(cup.getBottom()) && cart.get(i).getCup().getTop().equals(cup.getTop())){
-                cart.get(i).editQuantity(qua);
-                
+
+        for (lineItems cart1 : cart) {
+            if (cart1.getCup().getBottom().equals(cup.getBottom()) && cart1.getCup().getTop().equals(cup.getTop())) {
+                cart1.editQuantity(qua);
                 all = false;
-            }                            
+            }
         }   
+
         if(all){
+
             cart.add(new lineItems(qua, cup));
+
         }
+
     }
     
     public static ArrayList getCart(){
