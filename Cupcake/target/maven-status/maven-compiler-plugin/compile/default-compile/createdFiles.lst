@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Users\MakeNewUser.class
 Presentation\PageLoggedIn.class
 Cupcake\Toppings.class
@@ -16,3 +17,5 @@ Presentation\PageLogin.class
 Data\DBConnector.class
 shoppingCart.class
 Cupcake\cupcake.class
+=======
+>>>>>>> origin/login
