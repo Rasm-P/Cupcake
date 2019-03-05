@@ -123,7 +123,7 @@ public class FrontController extends HttpServlet {
                         System.out.println(t.toString());
                         System.out.println(b.toString());
                         cupcake c = new cupcake(b, t, b.getPrice() + t.getPrice());
-
+                        System.out.println(c.toString());
                         lineItems l = new lineItems(Integer.parseInt(qty), c);
                         arList.add(l);
 

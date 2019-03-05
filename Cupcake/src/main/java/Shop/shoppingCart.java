@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class shoppingCart {
     
-    static ArrayList<lineItems> cart = new ArrayList(); 
+    private ArrayList<lineItems> cart = new ArrayList(); 
     
     public int size() {
         return cart.size();
@@ -27,7 +27,7 @@ public class shoppingCart {
         cart.add(l);
     }
     
-    public static ArrayList getCart(){
+    public ArrayList getCart(){
         return cart;               
     } 
     
