@@ -38,6 +38,12 @@ public class lineItems {
     public String toString() {
         return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    
     
     
 }
