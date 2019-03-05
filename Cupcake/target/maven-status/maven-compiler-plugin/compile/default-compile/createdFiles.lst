@@ -1,1 +1,21 @@
+<<<<<<< HEAD
+OldCode\PageLogin.class
+Users\MakeNewUser.class
+OldCode\PageMain.class
+Shop\Invoice.class
+OldCode\PageLoggedIn.class
+Cupcake\Toppings.class
+Data\DataMapper.class
+Cupcake\Bottoms.class
+Users\User.class
+OldCode\PageShop.class
+Data\CupcakeMapper.class
+Presentation\FrontController.class
+Data\DBConnector.class
+OldCode\PageMakeLogin.class
+Shop\shoppingCart.class
+Shop\lineItems.class
+Cupcake\cupcake.class
+=======
 Shop/Invoice.class
+>>>>>>> b364da3fcf4ed35813666b53b94b338289d7b89d

@@ -31,6 +31,9 @@ public class lineItems {
         return this.cc;
     }
     
+<<<<<<< HEAD
+    public double getFullPrice(){
+=======
 
     public double getQuantity(){
         return quantity;
@@ -40,12 +43,17 @@ public class lineItems {
 
     public double getPrice(){
 
+>>>>>>> b364da3fcf4ed35813666b53b94b338289d7b89d
         return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
     }
 
     @Override
     public String toString() {
+<<<<<<< HEAD
+        return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
+=======
         return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getPrice();
+>>>>>>> b364da3fcf4ed35813666b53b94b338289d7b89d
     }
     
     
