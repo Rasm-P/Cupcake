@@ -14,29 +14,10 @@ import java.time.LocalDate;
  *
  * @author Rasmus2
  */
-public class transaction {
-    
-    private shoppingCart cart;
-    private Users.User user;
-    private LocalDate date;
+public class transaction extends Invoice {
 
     public transaction(shoppingCart cart, User user, LocalDate date) {
-        this.cart = cart;
-        this.user = user;
-        this.date = date;
+        super(cart, user, date);
     }
 
-    public shoppingCart getCart() {
-        return cart;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-    
-    
 }
