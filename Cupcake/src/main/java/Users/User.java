@@ -72,7 +72,7 @@ private double balance;
         return idUser;
     }
 
-    public static double getBalanceFromDB(User user) {
+    public static double getBalanceFromDB(String name, String password) {
         double balance = 0;
          try {
 
@@ -80,7 +80,7 @@ private double balance;
             Connection connection = conn.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT balance from cupcake.user where user.username = " + "'" + user.getUserName() + "'" + " and user.password = " + "'" +user.getPassword() +"'"+ ";";
+            String query = "SELECT balance from cupcake.user where user.username = " + "'" + name + "'" + " and user.password = " + "'" + password +"'"+ ";";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
@@ -132,7 +132,6 @@ private double balance;
     
     public static void main(String[] args) {
         User user = new User(1, "Ole", "1234", 112.0);
-        getBalanceFromDB(user);
         
     }
     

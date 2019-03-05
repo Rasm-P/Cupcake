@@ -11,11 +11,13 @@ import Cupcake.cupcake;
 import static Data.CupcakeMapper.getOneBottom;
 import static Data.CupcakeMapper.getOneToppings;
 import Data.DataMapper;
+import static Data.DataMapper.getInfoFromUsername;
 import static Data.DataMapper.getInfo_Username_Password;
 import Shop.lineItems;
 import Shop.shoppingCart;
 import static Users.MakeNewUser.createNewUser;
 import Users.User;
+import static Users.User.getBalanceFromDB;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -94,7 +96,8 @@ public class FrontController extends HttpServlet {
                     if (username != null && password != null && getInfo_Username_Password(username, password) == true) {
                         System.out.println("3.25");
                         session.setAttribute("loggedIn", true);
-                        User u = new User(1, username, password, 0.0);
+                        double b = getBalanceFromDB(username, password);
+                        User u = new User(1, username, password, b);
                         session.setAttribute("User", u);
                         //PageLoggedIn.generateLoggedIn(response);
                         response.sendRedirect("JSP/loggedIn.jsp");
@@ -167,7 +170,8 @@ public class FrontController extends HttpServlet {
 
                         d.addToBalance(u, Double.parseDouble(amount));
                         System.out.println("6");
-                        //session.setAttribute("User", u);
+                        User newu = getInfoFromUsername(u.getUserName(), u.getPassword());
+                        session.setAttribute("User", newu);
                     }
                     response.sendRedirect("JSP/loggedIn.jsp");
                     break;

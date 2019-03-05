@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class DataMapper {
 
-    public static User getInfoFromUsername(String inputUsername) {
+    public static User getInfoFromUsername(String inputUsername, String inputPassword) {
         double balance = 0.0;
         String password = "";
         String username = "";
@@ -38,7 +38,7 @@ public class DataMapper {
             Connection connection = conn.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM user Where username = " + "'" + inputUsername + "'" + ";";
+            String query = "SELECT * FROM user Where username = " + "'" + inputUsername + "'" + " and password = " + "'" + inputPassword + "'" + ";";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
