@@ -9,14 +9,8 @@ import Cupcake.Bottoms;
 import Cupcake.Toppings;
 import Cupcake.cupcake;
 import Shop.Order;
-import Shop.lineItems;
-import Users.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import sun.util.resources.LocaleData;
 
 /**
  *
@@ -45,7 +39,7 @@ public class OrderMapper {
 
             pstmt.setString(1, order.getLineitems().get(0).getCup().getBottom().getName());
             pstmt.setString(2, order.getLineitems().get(0).getCup().getTop().getName());
-            pstmt.setDouble(3, order.getLineitems().get(0).getQuantity());
+           // pstmt.setDouble(3, order.getLineitems().get(0).getQuantity());
 //            statement.executeUpdate(query);
             pstmt.execute();
             connection.close();
@@ -112,7 +106,7 @@ public class OrderMapper {
     public static void main(String[] args) {
         Bottoms bottom = new Bottoms("Chokolatechip", 10);
         Toppings top = new Toppings("Vanilla", 12);
-        Cupcake.cupcake cup = new cupcake(bottom, top, "10");
+        Cupcake.cupcake cup = new cupcake(bottom, top, 10.0);
         saveLineitems(cup);
     }
     
