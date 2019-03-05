@@ -5,6 +5,9 @@
  */
 package Data;
 
+import Cupcake.Bottoms;
+import Cupcake.Toppings;
+import Cupcake.cupcake;
 import Shop.Invoice;
 import Shop.lineItems;
 import java.sql.Connection;
@@ -15,6 +18,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -180,13 +185,16 @@ public class DataMapper {
                 Statement st = connection.createStatement()) {
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
-
+                List<Integer> list = new ArrayList<Integer>();
                 // iterate through the java resultset
                 while (rs.next()) {
-                    lineitems_number = rs.getInt("lineitems_id");
                     
+                    lineitems_number = rs.getInt("lineitems_id");
+                    list.add(lineitems_number);
 
                 }
+                lineitems_number = Collections.max(list);
+                
                 connection.close();
             }
             System.out.println(lineitems_number);
@@ -201,13 +209,14 @@ public class DataMapper {
          try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
-            String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?) WHERE ;";
+            String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?);";
             PreparedStatement pstmt = connection.prepareStatement(query);
             ArrayList<lineItems> list = invoice.getCart().getCart();
+             System.out.println(lineitems_number);
             pstmt.setInt(1, lineitems_number);
             pstmt.setString(2, list.get(i).getCup().getBottom().getName());
             pstmt.setString(3, list.get(i).getCup().getTop().getName());
-            pstmt.setDouble(4, list.get(i).getQuantity());
+            pstmt.setInt(4, list.get(i).getQuantity());
 //            statement.executeUpdate(query);
             pstmt.execute();
             connection.close();
@@ -237,9 +246,9 @@ public class DataMapper {
 //        Bottoms bottom2 = new Bottoms("Chokolatechip", 10);
 //        Toppings top2 = new Toppings("Vanilla", 12);
 //        
-//        cupcake cup = new cupcake(bottom, top, String.valueOf(bottom.getPrice() + top.getPrice()));
-//        cupcake cup1 = new cupcake(bottom1, top1, String.valueOf(bottom1.getPrice() + top1.getPrice()));
-//        cupcake cup2 = new cupcake(bottom2, top2, String.valueOf(bottom2.getPrice() + top2.getPrice()));
+//        Cupcake.cupcake cup = new Cupcake.cupcake(bottom, top, 11);
+//        cupcake cup1 = new cupcake(bottom1, top1, 10);
+//        cupcake cup2 = new cupcake(bottom2, top2, 10);
 //        
 //        lineItems it = new lineItems(2, cup);
 //        lineItems it1 = new lineItems(5, cup1);
@@ -252,31 +261,12 @@ public class DataMapper {
 //        User user = new User(2, "Hans", "qwe", Double.NaN);
 //        Invoice invoice = new Invoice(cart, user, LocalDate.now());
 //        //createOrder(invoice);
-//        saveShoppingCart(invoice);
+//        createOrder(invoice);
 //    }
     
     
     
-    public static void saveShoppingCart(Invoice invoice) {
-        for(int i = 0; i < invoice.getCart().getCart().size();i++) {
-         try {
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
-            String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?);";
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            ArrayList<lineItems> list = invoice.getCart().getCart();
-            pstmt.setInt(1, 22);
-            pstmt.setString(2, list.get(i).getCup().getBottom().getName());
-            pstmt.setString(3, list.get(i).getCup().getTop().getName());
-            pstmt.setInt(4, list.get(i).getQuantity());
-            pstmt.execute();
-            connection.close();
-       } catch (Exception e) {
-            e.getLocalizedMessage();
-        
-    }
-        }
-    }
+   
 //    public static void main(String[] args) {
 //        Bottoms bottom = new Bottoms("Chokolatechip", 10);
 //        Toppings top = new Toppings("Vanilla", 12);
