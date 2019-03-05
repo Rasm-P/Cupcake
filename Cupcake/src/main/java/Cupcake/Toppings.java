@@ -33,6 +33,12 @@ public class Toppings {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return name + ", price " + price;
+    }
+    
     
     
 }

@@ -130,7 +130,7 @@ public class CupcakeMapper {
                 connection.close();
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! t");
             System.err.println(e.getMessage());
         }
         return top;
@@ -148,7 +148,7 @@ public class CupcakeMapper {
             Connection connection = conn.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM toppings where toppingname = '" + Bottomname + "' ;";
+            String query = "SELECT * FROM bottoms where bottomname = '" + Bottomname + "' ;";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
@@ -158,8 +158,8 @@ public class CupcakeMapper {
 
                 // iterate through the java resultset
                 while (rs.next()) {
-                    id = rs.getInt("idtoppings");
-                    name = rs.getString("toppingname");
+                    id = rs.getInt("idBottoms");
+                    name = rs.getString("bottomname");
                     price = rs.getDouble("price");
                     bot = new Bottoms(name, price);
 
@@ -168,7 +168,7 @@ public class CupcakeMapper {
                 connection.close();
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! b");
             System.err.println(e.getMessage());
         }
             
@@ -176,7 +176,8 @@ public class CupcakeMapper {
     }
 
     public static void main(String[] args) {
-        getBottoms();
+        System.out.println(getOneBottom("Chocolate").toString());
+        System.out.println(getOneToppings("Chocolate").toString());
 
     }
 }

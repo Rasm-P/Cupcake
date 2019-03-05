@@ -125,7 +125,7 @@ public class DataMapper {
     
     
    public static void main(String[] args) {
-       String username = "Ole";
+       String username = "Rasmus";
        String password = "1234";
        System.out.println(getInfo_Username_Password(username, password));
        
