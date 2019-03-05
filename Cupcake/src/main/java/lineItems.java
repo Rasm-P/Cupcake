@@ -28,6 +28,10 @@ public class lineItems {
         return this.cc;
     }
     
+    public double getQuantity(){
+        return quantity;
+    }
+    
     public double getPrice(){
         return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
     }
