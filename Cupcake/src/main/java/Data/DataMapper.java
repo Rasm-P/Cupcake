@@ -6,11 +6,15 @@
 package Data;
 
 import Shop.Invoice;
+import Shop.lineItems;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import Users.User;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -142,6 +146,7 @@ public class DataMapper {
    /**
  *
  * @author Rumle
+     * @param invoice
  */
 
     
@@ -419,4 +424,4 @@ public class DataMapper {
     
     
     
-}
+
