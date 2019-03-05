@@ -4,8 +4,8 @@
     Author     : Rasmus2
 --%>
 
+<%@page import="Data.transaction"%>
 <%@page import="Data.DataMapper"%>
-<%@page import="Data.DataMapper.createOrder(Invoice)"%>
 <%@page import="Shop.Invoice"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="Users.User"%>
@@ -32,9 +32,10 @@
                     out.println("<p>" + arOld.get(i).toString() + "</p>");
                     total = total + arOld.get(i).getFullPrice();
                 }
-
-                Invoice in = new Invoice(arOld, u, LocalDate.now());
-                d.createOrder(in);
+                
+                //Invoice in = new Invoice(arOld, u, LocalDate.now());
+                //transaction t = (transaction) Invoice(arOld, u, LocalDate.now());
+                //d.createOrder(in);
 
                 out.println("<p>" + "Total: " + total + "</p>");
                 session.setAttribute("ArrayList<lineItems>", null);
