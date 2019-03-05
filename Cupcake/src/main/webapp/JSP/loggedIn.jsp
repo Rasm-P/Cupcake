@@ -12,11 +12,13 @@
         <title>Logged In</title>
     </head>
     <body>
-        <h1>Logged in!</h1>
+        <h1> Velkommen tilbage! </h1>
         <%
             if (session.getAttribute("User") != null) {
                 User u = (User) session.getAttribute("User");
-                out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
+                out.println("<p>" + "User: " + u.getUserName() + "</p>"); 
+                out.println("<p> Du er nu logget ind!" + "</p>");
+                out.println("<p> Balance: " + u.getBalance() + "</p>");
             }
         %>
         <form action="/Cupcake/FrontController?action=shop" method="post">

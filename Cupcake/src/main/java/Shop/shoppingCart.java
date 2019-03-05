@@ -1,7 +1,5 @@
 package Shop;
 
-
-import Cupcake.cupcake;
 import java.util.ArrayList;
 
 /*
@@ -17,14 +15,16 @@ import java.util.ArrayList;
 public class shoppingCart {
     static ArrayList<lineItems> cart = new ArrayList(); 
   
-    public void addToCart(cupcake cup, int qua){
+//    public void addToCart(cupcake cup, int qua){
+    public void addToCart(lineItems li){
         for(int i = 0; i < cart.size(); i++){
-            if(cart.get(i).getCup().getBottom().equals(cup.getBottom()) && cart.get(i).getCup().getTop().equals(cup.getTop())){
-                cart.get(i).editQuantity(qua);
+            if(cart.get(i).getCup().getBottom().equals(li.getCup().getBottom()) && cart.get(i).getCup().getTop().equals(li.getCup().getTop())){
+                cart.get(i).editQuantity(li.getQuantity());
             }
         }
         
-        cart.add(new lineItems(qua, cup));
+//        cart.add(new lineItems(qua, cup));
+        cart.add(li);
     }
     
     public static ArrayList getCart(){

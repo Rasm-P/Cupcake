@@ -26,6 +26,10 @@ public class lineItems {
         this.quantity = quantity + cha;
     }
     
+    public int getQuantity(){
+        return quantity;
+    }
+    
     public cupcake getCup(){
         return this.cc;
     }
@@ -37,7 +41,5 @@ public class lineItems {
     @Override
     public String toString() {
         return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
-    }
-    
-    
+    }  
 }
