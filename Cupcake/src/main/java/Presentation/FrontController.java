@@ -10,6 +10,7 @@ import Cupcake.Toppings;
 import Cupcake.cupcake;
 import static Data.CupcakeMapper.getOneBottom;
 import static Data.CupcakeMapper.getOneToppings;
+import Data.DataMapper;
 import static Data.DataMapper.getInfo_Username_Password;
 import Shop.lineItems;
 import Shop.shoppingCart;
@@ -157,10 +158,21 @@ public class FrontController extends HttpServlet {
                     }
                     break;
                 case "addmoney":
+                    System.out.println("5");
                     if (amount != null && !"".equals(amount) && Double.parseDouble(amount) >= 0.0) {
 
+                        DataMapper d = new DataMapper();
+
+                        User u = (User) session.getAttribute("User");
+
+                        d.addToBalance(u, Double.parseDouble(amount));
+                        System.out.println("6");
+                        //session.setAttribute("User", u);
                     }
                     response.sendRedirect("JSP/loggedIn.jsp");
+                    break;
+                case "error":
+                    response.sendRedirect("JSP/error.jsp");
                     break;
             }
         }

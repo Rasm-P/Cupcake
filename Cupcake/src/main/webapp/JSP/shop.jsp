@@ -60,9 +60,16 @@
                 out.println("<tr><td>" + "Total: " + total + "</td></tr>");
             %>
         </table>
-        <form action="/Cupcake/FrontController?action=confirmation" method="post">
-            <input type="submit" value="Checkout" />
-        </form>
+        <table class="table">
+            <%
+                User u = (User) session.getAttribute("User");
+                if (total < u.getBalance()) {
+                    out.println("<form action=\"/Cupcake/FrontController?action=confirmation\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+                } else {
+                    out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+                }
+            %>
+        </table>
         <br>
         <form action="/Cupcake/FrontController" method="post">
             <input type="submit" value="Back to main page" />
