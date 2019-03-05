@@ -183,21 +183,24 @@ public static void createOrder(Invoice invoice) throws Exception {
                 // iterate through the java resultset
                 while (rs.next()) {
                     invoice_number = rs.getInt("invoice_id");
+                    
                 }
+                
                 connection.close();
             }
 
         } catch (Exception e) {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
+        }
 
         try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
-
             String query = "INSERT INTO cupcake.orders (invoice_id, orderdate) VALUES (?,?);";
             PreparedStatement pstmt = connection.prepareStatement(query);
-
+            
+            
             pstmt.setInt(1, invoice_number);
             pstmt.setDate(2, Date.valueOf(LocalDate.now()));
             pstmt.execute();
@@ -232,8 +235,7 @@ public static void createOrder(Invoice invoice) throws Exception {
                 
                 connection.close();
             }
-            System.out.println(lineitems_number);
-            System.out.println(invoice_number);
+            
 
         } catch (Exception es) {
             System.err.println("Got an exception! ");
@@ -248,11 +250,13 @@ public static void createOrder(Invoice invoice) throws Exception {
             String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?);";
             PreparedStatement pstmt = connection.prepareStatement(query);
             ArrayList<lineItems> list = invoice.getCart().getCart();
-             System.out.println(lineitems_number);
+             
             pstmt.setInt(1, lineitems_number);
             pstmt.setString(2, list.get(i).getCup().getBottom().getName());
             pstmt.setString(3, list.get(i).getCup().getTop().getName());
             pstmt.setInt(4, list.get(i).getQuantity());
+            pstmt.execute();
+            connection.close();
        
 
 
@@ -264,33 +268,33 @@ public static void createOrder(Invoice invoice) throws Exception {
             }
         }
     }
-}
 
-//    public static void main(String[] args) throws Exception {
-//        Bottoms bottom = new Bottoms("Chokolatechip", 10);
-//        Toppings top = new Toppings("Vanilla", 12);
-//        Bottoms bottom1 = new Bottoms("Chokolatechip", 10);
-//        Toppings top1 = new Toppings("Vanilla", 12);
-//        Bottoms bottom2 = new Bottoms("Chokolatechip", 10);
-//        Toppings top2 = new Toppings("Vanilla", 12);
-//        
-//        Cupcake.cupcake cup = new Cupcake.cupcake(bottom, top, 11);
-//        cupcake cup1 = new cupcake(bottom1, top1, 10);
-//        cupcake cup2 = new cupcake(bottom2, top2, 10);
-//        
-//        lineItems it = new lineItems(2, cup);
-//        lineItems it1 = new lineItems(5, cup1);
-//        lineItems it2 = new lineItems(10, cup2);
-//        Shop.shoppingCart cart = new Shop.shoppingCart();
-//        cart.getCart().add(it);
-//        cart.getCart().add(it1);
-//        cart.getCart().add(it2);
-//        
-//        User user = new User(3, "Hans", "qwe", Double.NaN);
-//        Invoice invoice = new Invoice(cart, user, LocalDate.now());
-//        //createOrder(invoice);
-//        createOrder(invoice);
-//    }
+
+    public static void main(String[] args) throws Exception {
+        Bottoms bottom = new Bottoms("Chokolatechip", 10);
+        Toppings top = new Toppings("Vanilla", 12);
+        Bottoms bottom1 = new Bottoms("Chokolatechip", 10);
+        Toppings top1 = new Toppings("Vanilla", 12);
+        Bottoms bottom2 = new Bottoms("Chokolatechip", 10);
+        Toppings top2 = new Toppings("Vanilla", 12);
+        
+        Cupcake.cupcake cup = new Cupcake.cupcake(bottom, top, 11);
+        cupcake cup1 = new cupcake(bottom1, top1, 10);
+        cupcake cup2 = new cupcake(bottom2, top2, 10);
+        
+        lineItems it = new lineItems(2, cup);
+        lineItems it1 = new lineItems(5, cup1);
+        lineItems it2 = new lineItems(10, cup2);
+        Shop.shoppingCart cart = new Shop.shoppingCart();
+        cart.getCart().add(it);
+        cart.getCart().add(it1);
+        cart.getCart().add(it2);
+        
+        User user = new User(10, "Hans", "qwe", Double.NaN);
+        Invoice invoice = new Invoice(cart, user, LocalDate.now());
+        //createOrder(invoice);
+        createOrder(invoice);
+    }
 
     
     
