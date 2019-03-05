@@ -132,12 +132,9 @@ public class DataMapper {
 //   
    
 
-<<<<<<< HEAD
-//gg
-=======
     
 public static void createOrder(Invoice invoice) throws Exception {
->>>>>>> 81114044f29f35ea9a79a037f34ad1f9cec39003
+
 
         int invoice_number = 0;
         int lineitems_number = 0;
