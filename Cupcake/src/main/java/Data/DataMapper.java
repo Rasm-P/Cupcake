@@ -201,9 +201,9 @@ public class DataMapper {
          try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
-            String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?);";
+            String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?) WHERE ;";
             PreparedStatement pstmt = connection.prepareStatement(query);
-    ArrayList<lineItems> list = invoice.getCart().getCart();
+            ArrayList<lineItems> list = invoice.getCart().getCart();
             pstmt.setInt(1, lineitems_number);
             pstmt.setString(2, list.get(i).getCup().getBottom().getName());
             pstmt.setString(3, list.get(i).getCup().getTop().getName());
