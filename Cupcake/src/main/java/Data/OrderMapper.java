@@ -39,7 +39,7 @@ public class OrderMapper {
 
             pstmt.setString(1, order.getLineitems().get(0).getCup().getBottom().getName());
             pstmt.setString(2, order.getLineitems().get(0).getCup().getTop().getName());
-           // pstmt.setDouble(3, order.getLineitems().get(0).getQuantity());
+            pstmt.setDouble(3, order.getLineitems().get(0).getQuantity());
 //            statement.executeUpdate(query);
             pstmt.execute();
             connection.close();

@@ -31,21 +31,21 @@ public class lineItems {
         return this.cc;
     }
     
-<<<<<<< HEAD:Cupcake/src/main/java/lineItems.java
+
     public double getQuantity(){
         return quantity;
     }
     
+    
+
     public double getPrice(){
-=======
-    public double getFullPrice(){
->>>>>>> 31318ebb4c7f67501461dde98bfcf63421e3db47:Cupcake/src/main/java/Shop/lineItems.java
+
         return quantity * cc.getPrice(cc.getBottom(), cc.getTop());
     }
 
     @Override
     public String toString() {
-        return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
+        return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getPrice();
     }
     
     
