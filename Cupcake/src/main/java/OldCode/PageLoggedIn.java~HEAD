@@ -1,4 +1,4 @@
-<<<<<<< HEAD:Cupcake/src/main/java/OldCode/PageMain.java
+<<<<<<< HEAD:Cupcake/src/main/java/OldCode/PageLoggedIn.java:Cupcake/src/main/java/OldCode/PageLoggedIn.java
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-public class PageMain {
+public class PageLoggedIn {
 
-    public static void generateMain(HttpServletResponse response) throws IOException {
+    public static void generateLoggedIn(HttpServletResponse response) throws IOException {
         try (PrintWriter out = response.getWriter())
         {
             /* TODO output your page here. You may use following sample code. */
@@ -26,7 +26,7 @@ public class PageMain {
             out.println("<title>Servlet FrontController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Main landing page!</h1>");
+            out.println("<h1>Logged in!</h1>");
             out.println("<p><a href=\"/Cupcake/FrontController?action=shop\">Shop</a></p>");
             out.println("<p><a href=\"/Cupcake/FrontController?action=logOut\">Logout</a></p>");
             out.println("</body>");
@@ -51,9 +51,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-public class PageMain {
+public class PageLoggedIn {
 
-    public static void generateMain(HttpServletResponse response) throws IOException {
+    public static void generateLoggedIn(HttpServletResponse response) throws IOException {
         try (PrintWriter out = response.getWriter())
         {
             /* TODO output your page here. You may use following sample code. */
@@ -63,9 +63,9 @@ public class PageMain {
             out.println("<title>Servlet FrontController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Main landing page!</h1>");
+            out.println("<h1>Logged in!</h1>");
             out.println("<p><a href=\"/Cupcake/FrontController?action=buy\">No case yet!</a></p>");
-            out.println("<p><a href=\"/Cupcake/FrontController?action=hello\">No case yet!</a></p>");
+            out.println("<p><a href=\"/Cupcake/FrontController?action=hello\">No case yet!</a></p>");            
             out.println("<p><a href=\"/Cupcake/FrontController?action=logOut\">Logout!</a></p>");
             out.println("</body>");
             out.println("</html>");
@@ -73,4 +73,4 @@ public class PageMain {
     }
     
 }
->>>>>>> b364da3fcf4ed35813666b53b94b338289d7b89d:Cupcake/src/main/java/Presentation/PageMain.java
+>>>>>>> b364da3fcf4ed35813666b53b94b338289d7b89d:Cupcake/src/main/java/Presentation/PageLoggedIn.java:Cupcake/src/main/java/Presentation/PageLoggedIn.java

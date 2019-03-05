@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\Cupcake\Toppings.java
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\OldCode\PageLogin.java
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\Cupcake\cupcake.java
@@ -15,3 +16,25 @@ C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\jav
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\OldCode\PageLoggedIn.java
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\OldCode\PageMakeLogin.java
 C:\Users\Rasmus2\Documents\NetBeansProjects\cupcake\cupcake\Cupcake\src\main\java\Users\MakeNewUser.java
+=======
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Users/User.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Shop/shoppingCart.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Presentation/FrontController.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Data/DBConnector.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Presentation/PageMakeLogin.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Presentation/PageMain.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Shop/PageTest.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Presentation/PageLoggedIn.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Shop/lineItems.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Shop/ProductControl.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Shop/Invoice.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Presentation/PageLogin.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Data/ShoppingCartMapper.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Shop/PageShop.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Users/MakeNewUser.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Cupcake/Bottoms.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Cupcake/cupcake.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Data/DataMapper.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Data/CupcakeMapper.java
+/Users/Rumle/Desktop/Datamatiker/ProjectCupcake/cupcake/Cupcake/src/main/java/Cupcake/Toppings.java
+>>>>>>> origin/login
