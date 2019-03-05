@@ -138,6 +138,27 @@ public static void createOrder(Invoice invoice) throws Exception {
 
         int invoice_number = 0;
         int lineitems_number = 0;
+        {
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "select user.idUser from user where username = " + invoice.getUser() "and "+ ";";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+          try ( // create the java statement
+                Statement st = connection.createStatement()) {
+
+
+//            statement.executeUpdate(query);
+            pstmt.execute();
+            connection.close();
+          }
+        } catch (Exception e) {
+
+            e.getLocalizedMessage();
+
+        }
+        
+        
+        
         try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
@@ -270,31 +291,31 @@ public static void createOrder(Invoice invoice) throws Exception {
     }
 
 
-    public static void main(String[] args) throws Exception {
-        Bottoms bottom = new Bottoms("Chokolatechip", 10);
-        Toppings top = new Toppings("Vanilla", 12);
-        Bottoms bottom1 = new Bottoms("Chokolatechip", 10);
-        Toppings top1 = new Toppings("Vanilla", 12);
-        Bottoms bottom2 = new Bottoms("Chokolatechip", 10);
-        Toppings top2 = new Toppings("Vanilla", 12);
-        
-        Cupcake.cupcake cup = new Cupcake.cupcake(bottom, top, 11);
-        cupcake cup1 = new cupcake(bottom1, top1, 10);
-        cupcake cup2 = new cupcake(bottom2, top2, 10);
-        
-        lineItems it = new lineItems(2, cup);
-        lineItems it1 = new lineItems(5, cup1);
-        lineItems it2 = new lineItems(10, cup2);
-        Shop.shoppingCart cart = new Shop.shoppingCart();
-        cart.getCart().add(it);
-        cart.getCart().add(it1);
-        cart.getCart().add(it2);
-        
-        User user = new User(10, "Hans", "qwe", Double.NaN);
-        Invoice invoice = new Invoice(cart, user, LocalDate.now());
-        //createOrder(invoice);
-        createOrder(invoice);
-    }
+//    public static void main(String[] args) throws Exception {
+//        Bottoms bottom = new Bottoms("Chokolatechip", 10);
+//        Toppings top = new Toppings("Vanilla", 12);
+//        Bottoms bottom1 = new Bottoms("Chokolatechip", 10);
+//        Toppings top1 = new Toppings("Vanilla", 12);
+//        Bottoms bottom2 = new Bottoms("Chokolatechip", 10);
+//        Toppings top2 = new Toppings("Vanilla", 12);
+//        
+//        Cupcake.cupcake cup = new Cupcake.cupcake(bottom, top, 11);
+//        cupcake cup1 = new cupcake(bottom1, top1, 10);
+//        cupcake cup2 = new cupcake(bottom2, top2, 10);
+//        
+//        lineItems it = new lineItems(2, cup);
+//        lineItems it1 = new lineItems(5, cup1);
+//        lineItems it2 = new lineItems(10, cup2);
+//        Shop.shoppingCart cart = new Shop.shoppingCart();
+//        cart.getCart().add(it);
+//        cart.getCart().add(it1);
+//        cart.getCart().add(it2);
+//        
+//        User user = new User(10, "Hans", "qwe", Double.NaN);
+//        Invoice invoice = new Invoice(cart, user, LocalDate.now());
+//        //createOrder(invoice);
+//        createOrder(invoice);
+//    }
 
     
     
@@ -361,9 +382,146 @@ public static void createOrder(Invoice invoice) throws Exception {
     }
         }
      
+     public ArrayList<Invoice> getAllInvoiceAndLineItemsForCustomer(User user) throws Exception{
+         List<Integer> invoices = new ArrayList<>();
+         int idUser = 0;
+         
+         try {
+         DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "select user.IdUser from user where username = " + user.getUserName()+ " and password = " + user.getPassword() + ";";
+            System.out.println(query);
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            
+          try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+                
+                // iterate through the java resultset
+                while (rs.next()) {
+                    idUser = rs.getInt("idUser");
+
+                }
+                connection.close();
+          }
+            
+
+        } catch (Exception es) {
+            System.err.println("Got an exception! ");
+            System.err.println(es.getMessage()); }
+                 
+         
+                  
+         
+            try {
+         DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "select invoice.invoice_id from invoice where idUser =" + idUser + ";";
+            System.out.println(query);
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            
+          try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+                
+                // iterate through the java resultset
+                int invoice_id = 0;
+                
+                
+                while (rs.next()) {
+                    invoice_id = rs.getInt("invoice_id");
+                    invoices.add(invoice_id);
+
+                }
+                
+                connection.close();
+          }
+            
+
+        } catch (Exception a) {
+            System.err.println("Got an exception! ");
+            System.err.println(a.getMessage());
+        }
+            
+            for(int i = 0; i < invoices.size(); i++) {
+                int lineitems_id = 0;
+                
+                 try {
+         DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "SELECT orders.lineitems_id from orders where invoice_id = " + invoices.get(i) + ";";
+            System.out.println(query);
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            
+          try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+                
+                // iterate through the java resultset
+                while (rs.next()) {
+                    lineitems_id = rs.getInt("lineitems_id");
+
+                }
+                connection.close();
+          } } catch (Exception es) {
+            System.err.println("Got an exception! ");
+            System.err.println(es.getMessage()); }
+                 
+                 
+                 
+                 
+                 
+            
+             try {
+         DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "SELECT lineitems.bottomname lineitems.toppingname, lineitems.quantity from lineitems where lineitems_id = " + lineitems_id + ";";
+            System.out.println(query);
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            
+          try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+                String bottomname = "";
+                String toppingname = "";
+                
+                int quantity = 0;
+                
+                // iterate through the java resultset
+                while (rs.next()) {
+                    bottomname = rs.getString("bottomname");
+                    toppingname = rs.getString("toppingname");
+                    quantity = rs.getInt("quantity");
+                    bottoms bottom = new Bottoms(bottomname, i);
+                    Toppings top = new Toppings(toppingname, i);
+                    cupcake cup = new cupcake(bottomname, toppingname, 10);
+
+                }
+                connection.close();
+          }
+            
+
+        } catch (Exception es) {
+            System.err.println("Got an exception! ");
+            System.err.println(es.getMessage()); }
+            
+            
+            }
+            
+            
+            
+            
+         
+         
+         
      
      
      
+}
 }
      
         
