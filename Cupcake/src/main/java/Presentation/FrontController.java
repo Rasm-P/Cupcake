@@ -54,6 +54,7 @@ public class FrontController extends HttpServlet {
         String topping = request.getParameter("topping");
         String bottom = request.getParameter("bottom");
         String qty = request.getParameter("qty");
+        String amount = request.getParameter("amount");
 
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
 
@@ -154,6 +155,12 @@ public class FrontController extends HttpServlet {
                     } else {
                         response.sendRedirect("JSP/shop.jsp");
                     }
+                    break;
+                case "addmoney":
+                    if (amount != null && !"".equals(amount) && Double.parseDouble(amount) >= 0.0) {
+
+                    }
+                    response.sendRedirect("JSP/loggedIn.jsp");
                     break;
             }
         }

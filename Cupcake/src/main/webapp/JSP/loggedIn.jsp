@@ -13,6 +13,10 @@
     </head>
     <body>
         <h1>Logged in!</h1>
+        <form action="/Cupcake/FrontController?action=addmoney" method="POST">
+            <input type="text" name="amount" placeholder="Enter amount"/>
+            <input type="submit" value="Add money to account"/>
+        </form>
         <%
             if (session.getAttribute("User") != null) {
                 User u = (User) session.getAttribute("User");
