@@ -12,9 +12,9 @@ package Cupcake;
 public class cupcake {
     private Bottoms bottom;
     private Toppings top;
-    private String price;
+    private double price;
 
-    public cupcake(Bottoms bottom, Toppings top, String totalPrice) {
+    public cupcake(Bottoms bottom, Toppings top, double totalPrice) {
         this.bottom = bottom;
         this.top = top;
         this.price = totalPrice;
@@ -37,7 +37,13 @@ public class cupcake {
        return totalprice;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     } 
+
+    @Override
+    public String toString() {
+        return "Bottom " + bottom + ", Top " + top + ", Cupcake-Price " + price;
+    }
+    
 }
