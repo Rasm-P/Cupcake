@@ -27,7 +27,7 @@ public class shoppingCart {
         cart.add(l);
     }
     
-    public static ArrayList getCart(){
+    public ArrayList getCart(){
         return cart;               
     } 
     
