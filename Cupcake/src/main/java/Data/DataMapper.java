@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import jdk.nashorn.internal.ir.LiteralNode;
 
 /**
  *
@@ -350,7 +351,7 @@ public class DataMapper {
         
      
     public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception { //Giver exceptions på 9
-
+        
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         List<Integer> invoicesNumbers = new ArrayList<>();
         int idUser = 0;
@@ -538,21 +539,87 @@ public class DataMapper {
         else { return false; }
             
     }
+    
+    
+    public ArrayList<User> getAllUsers() {
+        ArrayList<Integer> users = new ArrayList<>();
+        ArrayList<ArrayList<Invoice>> allInvoices = new ArrayList<>();
+        List<Integer> invoicesNumbers = new ArrayList<>();
+        ArrayList<User> allUsers = new ArrayList<>();
+        int idUser = 0;
+        String username = "";
+        String password = "";
+        double balance = 0.0;
+        
+        Date date = null;
+
+        try {
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "select idUser, username, password, balance from user;";
+
+            PreparedStatement pstmt = connection.prepareStatement(query);
+
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (rs.next()) {
+                    idUser = rs.getInt("idUser");
+                    username = rs.getString("username");
+                    password = rs.getString("password");
+                    balance = rs.getDouble("balance");
+                    
+                    User user = new User(idUser, username, password, balance);
+                    allUsers.add(user);
+
+                }
+                connection.close();
+                
+               
+                
+            }
+
+        } catch (Exception es) {
+            System.err.println("Got an exception! 6");
+            System.err.println(es.getMessage());
+        }
+            
+        
+        
+        return allUsers;
+    }
+    
+    public ArrayList<ArrayList<Invoice>> getAllInvoices(ArrayList<User> users) throws Exception{
+        DataMapper mapper = new DataMapper();
+        ArrayList<ArrayList<Invoice>> allInvoices = new ArrayList();
+        for(int i = 0; i < users.size(); i++) {
+        allInvoices.add(mapper.getAllInvoicesForCustomer(users.get(i)));
+        }
+        
+        return allInvoices;
+    }
+
+
+    public static void main(String[] args) throws Exception {
+        User user = new User(2, "Ditlev", "12345", 2.5);
+          DataMapper mapper = new DataMapper();
+          
+          System.out.println(mapper.getAllInvoices(mapper.getAllUsers()) + "\n");
+//        List<Invoice> list = mapper.getAllInvoicesForCustomer(user);
+
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i).toString());
+//            System.out.println(list.get(i).getCart().toString());
 //
-//    public static void main(String[] args) throws Exception {
-//        User user = new User(2, "Ditlev", "12345", 2.5);
-//          DataMapper mapper = new DataMapper();
-////        List<Invoice> list = mapper.getAllInvoicesForCustomer(user);
-////
-////        for (int i = 0; i < list.size(); i++) {
-////            System.out.println(list.get(i).toString());
-////            System.out.println(list.get(i).getCart().toString());
-////
-////        }
-//
+//        }
+
 //        System.out.println(mapper.isAdmin("Ole", "1234"));
-//    }
+    }
+}
 
     
 
-}
+
