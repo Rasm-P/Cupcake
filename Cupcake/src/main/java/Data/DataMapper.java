@@ -71,7 +71,7 @@ public class DataMapper {
                 connection.close();
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! 1");
             System.err.println(e.getMessage());
         }
 
@@ -113,7 +113,7 @@ public class DataMapper {
                 connection.close();
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! 2");
             System.err.println(e.getMessage());
         }
 
@@ -164,7 +164,7 @@ public class DataMapper {
                 connection.close();
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! 3");
             System.err.println(e.getMessage());
         }
 
@@ -250,7 +250,7 @@ public class DataMapper {
             }
 
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! 4");
             System.err.println(e.getMessage());
         }
 
@@ -292,7 +292,7 @@ public class DataMapper {
             }
 
         } catch (Exception es) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! 5");
             System.err.println(es.getMessage());
         }
 
@@ -346,7 +346,10 @@ public class DataMapper {
 
     }
 
-    public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception {
+
+        
+     
+    public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception { //Giver exceptions på 9
 
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         List<Integer> invoicesNumbers = new ArrayList<>();
@@ -375,7 +378,7 @@ public class DataMapper {
             }
 
         } catch (Exception es) {
-            System.err.println("Got an exception! ");
+            System.err.println("Got an exception! 6");
             System.err.println(es.getMessage());
         }
 
@@ -404,8 +407,8 @@ public class DataMapper {
                 connection.close();
             }
 
-        } catch (Exception a) {
-            System.err.println("Got an exception! ");
+        } catch (Exception a) { 
+            System.err.println("Got an exception! 7");
             System.err.println(a.getMessage());
         }
 
@@ -436,7 +439,7 @@ public class DataMapper {
 
                 }
             } catch (Exception es) {
-                System.err.println("Got an exception! ");
+                System.err.println("Got an exception! 8");
                 System.err.println(es.getMessage());
             }
 
@@ -493,7 +496,7 @@ public class DataMapper {
                 }
 
             } catch (Exception es) {
-                System.err.println("Got an exception! ");
+                System.err.println("Got an exception! 9");
                 System.err.println(es.getMessage());
             }
 

@@ -31,8 +31,10 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
+
     private DataMapper data = new DataMapper();
     private CupcakeMapper cupdata = new CupcakeMapper();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -55,6 +57,7 @@ public class FrontController extends HttpServlet {
         String bottom = request.getParameter("bottom");
         String qty = request.getParameter("qty");
         String amount = request.getParameter("amount");
+        String in = request.getParameter("in");
 
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
 
@@ -174,6 +177,11 @@ public class FrontController extends HttpServlet {
                     break;
                 case "error":
                     response.sendRedirect("JSP/error.jsp");
+                    break;
+                case "invoice":
+                    System.out.println(in);
+                    session.setAttribute("chosenInvoice", in);
+                    response.sendRedirect("JSP/invoice.jsp");
                     break;
             }
         }
