@@ -33,7 +33,7 @@
                 out.println("<p> Du er nu logget ind!" + "</p>");
                 out.println("<p> Balance: " + u.getBalance() + "</p>");
                 
-                ArrayList inV = d.getInvoiceFromUsername(u.getUserName());
+                //ArrayList inV = d.getInvoiceFromUsername(u.getUserName());
                 //out.println("<p>" + inV.get(0).getDate() + "</p>");
                 
             }
