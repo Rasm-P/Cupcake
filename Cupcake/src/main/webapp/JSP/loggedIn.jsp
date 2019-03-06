@@ -42,6 +42,10 @@
             <input type="submit" value="Shop" />
         </form>
         <br>
+        <form action="/Cupcake/FrontController" method="post">
+            <input type="submit" value="Back to main page" />
+        </form>
+        <br>
         <form action="/Cupcake/FrontController?action=logOut" method="post">
             <input type="submit" value="Logout" />
         </form>

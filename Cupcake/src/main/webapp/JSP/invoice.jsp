@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Invoice</title>
+        <title>Invoice Details</title>
     </head>
     <body>
         <h1>Invoice</h1>

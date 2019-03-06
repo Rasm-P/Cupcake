@@ -183,6 +183,10 @@ public class FrontController extends HttpServlet {
                     session.setAttribute("chosenInvoice", in);
                     response.sendRedirect("JSP/invoice.jsp");
                     break;
+                case "admin":
+                    System.out.println("7");
+                    response.sendRedirect("JSP/admin.jsp");
+                    break;
             }
         }
         System.out.println("4");

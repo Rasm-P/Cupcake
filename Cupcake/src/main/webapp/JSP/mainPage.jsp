@@ -26,6 +26,7 @@
                 out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
             }
         %>
+        <br>
         <form action="/Cupcake/FrontController?action=shop" method="post">
             <input type="submit" value="Shop" />
         </form>
