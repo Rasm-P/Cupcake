@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class CupcakeMapper {
 
-    public static ArrayList<Toppings> getToppings() {
+    public ArrayList<Toppings> getToppings() {
         int id = 0;
         String name;
         Double price;
@@ -58,7 +58,7 @@ public class CupcakeMapper {
         return toppings;
     }
 
-    public static ArrayList<Bottoms> getBottoms() {
+    public ArrayList<Bottoms> getBottoms() {
         int id = 0;
         String name;
         Double price;
@@ -98,7 +98,7 @@ public class CupcakeMapper {
         return bottoms;
     }
 
-    public static Toppings getOneToppings(String toppingname) {
+    public Toppings getOneToppings(String toppingname) {
         int id = 0;
         String name;
         Double price;
@@ -136,7 +136,7 @@ public class CupcakeMapper {
         return top;
     }
 
-    public static Bottoms getOneBottom(String Bottomname) {
+    public Bottoms getOneBottom(String Bottomname) {
         int id = 0;
         String name;
         Double price;
@@ -175,7 +175,7 @@ public class CupcakeMapper {
         return bot;
     }
     
-    public static double getTopPriceFromName(String top) {
+    public double getTopPriceFromName(String top) {
         double price = 0.0;
         try {
 
@@ -211,7 +211,7 @@ public class CupcakeMapper {
          return price;
     }
     
-    public static double getBottomPriceFromName(String bottom) {
+    public double getBottomPriceFromName(String bottom) {
         double price = 0.0;
         try {
 
@@ -246,10 +246,4 @@ public class CupcakeMapper {
          return price;
     }
 
-    public static void main(String[] args) {
-//        System.out.println(getOneBottom("Chocolate").toString());
-//        System.out.println(getOneToppings("Chocolate").toString());
-            getBottomPriceFromName("Vanilla");
-
-    }
 }
