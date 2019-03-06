@@ -24,7 +24,6 @@
                 out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + ", Du er nu logget ind som admin!</p>");
             }
         %>
-        <h2>All Invoices</h2>
         <form action="/Cupcake/FrontController" method="post">
             <input type="submit" value="Back to main page" />
         </form>
@@ -33,6 +32,7 @@
             <input type="submit" value="Logout" />
         </form>
         <br>
+        <h2>All Invoices</h2>
         <table class="table">
             <%
                 User u = (User) session.getAttribute("User");

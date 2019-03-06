@@ -16,7 +16,7 @@
         <form action="/Cupcake/FrontController?action=makeLogin" method="post"><br>Username:<br><input type="text" name="username" value=""><br>Login:<br><input type="text" name="password" value=""><br><br><input type="submit" value="Create account"></form>
         <br>
         <form action="/Cupcake/FrontController?action=login" method="post">
-            <input type="submit" value="Log in" />
+            <input type="submit" value="Login" />
         </form>
     </body>
 </html>
