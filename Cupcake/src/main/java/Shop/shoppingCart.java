@@ -44,10 +44,16 @@ public class shoppingCart {
         return cart.get(index);               
     }
     
+     
     
 //    public static void main(String [] args){
 //        Bottoms b = new Bottoms("Choco", 2.0);
 //        Toppings t = new Toppings("Banana", 3.0);
 //        cupcake c = new cupcake(b, t, "2");
 //    }
+
+    @Override
+    public String toString() {
+        return "shoppingCart{" + "cart=" + cart + '}';
+    }
 }

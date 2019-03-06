@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class DataMapper {
     
-    public static  ArrayList<Invoice> getInvoiceFromUsername(String inputUsername) {
+    public ArrayList<Invoice> getInvoiceFromUsername(String inputUsername) {
         int userId;
         int invoiceId;
         String password;
@@ -84,7 +84,7 @@ public class DataMapper {
     }
 
 
-    public static User getInfoFromUsername(String inputUsername, String inputPassword) {
+    public User getInfoFromUsername(String inputUsername, String inputPassword) {
         double balance = 0.0;
         String password = "";
         String username = "";
@@ -128,7 +128,7 @@ public class DataMapper {
         }
     }
 
-    public static boolean getInfo_Username_Password(String inputUsername, String inputPassword) {
+    public boolean getInfo_Username_Password(String inputUsername, String inputPassword) {
         boolean findUser = false;
         double balance = 0.0;
         String password = "";
@@ -178,22 +178,15 @@ public class DataMapper {
         }
     }
       
-//   public static void main(String[] args) {
-//       String username = "Rasmus";
-//       String password = "1234";
-//       System.out.println(getInfo_Username_Password(username, password));
-//       
-//    }
-//   
 
     
-public static void createOrder(Invoice invoice) throws Exception {
+public void createOrder(Invoice invoice) throws Exception {
         int invoice_number = 0;
         int lineitems_number = 0;
         try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
-            String query = "select user.idUser from user where username = " + "'" + invoice.getUser() + "'" + " and password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
+            String query = "select user.idUser from user where username = " + "'" + invoice.getUser().getUserName() + "'" + " and password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
           try ( // create the java statement
                 Statement st = connection.createStatement()) {
@@ -335,37 +328,8 @@ public static void createOrder(Invoice invoice) throws Exception {
 
 
 
-//    public static void main(String[] args) {
-//        Bottoms bottom = new Bottoms("Chokolatechip", 10);
-//        Toppings top = new Toppings("Vanilla", 12);
-//        Bottoms bottom1 = new Bottoms("Chokolatechip", 10);
-//        Toppings top1 = new Toppings("Vanilla", 12);
-//        Bottoms bottom2 = new Bottoms("Chokolatechip", 10);
-//        Toppings top2 = new Toppings("Vanilla", 12);
-//        
-//        cupcake cup = new cupcake(bottom, top, String.valueOf(bottom.getPrice() + top.getPrice()));
-//        cupcake cup1 = new cupcake(bottom1, top1, String.valueOf(bottom1.getPrice() + top1.getPrice()));
-//        cupcake cup2 = new cupcake(bottom2, top2, String.valueOf(bottom2.getPrice() + top2.getPrice()));
-//        
-//        lineItems it = new lineItems(2, cup);
-//        lineItems it1 = new lineItems(5, cup1);
-//        lineItems it2 = new lineItems(10, cup2);
-//        Shop.shoppingCart cart = new Shop.shoppingCart();
-//        //Invoice invoice = new Invoice(cart, )
-//        cart.addToCart(cup, 1);
-//        cart.addToCart(cup1, 1);
-//        cart.addToCart(cup2, 1);
-//        
-//        for(int i = 0; i < cart.getCart().size(); i++) {
-//            System.out.println(cart.getCart().get(i).toString());
-//        }
-//        saveShoppingCart(in);
-//        Shop.shoppingCart.getCart().add(cup);
-//        Shop.shoppingCart.getCart().add(cup1);
-//        Shop.shoppingCart.getCart().add(cup2);
-
         
-     public static void addToBalance(User user, double newMoney) {
+     public void addToBalance(User user, double newMoney) {
          String query = "UPDATE cupcake.user SET balance = balance +" + newMoney + "where idUser= " + user.getIdUser() + ";";
          try {
             DBConnector conn = new DBConnector();
@@ -378,7 +342,7 @@ public static void createOrder(Invoice invoice) throws Exception {
     }
      }
     
-     public static void removeFromBalance(User user, double money) {
+     public void removeFromBalance(User user, double money) {
          String query = "UPDATE cupcake.user SET balance = balance -" + money + "where idUser= " + user.getIdUser() + ";";
          try {
             DBConnector conn = new DBConnector();
@@ -394,7 +358,7 @@ public static void createOrder(Invoice invoice) throws Exception {
 
         
      
-    public static ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception {
+    public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception {
 
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         List<Integer> invoicesNumbers = new ArrayList<>();
@@ -531,23 +495,26 @@ public static void createOrder(Invoice invoice) throws Exception {
 
     }
     
-    public static void main(String[] args) throws Exception{
+    public void main(String[] args) throws Exception{
         User user = new User(2, "Ditlev", "12345", 2.5);
         List<Invoice> list = getAllInvoicesForCustomer(user);
+        
+       for(int i = 0; i < list.size(); i++)
+       {
+           System.out.println(list.get(i).toString());
+           System.out.println(list.get(i).getCart().toString());
+           
+           }
+           
+           
+       
        
         
         
-//        for(int i = 0; i < list.size() ;i++) {
-//        
-//                for(int j = 0; j < list.get(i).getCart().size(); j++) {
-//                    
-//                    System.out.println(list.get(j).getCart().get(i).toString());
-//        
-//        
-//    }
-//}
-//    
-}
         
 
 }
+    
+}
+        
+

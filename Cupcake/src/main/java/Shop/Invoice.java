@@ -47,4 +47,11 @@ public class Invoice {
     public void setDate(LocalDate date) {
         this.date = date;
     }   
+
+    @Override
+    public String toString() {
+        return "Invoice{" + "cart=" + cart + ", user=" + user + ", date=" + date + '}';
+    }
+    
+    
 }
