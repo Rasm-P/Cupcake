@@ -3,8 +3,7 @@
     Created on : Mar 4, 2019, 5:53:51 PM
     Author     : Rasmus2
 --%>
-<%@page import="static Data.DataMapper.removeFromBalance"%>
-<%@page import="static Data.DataMapper.getInfoFromUsername"%>
+<%@page import="Data.DataMapper"%>
 <%@page import="Shop.shoppingCart"%>
 <%@page import="Users.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -68,10 +67,11 @@
         <table class="table">
             <%
                 User u = (User) session.getAttribute("User");
+                DataMapper data = new DataMapper();
                 if (total < u.getBalance()) {
                     out.println("<form action=\"/Cupcake/FrontController?action=confirmation\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
-                    removeFromBalance(u, total);
-                    User newu = getInfoFromUsername(u.getUserName(), u.getPassword());
+                    data.removeFromBalance(u, total);
+                    User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
                     session.setAttribute("User", newu);
                 } else {
                     out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");

@@ -8,18 +8,14 @@ package Presentation;
 import Cupcake.Bottoms;
 import Cupcake.Toppings;
 import Cupcake.cupcake;
-import static Data.CupcakeMapper.getOneBottom;
-import static Data.CupcakeMapper.getOneToppings;
+import Data.CupcakeMapper;
 import Data.DataMapper;
-import static Data.DataMapper.getInfoFromUsername;
-import static Data.DataMapper.getInfo_Username_Password;
 import Shop.lineItems;
 import Shop.shoppingCart;
 import static Users.MakeNewUser.createNewUser;
 import Users.User;
 import static Users.User.getBalanceFromDB;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -35,7 +31,8 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
-
+    private DataMapper data = new DataMapper();
+    private CupcakeMapper cupdata = new CupcakeMapper();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -77,7 +74,7 @@ public class FrontController extends HttpServlet {
                 case "makeLogin":
                     System.out.println(username);
                     System.out.println(password);
-                    if (username != null && !"".equals(username) && password != null && !"".equals(password) && getInfo_Username_Password(username, password) == false) {
+                    if (username != null && !"".equals(username) && password != null && !"".equals(password) && data.getInfo_Username_Password(username, password) == false) {
                         System.out.println("2.5");
                         User u = new User(1, username, password, 0.0);
                         createNewUser(u);
@@ -93,7 +90,7 @@ public class FrontController extends HttpServlet {
                     }
                 case "login":
                     System.out.println("3");
-                    if (username != null && password != null && getInfo_Username_Password(username, password) == true) {
+                    if (username != null && password != null && data.getInfo_Username_Password(username, password) == true) {
                         System.out.println("3.25");
                         session.setAttribute("loggedIn", true);
                         double b = getBalanceFromDB(username, password);
@@ -123,8 +120,8 @@ public class FrontController extends HttpServlet {
                         //ArrayList<lineItems> arList = new ArrayList<>();
                         shoppingCart arList = new shoppingCart();
 
-                        Bottoms b = getOneBottom(bottom);
-                        Toppings t = getOneToppings(topping);
+                        Bottoms b = cupdata.getOneBottom(bottom);
+                        Toppings t = cupdata.getOneToppings(topping);
                         System.out.println(t.toString());
                         System.out.println(b.toString());
                         cupcake c = new cupcake(b, t, b.getPrice() + t.getPrice());
@@ -170,7 +167,7 @@ public class FrontController extends HttpServlet {
 
                         d.addToBalance(u, Double.parseDouble(amount));
                         System.out.println("6");
-                        User newu = getInfoFromUsername(u.getUserName(), u.getPassword());
+                        User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
                         session.setAttribute("User", newu);
                     }
                     response.sendRedirect("JSP/mainPage.jsp");
