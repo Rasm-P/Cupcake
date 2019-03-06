@@ -467,19 +467,16 @@ public static void createOrder(Invoice invoice) throws Exception {
     public static void main(String[] args) throws Exception{
         User user = new User(2, "Ditlev", "12345", 2.5);
         List<Invoice> list = getAllInvoicesForCustomer(user);
-       
+        
+       for(int i = 0; i < list.size(); i++)
+       {
+           System.out.println(list.get(i).getUser().getUserName());
+       }
         
         
-//        for(int i = 0; i < list.size() ;i++) {
-//        
-//                for(int j = 0; j < list.get(i).getCart().size(); j++) {
-//                    
-//                    System.out.println(list.get(j).getCart().get(i).toString());
-//        
-//        
-//    }
-//}
-//    
-}
         
 }
+    
+}
+        
+
