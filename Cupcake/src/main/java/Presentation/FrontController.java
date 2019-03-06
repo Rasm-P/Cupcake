@@ -185,7 +185,7 @@ public class FrontController extends HttpServlet {
                     break;
                 case "admin":
                     System.out.println("7");
-                    response.sendRedirect("JSP/admin.jsp");
+                    response.sendRedirect("JSP/adminPage.jsp");
                     break;
             }
         }

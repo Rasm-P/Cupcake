@@ -22,8 +22,13 @@
         </form>
         <%
             if (session.getAttribute("User") != null) {
+                DataMapper data = new DataMapper();
                 User u = (User) session.getAttribute("User");
                 out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
+                if (data.isAdmin(u.getUserName(), u.getPassword())) {
+                    out.println("<form action=\"/Cupcake/FrontController?action=admin\" method=\"post\"> <input type=\"submit\" value=\"Go to admin page\" /> </form>");
+                    out.println("<br>");
+                }
             }
         %>
         <br>

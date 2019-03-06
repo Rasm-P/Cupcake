@@ -29,13 +29,7 @@
             DataMapper d = new DataMapper();
             if (session.getAttribute("User") != null) {
                 User u = (User) session.getAttribute("User");
-                out.println("<p>" + "User: " + u.getUserName() + "</p>"); 
-                out.println("<p> Du er nu logget ind!" + "</p>");
-                out.println("<p> Balance: " + u.getBalance() + "</p>");
-                
-                //ArrayList inV = d.getInvoiceFromUsername(u.getUserName());
-                //out.println("<p>" + inV.get(0).getDate() + "</p>");
-                
+                out.println("<p>" + "User: " + u.getUserName() + "Balance: " + u.getBalance() + "</p>");
             }
         %>
         <form action="/Cupcake/FrontController?action=shop" method="post">
