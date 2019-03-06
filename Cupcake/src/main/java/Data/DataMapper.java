@@ -406,7 +406,7 @@ public class DataMapper {
                 connection.close();
             }
 
-        } catch (Exception a) {
+        } catch (Exception a) { 
             System.err.println("Got an exception! 7");
             System.err.println(a.getMessage());
         }
