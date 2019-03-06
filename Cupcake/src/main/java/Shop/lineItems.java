@@ -41,5 +41,15 @@ public class lineItems {
     @Override
     public String toString() {
         return "Quantity: " + quantity + ", Cupcake: " + cc + ", FullPrice: " + getFullPrice();
-    }  
+    }
+
+    public cupcake getCc() {
+        return cc;
+    }
+
+    public void setFullPrice(double fullPrice) {
+        this.fullPrice = fullPrice;
+    }
+    
+    
 }

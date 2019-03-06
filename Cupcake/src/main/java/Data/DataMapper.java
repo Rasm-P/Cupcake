@@ -402,6 +402,7 @@ public class DataMapper {
                     invoicesNumbers.add(invoice_id);
 
                 }
+                System.out.println(invoicesNumbers.toString());
 
                 connection.close();
             }
@@ -414,6 +415,7 @@ public class DataMapper {
         for (int i = 0; i < invoicesNumbers.size(); i++) {
             shoppingCart cart = new shoppingCart();
             int lineitems_id = 0;
+            ArrayList<cupcake> tempCup = new ArrayList<>();
 
             try {
                 DBConnector conn = new DBConnector();
@@ -454,6 +456,7 @@ public class DataMapper {
                     ResultSet rs = st.executeQuery(query);
                     String bottomname = "";
                     String toppingname = "";
+                    double price;
 
                     int quantity = 0;
 
@@ -463,13 +466,28 @@ public class DataMapper {
                         bottomname = rs.getString("bottomname");
                         toppingname = rs.getString("toppingname");
                         quantity = rs.getInt("quantity");
-                        Bottoms bottom = new Bottoms(bottomname, mapper.getBottomPriceFromName(bottomname));
-                        Toppings top = new Toppings(toppingname, mapper.getTopPriceFromName(toppingname));
-                        cupcake cup = new cupcake(bottom, top, mapper.getBottomPriceFromName(bottomname) + mapper.getTopPriceFromName(toppingname));
+                        mapper.getBottomPriceFromName(bottomname);
+                        System.out.println(bottomname);
+                        Bottoms bottom = new Bottoms(bottomname, 0);
+                        
+                        Toppings top = new Toppings(toppingname, 0);
+                        
+                        cupcake cup = new cupcake(bottom, top, 0);
+                        
+                        
 
-                        lineItems lineitem = new lineItems(quantity, cup);
+                        tempCup.add(cup);
+
+                    }
+                    
+                    for(int j = 0; j < tempCup.size();j++) {
+                        CupcakeMapper mapper = new CupcakeMapper();
+                        tempCup.get(j).getBottom().setPrice( mapper.getBottomPriceFromName(tempCup.get(j).getBottom().getName()));
+                        tempCup.get(j).getTop().setPrice(mapper.getTopPriceFromName(tempCup.get(j).getTop().getName()));
+                          mapper.getTopPriceFromName(tempCup.get(j).getTop().getName());
+                        tempCup.get(j).setPrice((tempCup.get(j).getPrice(tempCup.get(j).getBottom(), tempCup.get(j).getTop())));
+                        lineItems lineitem = new lineItems(quantity, tempCup.get(j));
                         cart.add(lineitem);
-
                     }
 
                     Invoice invoice = new Invoice(cart, user, date.toLocalDate());
@@ -486,22 +504,55 @@ public class DataMapper {
         return allInvoices;
 
     }
+    
+    public boolean isAdmin(String username, String password) {
+        int isAdmin = 0;
+        try {
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "select user.isAdmin from user where username = " + "'" + username + "'" + " and password=" + "'" + password + "'" + ";";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+           try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
 
-//    public void main(String[] args) throws Exception {
-//        User user = new User(2, "Ditlev", "12345", 2.5);
-//        List<Invoice> list = getAllInvoicesForCustomer(user);
+                // iterate through the java resultset
+                while (rs.next()) {
+                    isAdmin = rs.getInt("isAdmin");
+                    
+
+                }
+
+                connection.close();
+                
+            }
+        } catch (Exception e) {
+            System.err.println("Got an exception! b");
+            System.err.println(e.getMessage());
+            
+        }
+        if(isAdmin == 1) {
+            return true;
+        }
+        else { return false; }
+            
+    }
+
+    public static void main(String[] args) throws Exception {
+        User user = new User(2, "Ditlev", "12345", 2.5);
+          DataMapper mapper = new DataMapper();
+//        List<Invoice> list = mapper.getAllInvoicesForCustomer(user);
 //
 //        for (int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i).toString());
 //            System.out.println(list.get(i).getCart().toString());
 //
 //        }
-//
-//    }
+
+        System.out.println(mapper.isAdmin("Ole", "1234"));
+    }
 
     
-    public static void main(String[] args) {
-        CupcakeMapper data = new CupcakeMapper();
-        System.out.println(data.getBottomPriceFromName("Chocolate"));
-    }
+
 }
