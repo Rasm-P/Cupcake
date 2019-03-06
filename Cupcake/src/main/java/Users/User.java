@@ -71,6 +71,8 @@ private double balance;
     public int getIdUser() {
         return idUser;
     }
+<<<<<<< HEAD
+=======
 
     public static double getBalanceFromDB(String name, String password) {
         double balance = 0;
@@ -139,5 +141,6 @@ private double balance;
     
 
 
+>>>>>>> 023be667a7588e2d7b4955f5fa5d5e8159141a4c
 }
 

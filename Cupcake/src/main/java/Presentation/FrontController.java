@@ -173,7 +173,7 @@ public class FrontController extends HttpServlet {
                         User newu = getInfoFromUsername(u.getUserName(), u.getPassword());
                         session.setAttribute("User", newu);
                     }
-                    response.sendRedirect("JSP/loggedIn.jsp");
+                    response.sendRedirect("JSP/mainPage.jsp");
                     break;
                 case "error":
                     response.sendRedirect("JSP/error.jsp");

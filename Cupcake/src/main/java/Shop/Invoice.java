@@ -13,11 +13,6 @@ import java.time.LocalDate;
  * @author Rumle
  */
 public class Invoice {
-    
-    /**
- *
- * @author Rumle
- */
 
     private shoppingCart cart;
     private Users.User user;
@@ -51,12 +46,5 @@ public class Invoice {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-    
-    
-    
-    
+    }   
 }
-
-    
-

@@ -1,7 +1,5 @@
 package Shop;
 
-
-import Cupcake.cupcake;
 import java.util.ArrayList;
 
 /*
@@ -15,6 +13,18 @@ import java.util.ArrayList;
  * @author Ludvig
  */
 public class shoppingCart {
+  
+//    public void addToCart(cupcake cup, int qua){
+    public void addToCart(lineItems li){
+        for(int i = 0; i < cart.size(); i++){
+            if(cart.get(i).getCup().getBottom().equals(li.getCup().getBottom()) && cart.get(i).getCup().getTop().equals(li.getCup().getTop())){
+                cart.get(i).editQuantity(li.getQuantity());
+            }
+        }
+        
+//        cart.add(new lineItems(qua, cup));
+        cart.add(li);
+    }
     
     private ArrayList<lineItems> cart = new ArrayList(); 
     
@@ -22,8 +32,7 @@ public class shoppingCart {
         return cart.size();
     }
     
-    public void add(lineItems l){
-              
+    public void add(lineItems l){             
         cart.add(l);
     }
     
