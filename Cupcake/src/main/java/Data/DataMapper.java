@@ -538,20 +538,20 @@ public class DataMapper {
         else { return false; }
             
     }
-
-    public static void main(String[] args) throws Exception {
-        User user = new User(2, "Ditlev", "12345", 2.5);
-          DataMapper mapper = new DataMapper();
-//        List<Invoice> list = mapper.getAllInvoicesForCustomer(user);
 //
-//        for (int i = 0; i < list.size(); i++) {
-//            System.out.println(list.get(i).toString());
-//            System.out.println(list.get(i).getCart().toString());
+//    public static void main(String[] args) throws Exception {
+//        User user = new User(2, "Ditlev", "12345", 2.5);
+//          DataMapper mapper = new DataMapper();
+////        List<Invoice> list = mapper.getAllInvoicesForCustomer(user);
+////
+////        for (int i = 0; i < list.size(); i++) {
+////            System.out.println(list.get(i).toString());
+////            System.out.println(list.get(i).getCart().toString());
+////
+////        }
 //
-//        }
-
-        System.out.println(mapper.isAdmin("Ole", "1234"));
-    }
+//        System.out.println(mapper.isAdmin("Ole", "1234"));
+//    }
 
     
 
