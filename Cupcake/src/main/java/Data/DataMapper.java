@@ -465,15 +465,17 @@ public void createOrder(Invoice invoice) throws Exception {
                     String toppingname = "";
 
                     int quantity = 0;
+                    
 
                     // iterate through the java resultset
                     while (rs.next()) {
+                        CupcakeMapper mapper = new CupcakeMapper();
                         bottomname = rs.getString("bottomname");
                         toppingname = rs.getString("toppingname");
                         quantity = rs.getInt("quantity");
-                        Bottoms bottom = new Bottoms(bottomname, CupcakeMapper.getBottomPriceFromName(bottomname));
-                        Toppings top = new Toppings(toppingname, CupcakeMapper.getTopPriceFromName(toppingname));
-                        cupcake cup = new cupcake(bottom, top, CupcakeMapper.getBottomPriceFromName(bottomname) + CupcakeMapper.getTopPriceFromName(toppingname));
+                        Bottoms bottom = new Bottoms(bottomname, mapper.getBottomPriceFromName(bottomname));
+                        Toppings top = new Toppings(toppingname, mapper.getTopPriceFromName(toppingname));
+                        cupcake cup = new cupcake(bottom, top, mapper.getBottomPriceFromName(bottomname) + mapper.getTopPriceFromName(toppingname));
 
                         lineItems lineitem = new lineItems(quantity, cup);
                         cart.add(lineitem);
