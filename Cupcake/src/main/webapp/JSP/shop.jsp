@@ -16,7 +16,7 @@
         <title>Shop</title>
     </head>
     <body>
-        <h1>Cupcakeshop </h1>
+        <h1>Cupcakeshop</h1>
         <form action="/Cupcake/FrontController?action=addmoney" method="POST">
             <input type="text" name="amount" placeholder="Enter amount"/>
             <input type="submit" value="Add money to account"/>

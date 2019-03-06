@@ -30,5 +30,16 @@
         <form action="/Cupcake/FrontController?action=logOut" method="post">
             <input type="submit" value="Logout" />
         </form>
+        <table class="table">
+        <%
+                User u = (User) session.getAttribute("User");
+                if (getAllInvoicesForCustomer(u) != null) {
+                     ArrayList<Invoice> arIn = getAllInvoicesForCustomer(u);
+                    for (int i = 0; i < arIn.size(); i++) {
+                        out.println("<tr><td>" + arIn.get(i).toString() + "</td></tr>");
+                    }
+                }
+            %>
+            </table>
     </body>
 </html>
