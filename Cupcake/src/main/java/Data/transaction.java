@@ -19,5 +19,4 @@ public class transaction extends Invoice {
     public transaction(shoppingCart cart, User user, LocalDate date) {
         super(cart, user, date);
     }
-
 }

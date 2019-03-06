@@ -4,7 +4,14 @@
     Author     : Rasmus2
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Data.DataMapper"%>
 <%@page import="Users.User"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="Shop.Invoice"%>
+<%@page import="Shop.lineItems"%>
+<%@page import="Shop.shoppingCart"%>
+<%@page import="Data.transaction"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,15 +19,23 @@
         <title>Logged In</title>
     </head>
     <body>
+        <h1> Velkommen tilbage! </h1>
         <h1>Logged in!</h1>
         <form action="/Cupcake/FrontController?action=addmoney" method="POST">
             <input type="text" name="amount" placeholder="Enter amount"/>
             <input type="submit" value="Add money to account"/>
         </form>
         <%
+            DataMapper d = new DataMapper();
             if (session.getAttribute("User") != null) {
                 User u = (User) session.getAttribute("User");
-                out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
+                out.println("<p>" + "User: " + u.getUserName() + "</p>"); 
+                out.println("<p> Du er nu logget ind!" + "</p>");
+                out.println("<p> Balance: " + u.getBalance() + "</p>");
+                
+                ArrayList inV = d.getInvoiceFromUsername(u.getUserName());
+                //out.println("<p>" + inV.get(0).getDate() + "</p>");
+                
             }
         %>
         <form action="/Cupcake/FrontController?action=shop" method="post">
