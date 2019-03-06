@@ -193,7 +193,7 @@ public static void createOrder(Invoice invoice) throws Exception {
         try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
-            String query = "select user.idUser from user where username = " + "'" + invoice.getUser() + "'" + " and password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
+            String query = "select user.idUser from user where username = " + "'" + invoice.getUser().getUserName() + "'" + " and password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
           try ( // create the java statement
                 Statement st = connection.createStatement()) {
@@ -334,35 +334,6 @@ public static void createOrder(Invoice invoice) throws Exception {
     }
 
 
-
-//    public static void main(String[] args) {
-//        Bottoms bottom = new Bottoms("Chokolatechip", 10);
-//        Toppings top = new Toppings("Vanilla", 12);
-//        Bottoms bottom1 = new Bottoms("Chokolatechip", 10);
-//        Toppings top1 = new Toppings("Vanilla", 12);
-//        Bottoms bottom2 = new Bottoms("Chokolatechip", 10);
-//        Toppings top2 = new Toppings("Vanilla", 12);
-//        
-//        cupcake cup = new cupcake(bottom, top, String.valueOf(bottom.getPrice() + top.getPrice()));
-//        cupcake cup1 = new cupcake(bottom1, top1, String.valueOf(bottom1.getPrice() + top1.getPrice()));
-//        cupcake cup2 = new cupcake(bottom2, top2, String.valueOf(bottom2.getPrice() + top2.getPrice()));
-//        
-//        lineItems it = new lineItems(2, cup);
-//        lineItems it1 = new lineItems(5, cup1);
-//        lineItems it2 = new lineItems(10, cup2);
-//        Shop.shoppingCart cart = new Shop.shoppingCart();
-//        //Invoice invoice = new Invoice(cart, )
-//        cart.addToCart(cup, 1);
-//        cart.addToCart(cup1, 1);
-//        cart.addToCart(cup2, 1);
-//        
-//        for(int i = 0; i < cart.getCart().size(); i++) {
-//            System.out.println(cart.getCart().get(i).toString());
-//        }
-//        saveShoppingCart(in);
-//        Shop.shoppingCart.getCart().add(cup);
-//        Shop.shoppingCart.getCart().add(cup1);
-//        Shop.shoppingCart.getCart().add(cup2);
 
         
      public static void addToBalance(User user, double newMoney) {
