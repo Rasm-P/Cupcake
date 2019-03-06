@@ -72,6 +72,13 @@ private double balance;
         return idUser;
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "idUser=" + idUser + ", username=" + username + ", password=" + password + ", email=" + email + ", balance=" + balance + '}';
+    }
+    
+    
+
 
     public static double getBalanceFromDB(String name, String password) {
         double balance = 0;
