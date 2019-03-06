@@ -28,16 +28,16 @@ import java.util.List;
  * @author Rasmus2
  */
 public class DataMapper {
-    
+
     public ArrayList<Invoice> getInvoiceFromUsername(String inputUsername) {
         int userId;
         int invoiceId;
         String password;
         double balance;
         String username = "";
-        
+
         ArrayList<Invoice> invIdList = new ArrayList();
-        
+
         try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
@@ -47,7 +47,7 @@ public class DataMapper {
 
             // execute the query, and get a java resultset
             try ( // create the java statement
-                Statement st = connection.createStatement()) {
+                    Statement st = connection.createStatement()) {
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
 
@@ -55,17 +55,17 @@ public class DataMapper {
                 username = rs.getString("username");
                 password = rs.getString("password");
                 balance = rs.getDouble("balance");
-                
+
                 User user = new User(userId, username, password, balance);
-                
+
                 shoppingCart sC;
-                
+
                 while (rs.next()) {
                     //invoiceId = rs.getInt("invoiceId"); 
                     //shoppingCart sC = new shoppingCart();
-                    
-                    Invoice iV = new Invoice(sC = new shoppingCart(), user, LocalDate.now()); 
-                    
+
+                    Invoice iV = new Invoice(sC = new shoppingCart(), user, LocalDate.now());
+
                     invIdList.add(iV);
                 }
                 connection.close();
@@ -75,14 +75,13 @@ public class DataMapper {
             System.err.println(e.getMessage());
         }
 
-        if(inputUsername.equals(username)) {
+        if (inputUsername.equals(username)) {
             return invIdList;
         } else {
             System.out.println("User not found!");
             return null;
         }
     }
-
 
     public User getInfoFromUsername(String inputUsername, String inputPassword) {
         double balance = 0.0;
@@ -177,10 +176,8 @@ public class DataMapper {
             return findUser;
         }
     }
-      
 
-    
-public void createOrder(Invoice invoice) throws Exception {
+    public void createOrder(Invoice invoice) throws Exception {
         int invoice_number = 0;
         int lineitems_number = 0;
         try {
@@ -188,46 +185,44 @@ public void createOrder(Invoice invoice) throws Exception {
             Connection connection = conn.getConnection();
             String query = "select user.idUser from user where username = " + "'" + invoice.getUser().getUserName() + "'" + " and password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
-          try ( // create the java statement
-                Statement st = connection.createStatement()) {
-
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
 
 //            statement.executeUpdate(query);
-            pstmt.execute();
-            connection.close();
-          }
+                pstmt.execute();
+                connection.close();
+            }
         } catch (Exception e) {
 
             e.getLocalizedMessage();
 
         }
-        
-        
-        
+
         try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             String query = "INSERT INTO cupcake.invoice (idUser) VALUES (?);";
             PreparedStatement pstmt = connection.prepareStatement(query);
-         
+
             pstmt.setInt(1, invoice.getUser().getIdUser());
 
             pstmt.execute();
             connection.close();
-            } catch (Exception e) {
+        } catch (Exception e) {
             e.getLocalizedMessage();
-        } try {
+        }
+        try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             String query = "select invoice.invoice_id from invoice where idUser = " + invoice.getUser().getIdUser() + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
-          try ( // create the java statement
-                Statement st = connection.createStatement()) {
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
 
 //            statement.executeUpdate(query);
-            pstmt.execute();
-            connection.close();
-          }
+                pstmt.execute();
+                connection.close();
+            }
         } catch (Exception e) {
 
             e.getLocalizedMessage();
@@ -248,9 +243,9 @@ public void createOrder(Invoice invoice) throws Exception {
                 // iterate through the java resultset
                 while (rs.next()) {
                     invoice_number = rs.getInt("invoice_id");
-                    
+
                 }
-                
+
                 connection.close();
             }
 
@@ -264,15 +259,14 @@ public void createOrder(Invoice invoice) throws Exception {
             Connection connection = conn.getConnection();
             String query = "INSERT INTO cupcake.orders (invoice_id, orderdate) VALUES (?,?);";
             PreparedStatement pstmt = connection.prepareStatement(query);
-            
-            
+
             pstmt.setInt(1, invoice_number);
             pstmt.setDate(2, Date.valueOf(LocalDate.now()));
             pstmt.execute();
             connection.close();
-            } catch (Exception ee) {
+        } catch (Exception ee) {
             ee.getLocalizedMessage();
-            }
+        }
 
         try {
             DBConnector conn = new DBConnector();
@@ -287,38 +281,37 @@ public void createOrder(Invoice invoice) throws Exception {
                 List<Integer> list = new ArrayList<Integer>();
                 // iterate through the java resultset
                 while (rs.next()) {
-                   
+
                     lineitems_number = rs.getInt("lineitems_id");
                     list.add(lineitems_number);
-                   
+
                 }
                 lineitems_number = Collections.max(list);
-                
+
                 connection.close();
             }
-            
 
         } catch (Exception es) {
             System.err.println("Got an exception! ");
             System.err.println(es.getMessage());
         }
-  
-    for(int i = 0; i < invoice.getCart().getCart().size();i++) {
-         try {
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
-            String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?);";
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            ArrayList<lineItems> list = invoice.getCart().getCart();
-             
-            pstmt.setInt(1, lineitems_number);
-            pstmt.setString(2, list.get(i).getCup().getBottom().getName());
-            pstmt.setString(3, list.get(i).getCup().getTop().getName());
-            pstmt.setInt(4, list.get(i).getQuantity());
-            pstmt.execute();
-            connection.close();
-       
-         } catch (Exception ew) {
+
+        for (int i = 0; i < invoice.getCart().getCart().size(); i++) {
+            try {
+                DBConnector conn = new DBConnector();
+                Connection connection = conn.getConnection();
+                String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?);";
+                PreparedStatement pstmt = connection.prepareStatement(query);
+                ArrayList<lineItems> list = invoice.getCart().getCart();
+
+                pstmt.setInt(1, lineitems_number);
+                pstmt.setString(2, list.get(i).getCup().getBottom().getName());
+                pstmt.setString(3, list.get(i).getCup().getTop().getName());
+                pstmt.setInt(4, list.get(i).getQuantity());
+                pstmt.execute();
+                connection.close();
+
+            } catch (Exception ew) {
 
                 ew.getLocalizedMessage();
 
@@ -326,38 +319,33 @@ public void createOrder(Invoice invoice) throws Exception {
         }
     }
 
-
-
-        
-     public void addToBalance(User user, double newMoney) {
-         String query = "UPDATE cupcake.user SET balance = balance +" + newMoney + "where idUser= " + user.getIdUser() + ";";
-         try {
+    public void addToBalance(User user, double newMoney) {
+        String query = "UPDATE cupcake.user SET balance = balance +" + newMoney + "where idUser= " + user.getIdUser() + ";";
+        try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.execute();
             connection.close();
-            } catch (Exception e) {
-            e.getLocalizedMessage();       
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+        }
     }
-     }
-    
-     public void removeFromBalance(User user, double money) {
-         String query = "UPDATE cupcake.user SET balance = balance -" + money + "where idUser= " + user.getIdUser() + ";";
-         try {
+
+    public void removeFromBalance(User user, double money) {
+        String query = "UPDATE cupcake.user SET balance = balance -" + money + "where idUser= " + user.getIdUser() + ";";
+        try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.execute();
             connection.close();
-            } catch (Exception e) {
-            e.getLocalizedMessage();       
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+        }
+
     }
 
-        }    
-
-        
-     
     public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception {
 
         ArrayList<Invoice> allInvoices = new ArrayList<>();
@@ -465,7 +453,6 @@ public void createOrder(Invoice invoice) throws Exception {
                     String toppingname = "";
 
                     int quantity = 0;
-                    
 
                     // iterate through the java resultset
                     while (rs.next()) {
@@ -496,27 +483,22 @@ public void createOrder(Invoice invoice) throws Exception {
         return allInvoices;
 
     }
-    
-    public void main(String[] args) throws Exception{
-        User user = new User(2, "Ditlev", "12345", 2.5);
-        List<Invoice> list = getAllInvoicesForCustomer(user);
-        
-       for(int i = 0; i < list.size(); i++)
-       {
-           System.out.println(list.get(i).toString());
-           System.out.println(list.get(i).getCart().toString());
-           
-           }
-           
-           
-       
-       
-        
-        
-        
 
-}
-    
-}
-        
+//    public void main(String[] args) throws Exception {
+//        User user = new User(2, "Ditlev", "12345", 2.5);
+//        List<Invoice> list = getAllInvoicesForCustomer(user);
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i).toString());
+//            System.out.println(list.get(i).getCart().toString());
+//
+//        }
+//
+//    }
 
+    
+    public static void main(String[] args) {
+        CupcakeMapper data = new CupcakeMapper();
+        System.out.println(data.getBottomPriceFromName("Chocolate"));
+    }
+}
