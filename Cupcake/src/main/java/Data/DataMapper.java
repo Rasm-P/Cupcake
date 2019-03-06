@@ -465,6 +465,7 @@ public static void createOrder(Invoice invoice) throws Exception {
         return allInvoices;
 
     }
+    
     public static void main(String[] args) throws Exception{
         User user = new User(2, "Ditlev", "12345", 2.5);
         List<Invoice> list = getAllInvoicesForCustomer(user);
