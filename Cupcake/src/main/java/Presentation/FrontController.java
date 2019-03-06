@@ -12,6 +12,7 @@ import static Data.CupcakeMapper.getOneBottom;
 import static Data.CupcakeMapper.getOneToppings;
 import static Data.DataMapper.getInfo_Username_Password;
 import Shop.lineItems;
+import Shop.shoppingCart;
 import static Users.MakeNewUser.createNewUser;
 import Users.User;
 import java.io.IOException;
@@ -53,6 +54,7 @@ public class FrontController extends HttpServlet {
         String topping = request.getParameter("topping");
         String bottom = request.getParameter("bottom");
         String qty = request.getParameter("qty");
+        String amount = request.getParameter("amount");
 
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
 
@@ -114,19 +116,20 @@ public class FrontController extends HttpServlet {
                     System.out.println(bottom);
                     System.out.println(qty);
                     if (topping != null && !"".equals(topping) && bottom != null && !"".equals(bottom) && qty != null && !"".equals(qty) && Integer.parseInt(qty) >= 1) {
-                        ArrayList<lineItems> arList = new ArrayList<>();
+                        //ArrayList<lineItems> arList = new ArrayList<>();
+                        shoppingCart arList = new shoppingCart();
 
                         Bottoms b = getOneBottom(bottom);
                         Toppings t = getOneToppings(topping);
                         System.out.println(t.toString());
                         System.out.println(b.toString());
                         cupcake c = new cupcake(b, t, b.getPrice() + t.getPrice());
-
+                        System.out.println(c.toString());
                         lineItems l = new lineItems(Integer.parseInt(qty), c);
                         arList.add(l);
 
                         if (session.getAttribute("ArrayList<lineItems>") != null) {
-                            ArrayList<lineItems> arOld = (ArrayList<lineItems>) session.getAttribute("ArrayList<lineItems>");
+                            shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
                             for (int i = 0; i < arOld.size(); i++) {
                                 arList.add(arOld.get(i));
                                 session.setAttribute("ArrayList<lineItems>", arList);
@@ -152,6 +155,12 @@ public class FrontController extends HttpServlet {
                     } else {
                         response.sendRedirect("JSP/shop.jsp");
                     }
+                    break;
+                case "addmoney":
+                    if (amount != null && !"".equals(amount) && Double.parseDouble(amount) >= 0.0) {
+
+                    }
+                    response.sendRedirect("JSP/loggedIn.jsp");
                     break;
             }
         }

@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * @author Ludvig
  */
 public class shoppingCart {
-    static ArrayList<lineItems> cart = new ArrayList(); 
   
 //    public void addToCart(cupcake cup, int qua){
     public void addToCart(lineItems li){
@@ -27,9 +26,24 @@ public class shoppingCart {
         cart.add(li);
     }
     
-    public static ArrayList getCart(){
+    private ArrayList<lineItems> cart = new ArrayList(); 
+    
+    public int size() {
+        return cart.size();
+    }
+    
+    public void add(lineItems l){             
+        cart.add(l);
+    }
+    
+    public ArrayList getCart(){
         return cart;               
-    }   
+    } 
+    
+     public lineItems get(int index){
+        return cart.get(index);               
+    }
+    
     
 //    public static void main(String [] args){
 //        Bottoms b = new Bottoms("Choco", 2.0);

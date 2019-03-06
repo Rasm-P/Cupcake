@@ -58,8 +58,8 @@ private double balance;
         this.email = email;
     }
 
-    
-
-
+    public int getIdUser() {
+        return idUser;
+    }
 }
 
