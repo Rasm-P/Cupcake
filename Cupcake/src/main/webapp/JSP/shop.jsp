@@ -3,7 +3,8 @@
     Created on : Mar 4, 2019, 5:53:51 PM
     Author     : Rasmus2
 --%>
-
+<%@page import="static Data.DataMapper.removeFromBalance"%>
+<%@page import="static Data.DataMapper.getInfoFromUsername"%>
 <%@page import="Shop.shoppingCart"%>
 <%@page import="Users.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -16,6 +17,10 @@
     </head>
     <body>
         <h1>Cupcakeshop </h1>
+        <form action="/Cupcake/FrontController?action=addmoney" method="POST">
+            <input type="text" name="amount" placeholder="Enter amount"/>
+            <input type="submit" value="Add money to account"/>
+        </form>
         <form action="/Cupcake/FrontController?action=shop" method="post">
             <%
                 if (session.getAttribute("User") != null) {
@@ -60,9 +65,19 @@
                 out.println("<tr><td>" + "Total: " + total + "</td></tr>");
             %>
         </table>
-        <form action="/Cupcake/FrontController?action=confirmation" method="post">
-            <input type="submit" value="Checkout" />
-        </form>
+        <table class="table">
+            <%
+                User u = (User) session.getAttribute("User");
+                if (total < u.getBalance()) {
+                    out.println("<form action=\"/Cupcake/FrontController?action=confirmation\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+                    removeFromBalance(u, total);
+                    User newu = getInfoFromUsername(u.getUserName(), u.getPassword());
+                    session.setAttribute("User", newu);
+                } else {
+                    out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+                }
+            %>
+        </table>
         <br>
         <form action="/Cupcake/FrontController" method="post">
             <input type="submit" value="Back to main page" />

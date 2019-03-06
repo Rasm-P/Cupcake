@@ -12,10 +12,10 @@
         <title>Error</title>
     </head>
     <body>
-        <h1>Ups something went wrong!</h1>
-        <p>Click here to go back to the main page!</p>
-        <form action="/Cupcake/" method="post">
-        <input type="submit" value="Back" />
+        <h1>Error</h1>
+        <p>Ups something went wrong!</p>
+         <form action="/Cupcake/FrontController" method="post">
+            <input type="submit" value="Back to main page" />
         </form>
     </body>
 </html>
