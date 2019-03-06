@@ -29,7 +29,6 @@ import java.util.List;
  */
 public class DataMapper {
     
-<<<<<<< HEAD
     public static  ArrayList<Invoice> getInvoiceFromUsername(String inputUsername) {
         int userId;
         int invoiceId;
@@ -83,9 +82,7 @@ public class DataMapper {
             return null;
         }
     }
-=======
-    
->>>>>>> 023be667a7588e2d7b4955f5fa5d5e8159141a4c
+
 
     public static User getInfoFromUsername(String inputUsername, String inputPassword) {
         double balance = 0.0;
@@ -188,12 +185,7 @@ public class DataMapper {
 //       
 //    }
 //   
-<<<<<<< HEAD
-   
 
-
-=======
->>>>>>> caa96b25dcfab70b16d0ab9aabcdc55f3dc83a65
     
 public static void createOrder(Invoice invoice) throws Exception {
         int invoice_number = 0;
@@ -342,7 +334,7 @@ public static void createOrder(Invoice invoice) throws Exception {
     }
 
 
-<<<<<<< HEAD
+
 //    public static void main(String[] args) {
 //        Bottoms bottom = new Bottoms("Chokolatechip", 10);
 //        Toppings top = new Toppings("Vanilla", 12);
@@ -371,11 +363,7 @@ public static void createOrder(Invoice invoice) throws Exception {
 //        Shop.shoppingCart.getCart().add(cup);
 //        Shop.shoppingCart.getCart().add(cup1);
 //        Shop.shoppingCart.getCart().add(cup2);
-=======
-    
 
-
->>>>>>> 023be667a7588e2d7b4955f5fa5d5e8159141a4c
         
      public static void addToBalance(User user, double newMoney) {
          String query = "UPDATE cupcake.user SET balance = balance +" + newMoney + "where idUser= " + user.getIdUser() + ";";
@@ -401,10 +389,10 @@ public static void createOrder(Invoice invoice) throws Exception {
             } catch (Exception e) {
             e.getLocalizedMessage();       
     }
-<<<<<<< HEAD
+
         }    
-=======
-        }
+
+        
      
     public static ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception {
 
@@ -561,5 +549,5 @@ public static void createOrder(Invoice invoice) throws Exception {
 //    
 }
         
->>>>>>> 023be667a7588e2d7b4955f5fa5d5e8159141a4c
+
 }
