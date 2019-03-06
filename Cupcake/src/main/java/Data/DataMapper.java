@@ -346,13 +346,10 @@ public class DataMapper {
 
     }
 
-<<<<<<< HEAD
+
         
      
     public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception { //Giver exceptions på 9
-=======
-    public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception {
->>>>>>> d216806311c4c256644b1bc00c98fd3bdd77f5a7
 
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         List<Integer> invoicesNumbers = new ArrayList<>();
