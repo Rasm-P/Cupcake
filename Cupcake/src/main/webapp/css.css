@@ -29,3 +29,20 @@ p {
     width: 50%;
     padding: 20px;
 }
+#Div1{
+    margin: auto;
+    text-align: center;
+    width:900px;
+    color: pink;
+    border: yellow;
+}
+#Div2{
+    margin: auto;
+    text-align: center;
+    width:500px;   
+}
+#myp2{
+    margin: auto;
+    text-align: center;
+    width:500px;
+}
