@@ -29,6 +29,7 @@ p {
     width: 50%;
     padding: 20px;
 }
+<<<<<<< HEAD
 
 #myp2{
     margin: auto;
@@ -46,6 +47,21 @@ p {
 }
 #Div2{
     background:red !important;
+=======
+#Div1{
+    margin: auto;
+    text-align: center;
+    width:900px;
+    color: pink;
+    border: yellow;
+}
+#Div2{
+    margin: auto;
+    text-align: center;
+    width:500px;   
+}
+#myp2{
+>>>>>>> 58434409bba97aa4dfd4d449eef57b15a8963c6f
     margin: auto;
     text-align: center;
     width:500px;
