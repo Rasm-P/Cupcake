@@ -16,10 +16,12 @@
     </head>
     <body>
         <h1>Cupcakeshop</h1>
+        <div class="container">
         <form action="/Cupcake/FrontController?action=addmoney" method="POST">
             <input type="text" name="amount" placeholder="Enter amount"/>
-            <input type="submit" value="Add money to account"/>
+            <input type="button" class="btn btn-info" value = "Add money to account">
         </form>
+        </div>
         <form action="/Cupcake/FrontController?action=shop" method="post">
             <%
                 if (session.getAttribute("User") != null) {
@@ -77,7 +79,7 @@
                     out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
                 }
             %>
-        </table>
+        </table>        
         <br>
         <form action="/Cupcake/FrontController" method="post">
             <input type="submit" value="Back to main page" />
