@@ -36,7 +36,6 @@
         <table class="table">
             <%
                 if (session.getAttribute("User") != null) {
-                    User u = (User) session.getAttribute("User");
                     DataMapper data = new DataMapper();
                     if (data.getAllInvoices(data.getAllUsers()) != null) {
                         ArrayList<User> us = data.getAllUsers();

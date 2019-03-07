@@ -3,7 +3,10 @@
     Created on : Mar 4, 2019, 5:41:35 PM
     Author     : Rasmus2
 --%>
+<jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
+<jsp:include page='/jsp/sitemenus.jsp'></jsp:include>
+    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -40,3 +43,5 @@
         </div>
     </body>
 </html>
+
+<jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
