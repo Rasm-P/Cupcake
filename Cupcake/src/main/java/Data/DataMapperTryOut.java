@@ -169,9 +169,9 @@ public class DataMapperTryOut
                         cart.add(lineitem);
                     }
 
-                    Invoice invoice = new Invoice(cart, user, date.toLocalDate());
-                    allInvoices.add(invoice);
-                    connection.close();
+//                    Invoice invoice = new Invoice(cart, user, date.toLocalDate());
+//                    allInvoices.add(invoice);
+//                    connection.close();
                 }
 
             } catch (Exception es) {
@@ -184,7 +184,7 @@ public class DataMapperTryOut
 
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         getAllInvoicesForCustomer();
     }
 }
