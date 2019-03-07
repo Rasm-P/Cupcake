@@ -347,7 +347,56 @@ public class DataMapper {
 
     }
 
+    
+    public ArrayList<Invoice> getAllInvoicesForCustomerFromView(String Username)
+    {
+        ArrayList<Invoice> allInvoices = new ArrayList<>();
+        int idUser = 0;
+        String username = "";
+        String password = "";
+        int invoiceid = 0;
+        int lineitems_id = 0 ;
+        
+         try {
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            String query = "select * from cupcake.allInvoices2 where username = " + "'" + Username + "';";
 
+            PreparedStatement pstmt = connection.prepareStatement(query);
+
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (rs.next()) {
+                    idUser = rs.getInt("idUser");
+                    username = rs.getString("username");
+                    invoiceid = rs.getInt("invoice_id");
+                    lineitems_id = rs.getInt("lineitems_id");
+                    password = rs.getString("password");
+
+                }
+                connection.close();
+
+            }
+
+        } catch (Exception es) {
+            System.err.println("Got an exception! 6");
+            System.err.println(es.getMessage());
+        }
+        
+        return null;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
         
      
     public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception { //Giver exceptions på 9
