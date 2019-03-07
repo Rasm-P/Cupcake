@@ -45,6 +45,7 @@
         </style>       
     </head>
     <body>
+<<<<<<< HEAD
         <div id="Div2">
             <h1 class="solid">Login Registration</h1><img src ="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.XudpHfMmkSpYY9N_uNoEFAHaHy%26pid%3D15.1&f=1" height = "100">
         </div>
@@ -57,5 +58,14 @@
                     <input type="submit" value="Log in" />
                 </form>
             </div>
+=======
+        <h1>Login Registration</h1>
+        <p>
+        <form action="/Cupcake/FrontController?action=makeLogin" method="post"><br>Username:<br><input type="text" name="username" value=""><br>Login:<br><input type="text" name="password" value=""><br><br><input type="submit" value="Create account"></form>
+        <br>
+        <form action="/Cupcake/FrontController?action=login" method="post">
+            <input type="submit" value="Login" />
+        </form>
+>>>>>>> c43932d3c4eccaf79d0ddfe3f24e09f137e69bd8
     </body>
 </html>

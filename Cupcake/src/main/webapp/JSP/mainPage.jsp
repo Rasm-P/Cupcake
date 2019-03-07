@@ -15,7 +15,7 @@
         <title>Main Page</title>
     </head>
     <body>
-        <h1>Main landing page!</h1>
+        <h1>Main landing page</h1>
         <form action="/Cupcake/FrontController?action=addmoney" method="POST">
             <input type="text" name="amount" placeholder="Enter amount"/>
             <input type="submit" value="Add money to account"/>
@@ -39,7 +39,7 @@
         <form action="/Cupcake/FrontController?action=logOut" method="post">
             <input type="submit" value="Logout" />
         </form>
-        <h2>All Invoices</h2>
+        <h2>All Your Invoices</h2>
         <table class="table">
         <%
                 User u = (User) session.getAttribute("User");
