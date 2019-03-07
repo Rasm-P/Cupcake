@@ -60,7 +60,6 @@ public class FrontController extends HttpServlet {
         String in = request.getParameter("in");
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
 
-        
         if (loggedIn == null && username == null && !"makeLogin".equals(action)) {
             System.out.println("0.5");
             //PageLogin.generateLogin(response);
@@ -126,11 +125,11 @@ public class FrontController extends HttpServlet {
     private void addMoney(String amount, HttpSession session, HttpServletResponse response) throws NumberFormatException, IOException {
         System.out.println("5");
         if (amount != null && !"".equals(amount) && Double.parseDouble(amount) >= 0.0) {
-            
+
             DataMapper d = new DataMapper();
-            
+
             User u = (User) session.getAttribute("User");
-            
+
             d.addToBalance(u, Double.parseDouble(amount));
             System.out.println("6");
             User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
@@ -139,7 +138,7 @@ public class FrontController extends HttpServlet {
         response.sendRedirect("JSP/mainPage.jsp");
         return;
     }
-    
+
     private void confirmation(HttpSession session, HttpServletResponse response) throws IOException {
         System.out.println("3.95");
         if (session.getAttribute("ArrayList<lineItems>") != null) {

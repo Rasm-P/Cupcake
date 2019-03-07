@@ -53,8 +53,6 @@ private double balance;
     public double getBalance() {
         return balance;
     }
-    
-    
 
     public void setBalance(Double balance) {
         this.balance = balance;
@@ -74,7 +72,7 @@ private double balance;
 
     @Override
     public String toString() {
-        return "User{" + "idUser=" + idUser + ", username=" + username + ", password=" + password + ", email=" + email + ", balance=" + balance + '}';
+        return "UserId: " + idUser + ", username: " + username + ", password: " + password + ", email: " + email + ", balance: " + balance;
     }
     
     

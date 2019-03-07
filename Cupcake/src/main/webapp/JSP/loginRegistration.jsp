@@ -20,16 +20,16 @@
                 text-align: center;
                 color: orange;
             }
-            
+
             h1{
                 text-align: center;
                 color: black;
             }
-            
+
             #Div2{
                 width:vw;
             }
-            
+
             h1.solid {
                 margin: auto;
                 border-left-style: dotted;
@@ -38,7 +38,7 @@
                 border-bottom-style: solid;
                 width: 400px;
             }
-            
+
             body {
                 background-image: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-mYqygy-YBdA%2FUTBENYwIhCI%2FAAAAAAAAAXI%2F6WBtmCbmfOg%2Fs1600%2Fimg_0919.jpg&f=1);
             }
@@ -51,11 +51,11 @@
         <form action="/Cupcake">
             <input type="submit" value="Go to startpage" />
         </form>   
-            <div id ="Div1">
-                <form action="/Cupcake/FrontController?action=makeLogin" method="post"><br>Username:<br><input type="text" name="username" value=""><br>Login:<br><input type="text" name="password" value=""><br><br><input type="submit" value="Create account"></form>
-                <form action="/Cupcake/FrontController?action=login" method="post">
-                    <input type="submit" value="Log in" />
-                </form>
-            </div>
+        <div id ="Div1">
+            <form action="/Cupcake/FrontController?action=makeLogin" method="post"><br>Username:<br><input type="text" name="username" value=""><br>Login:<br><input type="text" name="password" value=""><br><br><input type="submit" value="Create account"></form>
+            <form action="/Cupcake/FrontController?action=login" method="post">
+                <input type="submit" value="Log in" />
+            </form>
+        </div>
     </body>
 </html>

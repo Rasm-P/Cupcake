@@ -14,7 +14,7 @@
     <body>
         <h1>Error</h1>
         <p>Ups something went wrong!</p>
-         <form action="/Cupcake/FrontController" method="post">
+        <form action="/Cupcake/FrontController" method="post">
             <input type="submit" value="Back to main page" />
         </form>
     </body>

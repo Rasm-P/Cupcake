@@ -50,7 +50,7 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return "Invoice{" + "cart=" + cart + ", user=" + user + ", date=" + date + '}';
+        return "Invoice: " + "cart: " + cart + ", user: " + user + ", date: " + date + '}';
     }
     
     
