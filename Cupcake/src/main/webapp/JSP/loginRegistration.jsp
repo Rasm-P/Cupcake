@@ -39,6 +39,7 @@
                 border-bottom-style: solid;
                 width: 400px;
             }
+            
             body {
                 background-image: url("cupcake-3723832_960_720.jpg");
             }
@@ -57,5 +58,11 @@
                     <input type="submit" value="Log in" />
                 </form>
             </div>
+        <div id ="Div1">
+            <form action="/Cupcake/FrontController?action=makeLogin" method="post"><br>Username:<br><input type="text" name="username" value=""><br>Login:<br><input type="text" name="password" value=""><br><br><input type="submit" value="Create account"></form>
+            <form action="/Cupcake/FrontController?action=login" method="post">
+                <input type="submit" value="Log in" />
+            </form>
+        </div>
     </body>
 </html>

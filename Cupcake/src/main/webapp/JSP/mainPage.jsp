@@ -41,17 +41,17 @@
         </form>
         <h2>All Your Invoices</h2>
         <table class="table">
-        <%
+            <%
                 User u = (User) session.getAttribute("User");
                 DataMapper data = new DataMapper();
                 if (data.getAllInvoicesForCustomer(u) != null) {
-                     ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u);
+                    ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u);
                     for (int i = 0; i < arIn.size(); i++) {
                         out.println("<tr><td>" + arIn.get(i).getCart().toString() + arIn.get(i).getUser().toString() + arIn.get(i).getDate().toString() + "</td></tr>");
                         out.println(" <form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + arIn.get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>");
                     }
                 }
             %>
-            </table>
+        </table>
     </body>
 </html>

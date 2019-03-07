@@ -35,16 +35,18 @@
         <h2>All Invoices</h2>
         <table class="table">
             <%
-                User u = (User) session.getAttribute("User");
-                DataMapper data = new DataMapper();
-                if (data.getAllInvoices(data.getAllUsers()) != null) {
-                    ArrayList<User> us = data.getAllUsers();
-                    for (int j = 0; j < us.size(); j++) {
-                        User user = us.get(j);
-                        for (int i = 0; i < data.getAllInvoicesForCustomer(user).size(); i++) {
-                            out.println("<tr><td>" + data.getAllInvoicesForCustomer(user).get(i).toString() + "</td></tr>");
-                            out.println("<br>");
-                            out.println("<br>");
+                if (session.getAttribute("User") != null) {
+                    User u = (User) session.getAttribute("User");
+                    DataMapper data = new DataMapper();
+                    if (data.getAllInvoices(data.getAllUsers()) != null) {
+                        ArrayList<User> us = data.getAllUsers();
+                        for (int j = 0; j < us.size(); j++) {
+                            User user = us.get(j);
+                            for (int i = 0; i < data.getAllInvoicesForCustomer(user).size(); i++) {
+                                out.println("<tr><td>" + data.getAllInvoicesForCustomer(user).get(i).toString() + "</td></tr>");
+                                out.println("<br>");
+                                out.println("<br>");
+                            }
                         }
                     }
                 }
