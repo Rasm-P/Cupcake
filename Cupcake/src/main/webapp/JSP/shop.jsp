@@ -17,10 +17,10 @@
     <body>
         <h1>Cupcakeshop</h1>
         <div class="container">
-        <form action="/Cupcake/FrontController?action=addmoney" method="POST">
-            <input type="text" name="amount" placeholder="Enter amount"/>
-            <input type="button" class="btn btn-info" value = "Add money to account">
-        </form>
+            <form action="/Cupcake/FrontController?action=addmoney" method="POST">
+                <input type="text" name="amount" placeholder="Enter amount"/>
+                <input type="button" class="btn btn-info" value = "Add money to account">
+            </form>
         </div>
         <form action="/Cupcake/FrontController?action=shop" method="post">
             <%
@@ -68,15 +68,17 @@
         </table>
         <table class="table">
             <%
-                User u = (User) session.getAttribute("User");
-                DataMapper data = new DataMapper();
-                if (total < u.getBalance()) {
-                    out.println("<form action=\"/Cupcake/FrontController?action=confirmation\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
-                    data.removeFromBalance(u, total);
-                    User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
-                    session.setAttribute("User", newu);
-                } else {
-                    out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+                if (session.getAttribute("User") != null) {
+                    User u = (User) session.getAttribute("User");
+                    DataMapper data = new DataMapper();
+                    if (total < u.getBalance()) {
+                        out.println("<form action=\"/Cupcake/FrontController?action=confirmation\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+                        data.removeFromBalance(u, total);
+                        User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
+                        session.setAttribute("User", newu);
+                    } else {
+                        out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+                    }
                 }
             %>
         </table>        
