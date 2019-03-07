@@ -26,8 +26,8 @@ public class CupcakeMapper {
 
         try {
 
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            Connection connection = DBConnector.getConnection();
+//            Connection connection = conn.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM toppings;";
@@ -57,6 +57,8 @@ public class CupcakeMapper {
         System.out.println(toppings);
         return toppings;
     }
+    
+    
 
     public ArrayList<Bottoms> getBottoms() {
         int id = 0;
