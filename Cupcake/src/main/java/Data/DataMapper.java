@@ -540,7 +540,7 @@ public class DataMapper {
             
     }
     
-    
+
     public ArrayList<User> getAllUsers() {
         ArrayList<Integer> users = new ArrayList<>();
         ArrayList<ArrayList<Invoice>> allInvoices = new ArrayList<>();
@@ -613,6 +613,7 @@ public class DataMapper {
 //        for (int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i).toString());
 //            System.out.println(list.get(i).getCart().toString());
+
 //
 //        }
 
