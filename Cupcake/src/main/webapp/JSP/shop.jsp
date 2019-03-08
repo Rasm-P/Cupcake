@@ -63,7 +63,6 @@
             %>
         </table>
 
-
         <table class="table">
             <%
                 out.println("<tr><td>" + "Total: " + total + "</td></tr>");
