@@ -29,6 +29,7 @@
                     out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
                 }
             %>
+            <div class="container">
             <table class="table table-striped">
                 <thead><tr><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Select</th><th></th></tr></thead>
                 <tbody>
@@ -37,6 +38,7 @@
                                 <option value="0">Choose topping</option>
                                 <option value="Chocolate">Chocolate: 5.0</option><option value="Blueberry">Blueberry: 5.0</option><option value="Rasberry">Rasberry: 5.0</option><option value="Crispy">Crispy: 6.0</option><option value="Strawberry">Strawberry: 6.0</option><option value="Rum/Raisin">Rum/Raisin: 7.0</option><option value="Lemon">Lemon: 8.0</option><option value="Orange">Orange: 8.0</option><option value="Blue cheese">Blue cheese: 9.0</option>
                             </select></td>
+                       
                         <td><select name="bottom" id="bottomSelect">
                                 <option value="0">Choose bottom</option>
                                 <option value="Chocolate">Chocolate: 5.0</option><option value="Vanilla">Vanilla: 5.0</option><option value="Nutmeg">Nutmeg: 5.0</option><option value="Pistacio">Pistacio: 6.0</option><option value="Almond">Almond: 7.0</option>
@@ -46,6 +48,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </form>
         <table class="table">
             <%

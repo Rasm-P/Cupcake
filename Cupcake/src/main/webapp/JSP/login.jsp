@@ -13,22 +13,30 @@
     <head>
         <title>Login</title>
         <style> 
-            #Div1{
+            div{
                 margin: auto;
                 text-align: center;
                 width:600px;
             }
+            body{
+                max-width:vw;
+                max-height:vh;
+                background-image: url(https://images4.alphacoders.com/149/1494.jpg);
+            }
         </style>
     </head>
     <body>
-        <div id="">
-            <h1>Login</h1>
-            <p>
+        <div>
+            <h1>Login</h1>       
+            <br> 
             <form action="/Cupcake/FrontController?action=login" method="post">
-                <br>Username:<br><input type="text" name="username" value=""><br>
+                <h4>Hvis du har en bruger kan du logge ind her</h4>   
+                <p>Username:<p><input type="text" name="username" value=""><br>
                 Login:<br><input type="password" name="password" value=""><br>
-                <br><input type="submit" value="Login"></form>
+                <br>               
+                <input type="submit" value="Login"></form>
             <br>
+            <h4>Ellers kan du lave en bruger her!</h4>
             <form action="/Cupcake/FrontController?action=makeLogin" method="post">
                 <input type="submit" value="Create an account" />
             </form>
