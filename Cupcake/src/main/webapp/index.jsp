@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 85d8b4fb30318c47f6d6fd66bb5efa7d1bcf1241
 <%-- 
     Document   : index
     Created on : Mar 4, 2019, 10:06:10 AM
@@ -35,11 +31,4 @@
             <h2><a href="/Cupcake/FrontController">Log in</a></h2>
         </div>  
     </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
-
-
-
->>>>>>> 85d8b4fb30318c47f6d6fd66bb5efa7d1bcf1241
