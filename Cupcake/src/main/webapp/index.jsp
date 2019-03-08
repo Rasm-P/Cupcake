@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> c04a0ded56d6880f36aac77fd7d44b196babd72e
 <%-- 
     Document   : index
     Created on : Mar 4, 2019, 10:06:10 AM
@@ -22,12 +18,12 @@
         <link rel="stylesheet" type="text/css" href="css.css">
     </head>
     <body>       
-        <div id ="Div1" style="background:green !important" class = "jumbotron">
+        <div id ="Div1" style="background:pink !important" class = "jumbotron">
             <h1>The Cupcake Shop!</h1>
-            <p id="p1"> Welcome to the cupcakeshop</p>
+            <p> Welcome to the cupcake shop</p>
         </div>
         <br>         
-        <div id="Div2" class="container" style="background:red !important">
+        <div id="Div2" class="container" style="background:pink !important">
             <p id="p2" class="p2">Login to the cupcake shop here</p>
             <h2><a href="/Cupcake/FrontController">Log in</a></h2>
         </div>  

@@ -19,12 +19,12 @@ import java.sql.Statement;
  */
 public class MakeNewUser {
 
-    public static User generateUser(int idUser, String email, String userName, String password, double balance) {
+    public User generateUser(int idUser, String email, String userName, String password, double balance) {
         User user = new User(idUser, userName, password, balance);
         return user;
     }
 
-    public static void createNewUser(User user) throws Exception {
+    public void createNewUser(User user) throws Exception {
 
 
             try {
@@ -50,10 +50,11 @@ public class MakeNewUser {
     }
 
     public static void main(String[] args) throws Exception {
-        User user = generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
+        MakeNewUser mn = new MakeNewUser();
+        User user = mn.generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
         System.out.println(user.getUserName() + user.getPassword());
         System.out.println("INSERT INTO `cupcake`.`user` `username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");");
-        createNewUser(user);
+        mn.createNewUser(user);
 
     }
 
