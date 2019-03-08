@@ -50,6 +50,7 @@ System.out.println("here");
 
     }
 
+<<<<<<< HEAD
 //    public static void main(String[] args) throws Exception {
 //        User user = generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
 //        System.out.println(user.getUserName() + user.getPassword());
@@ -57,5 +58,15 @@ System.out.println("here");
 //        createNewUser(user);
 //
 //    }
+=======
+    public static void main(String[] args) throws Exception {
+        MakeNewUser mn = new MakeNewUser();
+        User user = mn.generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
+        System.out.println(user.getUserName() + user.getPassword());
+        System.out.println("INSERT INTO `cupcake`.`user` `username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");");
+        mn.createNewUser(user);
+
+    }
+>>>>>>> 2deefa1ebd900dbd4c91c0dd0ab3718a0f940cb5
 
 }

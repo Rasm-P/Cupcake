@@ -355,9 +355,15 @@ public class DataMapper {
         String username = "";
         String password = "";
         int invoiceid = 0;
+<<<<<<< HEAD
         int lineitems_id = 0;
 
         try {
+=======
+        int lineitems_id = 0 ;
+        shoppingCart cart = new shoppingCart();
+         try {
+>>>>>>> 2deefa1ebd900dbd4c91c0dd0ab3718a0f940cb5
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             String query = "select * from cupcake.allInvoices2 where username = " + "'" + Username + "';";
@@ -376,9 +382,16 @@ public class DataMapper {
                     invoiceid = rs.getInt("invoice_id");
                     lineitems_id = rs.getInt("lineitems_id");
                     password = rs.getString("password");
+<<<<<<< HEAD
 
                     User user = new User(idUser, username, password, 0.0);
 
+=======
+                    
+                    
+                   
+                    
+>>>>>>> 2deefa1ebd900dbd4c91c0dd0ab3718a0f940cb5
                 }
                 connection.close();
 
@@ -692,4 +705,62 @@ public class DataMapper {
 //        }
 //        System.out.println(mapper.isAdmin("Ole", "1234"));
     }
+    
+        public double getBalanceFromDB(String name, String password) {
+        double balance = 0;
+         try {
+
+            DBConnector conn = new DBConnector();
+            Connection connection = conn.getConnection();
+            // our SQL SELECT query. 
+            // if you only need a few columns, specify them by name instead of using "*"
+            String query = "SELECT balance from cupcake.user where user.username = " + "'" + name + "'" + " and user.password = " + "'" + password +"'"+ ";";
+
+            // execute the query, and get a java resultset
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (rs.next()) {
+                    
+                    balance = rs.getDouble("balance");
+                    System.out.println("here");
+
+                }
+
+                connection.close();
+            }
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        System.out.println(balance);
+        return balance;
+        
+        
+//         try {
+//            DBConnector conn = new DBConnector();
+//            Connection connection = conn.getConnection();
+//             Statement st = connection.createStatement(); {
+//               
+//                ResultSet rs = st.executeQuery(query); 
+//            
+//            
+//            while (rs.next()) {
+//                
+//                    balance = rs.getDouble("balance");
+//                System.out.println(balance);
+//                }
+//            
+//            connection.close();
+//         }
+//            } catch (Exception e) {
+//            e.getLocalizedMessage();
+//        
+//    }
+//         System.out.println(balance);
+//         return balance;
+        }
 }
