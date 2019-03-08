@@ -1,68 +1,46 @@
-body
+#sitemenus
 {
-    background-color: blue;
-    background-image: url("cupcake-3723832_960_720.jpg");
-    background-size: 100%;
-    background-size: cover;
-}
-
-h1 {
-    font-family: cursive;
-    padding: 20px;
-    color: rgba(255,0,255,0.7)
-}
-
-p {
-    color: red;
-    color: #00ff00;
-    color: rgba(255,0,255,0.7);
-    text-align: center;
+    background: lightgrey;
+    width: 100%;
     display: inline-block;
 }
-.p1 {
-    font-size: 30px;
-    margin: auto;
+
+#sitemenus a
+{
+    display: inline-block;
+    background: white;
+    color: black;
+    margin: 10px;
+    padding: 10px;
 }
 
-#myp2 {
-    font-family: cursive;
+#sitemenus #site
+{
     width: 50%;
-    padding: 20px;
-}
-<<<<<<< HEAD
-
-#myp2{
-    margin: auto;
-    text-align: center;
-    width:500px;
+    float: left;
+    text-align: left;
 }
 
-#Div1{
-    background:green !important;
-    margin: auto;
-    text-align: center;
-    width:600px;
-    color: pink;
-    border: green;
+#sitemenus #user
+{
+    width: 50%;
+    float: right;
+    text-align: right;
 }
-#Div2{
-    background:red !important;
-=======
-#Div1{
-    margin: auto;
-    text-align: center;
-    width:900px;
-    color: pink;
-    border: yellow;
+
+#sitemenus #user form
+{
+    float: right;
+    margin: 10px;
 }
-#Div2{
-    margin: auto;
-    text-align: center;
-    width:500px;   
+
+#sitemenus #user form input
+{
+    border: solid black 1px;
+    padding: 10px;
 }
-#myp2{
->>>>>>> 58434409bba97aa4dfd4d449eef57b15a8963c6f
-    margin: auto;
+
+h1
+{
     text-align: center;
-    width:500px;
 }

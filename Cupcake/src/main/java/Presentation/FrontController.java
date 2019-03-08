@@ -12,9 +12,8 @@ import Data.CupcakeMapper;
 import Data.DataMapper;
 import Shop.lineItems;
 import Shop.shoppingCart;
-import static Users.MakeNewUser.createNewUser;
+import Users.MakeNewUser;
 import Users.User;
-import static Users.User.getBalanceFromDB;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,7 +66,7 @@ public class FrontController extends HttpServlet {
         }
         System.out.println("1");
 
-        if (null == action) {
+        if (null == action && session.getAttribute("User") != null) {
             response.sendRedirect("JSP/mainPage.jsp");
         } else {
             System.out.println("2");
@@ -198,10 +197,11 @@ public class FrontController extends HttpServlet {
     private void makeLogin(String username, String password, HttpServletResponse response) throws Exception {
         System.out.println(username);
         System.out.println(password);
+        MakeNewUser mn = new MakeNewUser();
         if (username != null && !"".equals(username) && password != null && !"".equals(password) && data.getInfo_Username_Password(username, password) == false) {
             System.out.println("2.5");
             User u = new User(1, username, password, 0.0);
-            createNewUser(u);
+            mn.createNewUser(u);
             //PageLogin.generateLogin(response);
             response.sendRedirect("JSP/login.jsp");
             return;
@@ -218,7 +218,7 @@ public class FrontController extends HttpServlet {
         if (username != null && password != null && data.getInfo_Username_Password(username, password) == true) {
             System.out.println("3.25");
             session.setAttribute("loggedIn", true);
-            double b = getBalanceFromDB(username, password);
+            double b = data.getBalanceFromDB(username, password);
             User u = new User(1, username, password, b);
             session.setAttribute("User", u);
             //PageLoggedIn.generateLoggedIn(response);

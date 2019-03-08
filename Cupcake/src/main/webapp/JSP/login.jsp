@@ -3,37 +3,19 @@
     Created on : Mar 4, 2019, 5:41:35 PM
     Author     : Rasmus2
 --%>
-<jsp:include page='/jsp/siteheader.jsp'></jsp:include>
+<jsp:include page='/JSP/siteheader.jsp'></jsp:include>
 
-<jsp:include page='/jsp/sitemenus.jsp'></jsp:include>
-    
+<jsp:include page='/JSP/sitemenus.jsp'></jsp:include>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login</title>
-        <style> 
-            #Div1{
-                margin: auto;
-                text-align: center;
-                width:600px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="">
-            <h1>Login</h1>
-            <p>
-            <form action="/Cupcake/FrontController?action=login" method="post">
-                <br>Username:<br><input type="text" name="username" value=""><br>
-                Login:<br><input type="password" name="password" value=""><br>
-                <br><input type="submit" value="Login"></form>
-            <br>
-            <form action="/Cupcake/FrontController?action=makeLogin" method="post">
-                <input type="submit" value="Create an account" />
-            </form>
-        </div>
-    </body>
-</html>
 
-<jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
+<div id="">
+    <h1>Login</h1>
+    <form action="/Cupcake/FrontController?action=login" method="post">
+        <br>Username:<br><input type="text" name="username" value=""><br>
+        Login:<br><input type="password" name="password" value=""><br>
+        <br><input type="submit" value="Login"></form>
+    <br>
+</div>
+
+<jsp:include page='/JSP/sitefooter.jsp'></jsp:include>

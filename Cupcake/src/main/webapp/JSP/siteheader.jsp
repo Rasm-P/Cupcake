@@ -3,17 +3,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
-        <title>Web Project Basic</title>
-        
+
+        <title>CupcakeShop</title>
+
         <base href="${pageContext.request.contextPath}/" />
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link type="text/css" rel="stylesheet" href="css.css">
-        
+
     </head>
     <body>
-        
-        <h1>Web Project Basic</h1>
+
+        <h1>Cupcakeshoppen</h1>
