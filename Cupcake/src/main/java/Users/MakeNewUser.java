@@ -40,8 +40,11 @@ public class MakeNewUser {
             pstmt.setString(2, user.getPassword());
             pstmt.setDouble(3, user.getBalance());
 //            statement.executeUpdate(query);
+            
             pstmt.execute();
+            System.out.println("er her ");
             connection.close();
+                System.out.println("forbindelse lukket ");
         } catch (Exception e) {
 
             e.getLocalizedMessage();
@@ -53,7 +56,7 @@ public class MakeNewUser {
         MakeNewUser mn = new MakeNewUser();
         User user = mn.generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
         System.out.println(user.getUserName() + user.getPassword());
-        System.out.println("INSERT INTO `cupcake`.`user` `username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");");
+        
         mn.createNewUser(user);
 
     }
