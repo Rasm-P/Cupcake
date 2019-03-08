@@ -1,4 +1,4 @@
-<<<<<<< HEAD:Cupcake/src/main/webapp/index.jsp
+
 <%-- 
     Document   : index
     Created on : Mar 4, 2019, 10:06:10 AM
@@ -33,7 +33,7 @@
         </div>  
     </body>
 </html>
-=======
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,4 +61,4 @@
         </div>  
     </body>
 </html>
->>>>>>> 58434409bba97aa4dfd4d449eef57b15a8963c6f:Cupcake/src/main/webapp/index.html
+
