@@ -356,7 +356,7 @@ public class DataMapper {
         String password = "";
         int invoiceid = 0;
         int lineitems_id = 0 ;
-        
+        shoppingCart cart = new shoppingCart();
          try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
@@ -376,7 +376,10 @@ public class DataMapper {
                     invoiceid = rs.getInt("invoice_id");
                     lineitems_id = rs.getInt("lineitems_id");
                     password = rs.getString("password");
-
+                    
+                    
+                   
+                    
                 }
                 connection.close();
 

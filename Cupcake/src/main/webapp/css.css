@@ -28,6 +28,7 @@
     text-align: right;
 }
 
+<<<<<<< HEAD
 #sitemenus #user form
 {
     float: right;
@@ -42,5 +43,33 @@
 
 h1
 {
+=======
+#Div1{
+    background:green !important;
+    margin: auto;
+    text-align: center;
+    width:600px;
+    color: pink;
+    border: green;
+}
+/*// #Div1{
+#Div2{
+    background:red !important;
+
+#Div1{
+    margin: auto;
+    text-align: center;
+    width:900px;
+    color: pink;
+    border: yellow;
+} --%>*/
+#Div2{
+    margin: auto;
+    text-align: center;
+    width:500px;   
+}
+#myp2{
+    margin: auto;
+>>>>>>> c04a0ded56d6880f36aac77fd7d44b196babd72e
     text-align: center;
 }
