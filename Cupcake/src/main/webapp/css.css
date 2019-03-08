@@ -1,3 +1,19 @@
+body{
+    max-width:vw;
+    max-height:vh;
+    background-image: url("cupcake-3723832_960_720.jpg");
+    background-size: cover;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    /*    opacity: 0.4;*/
+}
+
 #sitemenus
 {
     background: lightgrey;
@@ -26,10 +42,7 @@
     width: 50%;
     float: right;
     text-align: right;
-<<<<<<< HEAD
-=======
 }
-
 
 #sitemenus #user form
 {
@@ -45,35 +58,62 @@
 
 h1
 {
+    text-align: center;
+}
 
-#Div1{
-    background:green !important;
+h1.solid {
+    margin: auto;
+    border-left-style: dotted;
+    border-right-style: dotted;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin: 25px 50px;
+}
+
+h3 {
+    margin: 25px 50px;
+}
+
+form {
+    margin: 25px 50px;
+}
+
+p {
+    margin: 25px 50px;
+}
+
+#divList {
+    border: 1px solid black;
+    margin: 25px 50px;
+    background-color: lightblue;
+    width: vw;
+}
+
+#divLogin{
     margin: auto;
     text-align: center;
     width:600px;
-    color: pink;
-    border: green;
 }
-/*// #Div1{
-#Div2{
-    background:red !important;
 
-#Div1{
-    margin: auto;
-    text-align: center;
-    width:900px;
-    color: pink;
-    border: yellow;
-} --%>*/
-#Div2{
-    margin: auto;
-    text-align: center;
-    width:500px;   
+body{
+    max-width:vw;
+    max-height:vh;
+    background-image: url("cupcake-3723832_960_720.jpg");
+    background-size: cover;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    /*    opacity: 0.4;*/
 }
-#myp2{
-    margin: auto;
 
-    text-align: center;
-}
->>>>>>> eb7f1e40a792a97e159fb1420e076560286f0dfd
-}
+

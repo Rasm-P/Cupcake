@@ -40,7 +40,7 @@
             ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u);
             for (int i = 0; i < arIn.size(); i++) {
                 out.println("<h3> Invoice nummer " + (i + 1) + ":" + "</h3>");
-                out.println("<div>");
+                out.println("<div id=\"divList\">");
                 out.println("<p>" + arIn.get(i).getCart().toString() + arIn.get(i).getUser().toString() + arIn.get(i).getDate().toString() + "</p>");
                 out.println(" <form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + arIn.get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>");
                 out.println("<br>");
@@ -49,27 +49,16 @@
         }
     %>
 </table>
- <style>
-            #Div1 { 
-                width:600px;
-                border: 40px solid green;
-                padding: 10px;
-                margin: auto;
-                font-size: 20px;
-                text-align: center;
-            }
-            div{
-                border: 1px solid black;
-                margin: 25px 50px;
-                background-color: lightblue;
-                width: vw;
-            }
-            #Div2{
-                margin: 25px 50px;
-            }
-        </style>
+<!--<style>
+    divList{
+        border: 1px solid black;
+        margin: 25px 50px;
+        background-color: lightblue;
+        width: vw;
+    }
+</style>-->
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>
 
-       
+
 

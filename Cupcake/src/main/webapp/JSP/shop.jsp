@@ -14,13 +14,11 @@
 <%@page import="Shop.lineItems"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<h1>Cupcakeshop</h1>
-<div class="container">
-    <form action="/Cupcake/FrontController?action=addmoney" method="POST">
-        <input type="text" name="amount" placeholder="Enter amount"/>
-        <input type="button" class="btn btn-info" value = "Add money to account">
-    </form>
-</div>
+<h1>Shop</h1>
+<form action="/Cupcake/FrontController?action=addmoney" method="POST">
+    <input type="text" name="amount" placeholder="Enter amount"/>
+    <input type="button" class="btn btn-info" value = "Add money to account">
+</form>
 <form action="/Cupcake/FrontController?action=shop" method="post">
     <%
         if (session.getAttribute("User") != null) {
