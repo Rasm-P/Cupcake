@@ -17,6 +17,10 @@
 <%@page import="Shop.lineItems"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head> 
+
 <h1>Confirmation</h1>
 <h2>Thank you for your purchase!</h2>
 <form action="/Cupcake/FrontController?action=confirmation" method="post">

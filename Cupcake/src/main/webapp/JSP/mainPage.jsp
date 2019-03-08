@@ -13,6 +13,10 @@
 <%@page import="Users.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head> 
+
 <h1>Main landing page</h1>
 <form action="/Cupcake/FrontController?action=addmoney" method="POST">
     <input type="text" name="amount" placeholder="Enter amount"/>
@@ -34,7 +38,7 @@
             ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u);
             for (int i = 0; i < arIn.size(); i++) {
                 out.println("<h3> Invoice nummer " + (i + 1) + ":" + "</h3>");
-                out.println("<div>");
+                out.println("<div id=\"divList\">");
                 out.println("<p>" + arIn.get(i).getCart().toString() + arIn.get(i).getUser().toString() + arIn.get(i).getDate().toString() + "</p>");
                 out.println(" <form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + arIn.get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>");
                 out.println("<br>");
@@ -43,24 +47,14 @@
         }
     %>
 </table>
-<style>
-    #Div1 { 
-        width:600px;
-        border: 40px solid green;
-        padding: 10px;
-        margin: auto;
-        font-size: 20px;
-        text-align: center;
-    }
-    div{
+
+<!--<style>
+    divList"{
         border: 1px solid black;
         margin: 25px 50px;
         background-color: lightblue;
         width: vw;
     }
-    #Div2{
-        margin: 25px 50px;
-    }
-</style>
+</style>-->
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>

@@ -13,6 +13,10 @@
 <%@page import="Data.DataMapper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head> 
+
 <h1>Admin Page</h1>
 <h2>Du er logget ind som admin!</h2>
 <form action="/Cupcake/FrontController?action=addmoney" method="POST">
@@ -43,7 +47,7 @@
         //        }
         //    }
         //}
-    %>
+%>
 </table>
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>

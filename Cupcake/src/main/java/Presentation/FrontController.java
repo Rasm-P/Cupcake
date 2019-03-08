@@ -142,11 +142,11 @@ public class FrontController extends HttpServlet {
         System.out.println("3.95");
         if (session.getAttribute("ArrayList<lineItems>") != null) {
             response.sendRedirect("JSP/confirmationPage.jsp");
-            return;
+            
         } else {
             response.sendRedirect("JSP/shop.jsp");
         }
-        return;
+     
     }
 
     private void shop(String topping, String bottom, String qty, HttpSession session, HttpServletResponse response) throws IOException, NumberFormatException {
