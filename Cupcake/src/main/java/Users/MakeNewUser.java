@@ -35,10 +35,11 @@ public class MakeNewUser {
 
             PreparedStatement pstmt = connection.prepareStatement(query);
 //            Statement statement = connection.createStatement();
-
+System.out.println("here");
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getPassword());
             pstmt.setDouble(3, user.getBalance());
+                System.out.println("here1");
 //            statement.executeUpdate(query);
             
             pstmt.execute();
@@ -52,6 +53,15 @@ public class MakeNewUser {
 
     }
 
+<<<<<<< HEAD
+//    public static void main(String[] args) throws Exception {
+//        User user = generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
+//        System.out.println(user.getUserName() + user.getPassword());
+//        System.out.println("INSERT INTO `cupcake`.`user` `username`,`password`,`balance`) VALUES" + "('" + user.getUserName() + "', '" + user.getPassword() + "', " + user.getBalance() + ");");
+//        createNewUser(user);
+//
+//    }
+=======
     public static void main(String[] args) throws Exception {
         MakeNewUser mn = new MakeNewUser();
         User user = mn.generateUser(0, "ral@hemmingsen.com", "Raller", "raller123", 0.0);
@@ -60,5 +70,6 @@ public class MakeNewUser {
         mn.createNewUser(user);
 
     }
+>>>>>>> 2deefa1ebd900dbd4c91c0dd0ab3718a0f940cb5
 
 }

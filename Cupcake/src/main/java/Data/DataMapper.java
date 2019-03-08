@@ -11,6 +11,7 @@ import Cupcake.cupcake;
 import Shop.Invoice;
 import Shop.lineItems;
 import Shop.shoppingCart;
+import Users.MakeNewUser;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -347,17 +348,22 @@ public class DataMapper {
 
     }
 
-    
-    public ArrayList<Invoice> getAllInvoicesForCustomerFromView(String Username)
-    {
+    public ArrayList<Invoice> getAllInvoicesForCustomerFromView(String Username) {
         ArrayList<Invoice> allInvoices = new ArrayList<>();
+        ArrayList<Integer> allLineItems = new ArrayList<>();
         int idUser = 0;
         String username = "";
         String password = "";
         int invoiceid = 0;
+<<<<<<< HEAD
+        int lineitems_id = 0;
+
+        try {
+=======
         int lineitems_id = 0 ;
         shoppingCart cart = new shoppingCart();
          try {
+>>>>>>> 2deefa1ebd900dbd4c91c0dd0ab3718a0f940cb5
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
             String query = "select * from cupcake.allInvoices2 where username = " + "'" + Username + "';";
@@ -376,10 +382,16 @@ public class DataMapper {
                     invoiceid = rs.getInt("invoice_id");
                     lineitems_id = rs.getInt("lineitems_id");
                     password = rs.getString("password");
+<<<<<<< HEAD
+
+                    User user = new User(idUser, username, password, 0.0);
+
+=======
                     
                     
                    
                     
+>>>>>>> 2deefa1ebd900dbd4c91c0dd0ab3718a0f940cb5
                 }
                 connection.close();
 
@@ -389,21 +401,12 @@ public class DataMapper {
             System.err.println("Got an exception! 6");
             System.err.println(es.getMessage());
         }
-        
+
         return null;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-        
-     
+
     public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception { //Giver exceptions på 9
-        
+
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         List<Integer> invoicesNumbers = new ArrayList<>();
         int idUser = 0;
@@ -455,17 +458,18 @@ public class DataMapper {
                     invoicesNumbers.add(invoice_id);
 
                 }
-                System.out.println(invoicesNumbers.toString());
+                
 
                 connection.close();
             }
 
-        } catch (Exception a) { 
+        } catch (Exception a) {
             System.err.println("Got an exception! 7");
             System.err.println(a.getMessage());
         }
 
         for (int i = 0; i < invoicesNumbers.size(); i++) {
+            
             shoppingCart cart = new shoppingCart();
             int lineitems_id = 0;
             ArrayList<cupcake> tempCup = new ArrayList<>();
@@ -510,6 +514,7 @@ public class DataMapper {
                     String bottomname = "";
                     String toppingname = "";
                     double price;
+                    
 
                     int quantity = 0;
 
@@ -519,33 +524,50 @@ public class DataMapper {
                         bottomname = rs.getString("bottomname");
                         toppingname = rs.getString("toppingname");
                         quantity = rs.getInt("quantity");
-                        mapper.getBottomPriceFromName(bottomname);
-                        System.out.println(bottomname);
+                        //mapper.getBottomPriceFromName(bottomname);
+                        
                         Bottoms bottom = new Bottoms(bottomname, 0);
-                        
+
                         Toppings top = new Toppings(toppingname, 0);
-                        
+
                         cupcake cup = new cupcake(bottom, top, 0);
-                        
-                        
+                        lineItems lineitems = new lineItems(quantity, cup);
 
-                        tempCup.add(cup);
-
-                    }
-                    
-                    for(int j = 0; j < tempCup.size();j++) {
-                        CupcakeMapper mapper = new CupcakeMapper();
-                        tempCup.get(j).getBottom().setPrice( mapper.getBottomPriceFromName(tempCup.get(j).getBottom().getName()));
-                        tempCup.get(j).getTop().setPrice(mapper.getTopPriceFromName(tempCup.get(j).getTop().getName()));
-                          mapper.getTopPriceFromName(tempCup.get(j).getTop().getName());
-                        tempCup.get(j).setPrice((tempCup.get(j).getPrice(tempCup.get(j).getBottom(), tempCup.get(j).getTop())));
-                        lineItems lineitem = new lineItems(quantity, tempCup.get(j));
-                        cart.add(lineitem);
-                    }
-
-                    Invoice invoice = new Invoice(cart, user, date.toLocalDate());
+                        cart.add(lineitems);
+                        Invoice invoice = new Invoice(cart, user, date.toLocalDate());
                     allInvoices.add(invoice);
+
+                    }
                     connection.close();
+                    
+                    CupcakeMapper cake = new CupcakeMapper();
+                    for(int h = 0; h < allInvoices.size(); h++) {
+                    for(int q = 0; q < allInvoices.get(h).getCart().getCart().size() ; q++) {
+                  double bottomPrice = cake.getBottomPriceFromName(allInvoices.get(h).getCart().get(q).getCup().getBottom().getName());
+                  allInvoices.get(h).getCart().get(q).getCup().getBottom().setPrice(bottomPrice);
+                  
+              }
+                    }
+              
+              for(int a = 0; a < allInvoices.size(); a++) {
+              for(int b = 0; b < allInvoices.get(a).getCart().getCart().size() ; b++) {
+                  double topPrice = cake.getTopPriceFromName(allInvoices.get(a).getCart().get(b).getCup().getTop().getName());
+                  allInvoices.get(a).getCart().get(b).getCup().getTop().setPrice(topPrice);
+                  
+              }
+              }
+               for(int x = 0; x < allInvoices.size(); x++) {
+                   
+                   for(int z = 0; z < allInvoices.get(x).getCart().size(); z++) {
+                       
+                       double botPrice = allInvoices.get(x).getCart().get(z).getCup().getBottom().getPrice();
+                       double topPrice = allInvoices.get(x).getCart().get(z).getCup().getTop().getPrice();
+                       allInvoices.get(x).getCart().get(z).setFullPrice(botPrice + topPrice);
+                   }
+               }     
+
+                    
+                    
                 }
 
             } catch (Exception es) {
@@ -554,10 +576,12 @@ public class DataMapper {
             }
 
         }
-        return allInvoices;
+        
 
-    }
     
+        return allInvoices;
+    }
+
     public boolean isAdmin(String username, String password) {
         int isAdmin = 0;
         try {
@@ -565,7 +589,7 @@ public class DataMapper {
             Connection connection = conn.getConnection();
             String query = "select user.isAdmin from user where username = " + "'" + username + "'" + " and password=" + "'" + password + "'" + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
-           try ( // create the java statement
+            try ( // create the java statement
                     Statement st = connection.createStatement()) {
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
@@ -573,25 +597,24 @@ public class DataMapper {
                 // iterate through the java resultset
                 while (rs.next()) {
                     isAdmin = rs.getInt("isAdmin");
-                    
 
                 }
 
                 connection.close();
-                
+
             }
         } catch (Exception e) {
             System.err.println("Got an exception! b");
             System.err.println(e.getMessage());
-            
+
         }
-        if(isAdmin == 1) {
+        if (isAdmin == 1) {
             return true;
+        } else {
+            return false;
         }
-        else { return false; }
-            
+
     }
-    
 
     public ArrayList<User> getAllUsers() {
         ArrayList<Integer> users = new ArrayList<>();
@@ -602,7 +625,7 @@ public class DataMapper {
         String username = "";
         String password = "";
         double balance = 0.0;
-        
+
         Date date = null;
 
         try {
@@ -623,52 +646,63 @@ public class DataMapper {
                     username = rs.getString("username");
                     password = rs.getString("password");
                     balance = rs.getDouble("balance");
-                    
+
                     User user = new User(idUser, username, password, balance);
                     allUsers.add(user);
 
                 }
                 connection.close();
-                
-               
-                
+
             }
 
         } catch (Exception es) {
             System.err.println("Got an exception! 6");
             System.err.println(es.getMessage());
         }
-            
-        
-        
+
         return allUsers;
     }
-    
-    public ArrayList<ArrayList<Invoice>> getAllInvoices(ArrayList<User> users) throws Exception{
+
+    public ArrayList<ArrayList<Invoice>> getAllInvoices(ArrayList<User> users) throws Exception {
         DataMapper mapper = new DataMapper();
         ArrayList<ArrayList<Invoice>> allInvoices = new ArrayList();
-        for(int i = 0; i < users.size(); i++) {
-        allInvoices.add(mapper.getAllInvoicesForCustomer(users.get(i)));
+        for (int i = 0; i < users.size(); i++) {
+            allInvoices.add(mapper.getAllInvoicesForCustomer(users.get(i)));
         }
-        
+
         return allInvoices;
     }
 
-
     public static void main(String[] args) throws Exception {
-        User user = new User(2, "Ditlev", "12345", 2.5);
+//        User user = new User(2, "Ditlev", "12345", 2.5);
+//        CupcakeMapper cake = new CupcakeMapper();
           DataMapper mapper = new DataMapper();
+//          ArrayList<Invoice> list = mapper.getAllInvoicesForCustomer(user);
+//          System.out.println(list.toString());
+//          
+//          shoppingCart cart = new shoppingCart();
+        ArrayList<ArrayList<Invoice>> list = mapper.getAllInvoices(mapper.getAllUsers());
+                  System.out.println(list.toString());
           
-          System.out.println(mapper.getAllInvoices(mapper.getAllUsers()) + "\n");
+          
+         
+//          mapper.addToBalance(user, 10);
+          
+//          MakeNewUser newuser = new MakeNewUser();
+//          User user = new User(0, "Jorgen", "jorgen123", 100.0);
+//          newuser.createNewUser(user);
+//          System.out.println(user.toString());
+//          mapper.getInfoFromUsername("Jorgen", "jorgen123");
+          
+//          
+//          System.out.println(mapper.getAllInvoices(mapper.getAllUsers()) + "\n");
 //        List<Invoice> list = mapper.getAllInvoicesForCustomer(user);
 
 //        for (int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i).toString());
 //            System.out.println(list.get(i).getCart().toString());
-
 //
 //        }
-
 //        System.out.println(mapper.isAdmin("Ole", "1234"));
     }
     
@@ -730,7 +764,3 @@ public class DataMapper {
 //         return balance;
         }
 }
-
-    
-
-
