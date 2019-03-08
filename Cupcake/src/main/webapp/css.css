@@ -45,6 +45,10 @@ p {
     border: green;
 }
 /*// #Div1{
+#Div2{
+    background:red !important;
+
+#Div1{
     margin: auto;
     text-align: center;
     width:900px;
