@@ -21,17 +21,14 @@
 
         <link rel="stylesheet" type="text/css" href="css.css">
     </head>
-    <body>
-        <div id ="Div1"  class="container">
-            <div style="background:green !important" class = "jumbotron">
-                <h1>The Cupcake Shop!</h1>
-                <p class="p1"> Welcome to the cupcakeshop</p>
-            </div>
-            <br>         
+    <body>       
+        <div id ="Div1" style="background:green !important" class = "jumbotron">
+            <h1>The Cupcake Shop!</h1>
+            <p id="p1"> Welcome to the cupcakeshop</p>
         </div>
+        <br>         
         <div id="Div2" class="container" style="background:red !important">
-            <p id="myp2" class="p1">Login to the cupcake shop here</p>
-            <br>
+            <p id="p2" class="p2">Login to the cupcake shop here</p>
             <h2><a href="/Cupcake/FrontController">Log in</a></h2>
         </div>  
     </body>
