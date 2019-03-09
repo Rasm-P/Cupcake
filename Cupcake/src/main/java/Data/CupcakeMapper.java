@@ -26,8 +26,8 @@ public class CupcakeMapper {
 
         try {
 
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            
+            Connection connection = DBConnector.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM toppings;";
@@ -48,7 +48,7 @@ public class CupcakeMapper {
 
                 }
 
-                connection.close();
+                
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
@@ -66,8 +66,8 @@ public class CupcakeMapper {
 
         try {
 
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            
+            Connection connection = DBConnector.getConnection();
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM bottoms;";
@@ -88,7 +88,7 @@ public class CupcakeMapper {
 
                 }
 
-                connection.close();
+                
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
@@ -245,6 +245,13 @@ public class CupcakeMapper {
         
          return price;
          
+    }
+    
+    public static void main(String[] args) {
+        
+       CupcakeMapper mapper = new CupcakeMapper();
+        System.out.println(mapper.getBottoms().toString());
+        System.out.println(mapper.getToppings().toString());
     }
 
     

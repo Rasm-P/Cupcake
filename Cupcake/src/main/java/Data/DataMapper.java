@@ -272,7 +272,7 @@ public class DataMapper {
 
         try {
             DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            Connection connection = DBConnector.getConnection();
 
             String query = "select orders.lineitems_id from orders where invoice_id = " + invoice_number + ";";
 
@@ -408,11 +408,11 @@ public class DataMapper {
         Date date = null;
 
         try {
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            
+            Connection connection = DBConnector.getConnection();
             String query = "select user.IdUser from user where username = " + "'" + user.getUserName() + "'" + " and password = " + "'" + user.getPassword() + "'" + ";";
 
-            PreparedStatement pstmt = connection.prepareStatement(query);
+            
 
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
@@ -424,7 +424,7 @@ public class DataMapper {
                     idUser = rs.getInt("idUser");
 
                 }
-                connection.close();
+                
 
             }
 
@@ -434,8 +434,8 @@ public class DataMapper {
         }
 
         try {
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            
+            Connection connection = DBConnector.getConnection();
             String query = "select invoice.invoice_id from invoice where idUser =" + "'" + idUser + "'" + ";";
 
             PreparedStatement pstmt = connection.prepareStatement(query);
@@ -455,7 +455,7 @@ public class DataMapper {
                 }
                 
 
-                connection.close();
+                
             }
 
         } catch (Exception a) {
@@ -470,11 +470,11 @@ public class DataMapper {
             ArrayList<cupcake> tempCup = new ArrayList<>();
 
             try {
-                DBConnector conn = new DBConnector();
-                Connection connection = conn.getConnection();
+                
+                Connection connection = DBConnector.getConnection();
                 String query = "SELECT orders.lineitems_id, orders.orderdate from orders where invoice_id = " + invoicesNumbers.get(i) + ";";
 
-                PreparedStatement pstmt = connection.prepareStatement(query);
+                
 
                 try ( // create the java statement
                         Statement st = connection.createStatement()) {
@@ -487,20 +487,21 @@ public class DataMapper {
                         date = rs.getDate("orderdate");
 
                     }
-                    connection.close();
+                    
 
                 }
             } catch (Exception es) {
                 System.err.println("Got an exception! 8");
                 System.err.println(es.getMessage());
+                es.printStackTrace();
             }
 
             try {
-                DBConnector conn = new DBConnector();
-                Connection connection = conn.getConnection();
+                
+                Connection connection = DBConnector.getConnection();
                 String query = "SELECT lineitems.bottomname, lineitems.toppingname, lineitems.quantity from lineitems where lineitems_id = " + lineitems_id + ";";
 
-                PreparedStatement pstmt = connection.prepareStatement(query);
+                
 
                 try ( // create the java statement
                         Statement st = connection.createStatement()) {
@@ -533,7 +534,7 @@ public class DataMapper {
                     allInvoices.add(invoice);
 
                     }
-                    connection.close();
+                    
                     
                     CupcakeMapper cake = new CupcakeMapper();
                     for(int h = 0; h < allInvoices.size(); h++) {
@@ -669,9 +670,10 @@ public class DataMapper {
     }
 
     public static void main(String[] args) throws Exception {
-//        User user = new User(2, "Ditlev", "12345", 2.5);
+        User user = new User(2, "Ditlev", "12345", 2.5);
 //        CupcakeMapper cake = new CupcakeMapper();
           DataMapper mapper = new DataMapper();
+//          mapper.getAllInvoicesForCustomer(user);
 //          ArrayList<Invoice> list = mapper.getAllInvoicesForCustomer(user);
 //          System.out.println(list.toString());
 //          
