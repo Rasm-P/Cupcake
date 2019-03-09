@@ -61,12 +61,12 @@ p {
 
 #sitemenus #user
 {    width: 50%;
-    float: right;
+    float: left;
     text-align: right;}
 
 #sitemenus #user form
 {
-    float: right;
+    float: left;
     margin: 10px;}
 
 #sitemenus #user form input{
