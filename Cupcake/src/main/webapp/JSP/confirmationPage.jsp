@@ -19,24 +19,22 @@
 
 <h1>Confirmation</h1>
 <h2>Thank you for your purchase!</h2>
-<form action="/Cupcake/FrontController?action=confirmation" method="post">
-    <% if (session.getAttribute("User") != null) {
-            DataMapper d = new DataMapper();
-            User u = (User) session.getAttribute("User");
-            double total = 0.0;
-            shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
-            for (int i = 0; i < arOld.size(); i++) {
-                out.println("<p>" + arOld.get(i).toString() + "</p>");
-                total = total + arOld.get(i).getFullPrice();
-            }
-
-            Invoice in = new transaction(arOld, u, LocalDate.now());
-            d.createOrder(in);
-
-            out.println("<p>" + "Total: " + total + "</p>");
-            session.setAttribute("ArrayList<lineItems>", null);
+<% if (session.getAttribute("User") != null) {
+        DataMapper d = new DataMapper();
+        User u = (User) session.getAttribute("User");
+        double total = 0.0;
+        shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
+        for (int i = 0; i < arOld.size(); i++) {
+            out.println("<p>" + arOld.get(i).toString() + "</p>");
+            total = total + arOld.get(i).getFullPrice();
         }
-    %>
-</form>
+
+        Invoice in = new transaction(arOld, u, LocalDate.now());
+        d.createOrder(in);
+
+        out.println("<p>" + "Total: " + total + "</p>");
+        session.setAttribute("ArrayList<lineItems>", null);
+    }
+%>
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>

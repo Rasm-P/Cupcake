@@ -17,16 +17,16 @@
 <h1>Shop</h1>
 <form action="/Cupcake/FrontController?action=addmoney" method="POST">
     <input type="text" name="amount" placeholder="Enter amount"/>
-    <input type="button" class="btn btn-info" value = "Add money to account">
+    <input type="submit" value="Add money to account"/>
 </form>
+<%
+    if (session.getAttribute("User") != null) {
+        User u = (User) session.getAttribute("User");
+        out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
+    }
+%>
 <form action="/Cupcake/FrontController?action=shop" method="post">
-    <%
-        if (session.getAttribute("User") != null) {
-            User u = (User) session.getAttribute("User");
-            out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
-        }
-    %>
-    <br>
+
     <table class="table table-striped">
         <thead><tr><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Select</th><th></th></tr></thead>
         <tbody>
@@ -45,41 +45,39 @@
         </tbody>
     </table>
 </form>
-<table class="table">
-    <%
-        double total = 0.0;
-        if (session.getAttribute("ArrayList<lineItems>") != null) {
-            shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
-            for (int i = 0; i < arOld.size(); i++) {
-                out.println("<tr><td>" + arOld.get(i).toString() + "</td></tr>");
-                total = total + arOld.get(i).getFullPrice();
+<form> 
+    <table class="table">
+        <%
+            double total = 0.0;
+            if (session.getAttribute("ArrayList<lineItems>") != null) {
+                shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
+                for (int i = 0; i < arOld.size(); i++) {
+                    out.println("<tr><td>" + arOld.get(i).toString() + "</td></tr>");
+                    total = total + arOld.get(i).getFullPrice();
+                }
             }
-        }
-    %>
-</table>
+        %>
+    </table>
+</form>
 
-
-<table class="table">
+<form>
     <%
         out.println("<tr><td>" + "Total: " + total + "</td></tr>");
     %>
-</table>
-<br>
-<table class="table">
-    <%
-        if (session.getAttribute("User") != null) {
-            User u = (User) session.getAttribute("User");
-            DataMapper data = new DataMapper();
-            if (total < u.getBalance()) {
-                out.println("<form action=\"/Cupcake/FrontController?action=confirmation\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
-                data.removeFromBalance(u, total);
-                User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
-                session.setAttribute("User", newu);
-            } else {
-                out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
-            }
+</form>
+<%
+    if (session.getAttribute("User") != null) {
+        User u = (User) session.getAttribute("User");
+        DataMapper data = new DataMapper();
+        if (total < u.getBalance()) {
+            out.println("<form action=\"/Cupcake/FrontController?action=confirmation\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
+            data.removeFromBalance(u, total);
+            User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
+            session.setAttribute("User", newu);
+        } else {
+            out.println("<form action=\"/Cupcake/FrontController?action=error\" method=\"post\"><input type=\"submit\" value=\"Checkout\" /></form>");
         }
-    %>
-</table>
+    }
+%>
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>
