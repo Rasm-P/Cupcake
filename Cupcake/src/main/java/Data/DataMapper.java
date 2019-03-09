@@ -30,6 +30,7 @@ import jdk.nashorn.internal.ir.LiteralNode;
  * @author Rasmus2
  */
 public class DataMapper {
+    private Connection connection = DBConnector.getConnection();
 
     public ArrayList<Invoice> getInvoiceFromUsername(String inputUsername) {
         int userId;
@@ -121,7 +122,7 @@ public class DataMapper {
 
         if (inputUsername.equals(username)) {
             User user = new User(id, username, password, balance);
-            System.out.println(user.getUserName());
+            
             return user;
         } else {
             System.out.println("User not found!");
@@ -400,78 +401,18 @@ public class DataMapper {
         return null;
     }
 
-    public ArrayList<Invoice> getAllInvoicesForCustomer(User user) throws Exception { //Giver exceptions på 9
-
+    public ArrayList<Invoice> getAllInvoicesForCustomer(String username, String password) throws Exception { //Giver exceptions på 9
         ArrayList<Invoice> allInvoices = new ArrayList<>();
-        List<Integer> invoicesNumbers = new ArrayList<>();
-        int idUser = 0;
         Date date = null;
-
-        try {
-            
-            Connection connection = DBConnector.getConnection();
-            String query = "select user.IdUser from user where username = " + "'" + user.getUserName() + "'" + " and password = " + "'" + user.getPassword() + "'" + ";";
-
-            
-
-            try ( // create the java statement
-                    Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
-                ResultSet rs = st.executeQuery(query);
-
-                // iterate through the java resultset
-                while (rs.next()) {
-                    idUser = rs.getInt("idUser");
-
-                }
-                
-
-            }
-
-        } catch (Exception es) {
-            System.err.println("Got an exception! 6");
-            System.err.println(es.getMessage());
-        }
-
-        try {
-            
-            Connection connection = DBConnector.getConnection();
-            String query = "select invoice.invoice_id from invoice where idUser =" + "'" + idUser + "'" + ";";
-
-            PreparedStatement pstmt = connection.prepareStatement(query);
-
-            try ( // create the java statement
-                    Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
-                ResultSet rs = st.executeQuery(query);
-
-                // iterate through the java resultset
-                int invoice_id = 0;
-
-                while (rs.next()) {
-                    invoice_id = rs.getInt("invoice_id");
-                    invoicesNumbers.add(invoice_id);
-
-                }
-                
-
-                
-            }
-
-        } catch (Exception a) {
-            System.err.println("Got an exception! 7");
-            System.err.println(a.getMessage());
-        }
-
+        ArrayList<Integer> invoicesNumbers = getAllInvoiceForUser(username, password);
         for (int i = 0; i < invoicesNumbers.size(); i++) {
-            
             shoppingCart cart = new shoppingCart();
             int lineitems_id = 0;
             ArrayList<cupcake> tempCup = new ArrayList<>();
 
             try {
                 
-                Connection connection = DBConnector.getConnection();
+                
                 String query = "SELECT orders.lineitems_id, orders.orderdate from orders where invoice_id = " + invoicesNumbers.get(i) + ";";
 
                 
@@ -487,6 +428,9 @@ public class DataMapper {
                         date = rs.getDate("orderdate");
 
                     }
+                    rs.close();
+                st.closeOnCompletion();
+                    
                     
 
                 }
@@ -498,7 +442,7 @@ public class DataMapper {
 
             try {
                 
-                Connection connection = DBConnector.getConnection();
+                
                 String query = "SELECT lineitems.bottomname, lineitems.toppingname, lineitems.quantity from lineitems where lineitems_id = " + lineitems_id + ";";
 
                 
@@ -528,13 +472,18 @@ public class DataMapper {
 
                         cupcake cup = new cupcake(bottom, top, 0);
                         lineItems lineitems = new lineItems(quantity, cup);
+                        int idUser = getUserID(username, password);
+                        double balance = getBalanceFromDB(username, password);
+                        User user = new User(idUser, username, password, balance);
 
                         cart.add(lineitems);
                         Invoice invoice = new Invoice(cart, user, date.toLocalDate());
                     allInvoices.add(invoice);
 
                     }
-                    
+                    rs.close();
+                st.closeOnCompletion();
+                                    
                     
                     CupcakeMapper cake = new CupcakeMapper();
                     for(int h = 0; h < allInvoices.size(); h++) {
@@ -576,6 +525,77 @@ public class DataMapper {
 
     
         return allInvoices;
+    }
+
+    public int getUserID(String username, String password) {
+        int idUser = 0;
+        try {
+            
+            
+            String query = "select user.IdUser from user where username = " + "'" + username + "'" + " and password = " + "'" + password + "'" + ";";
+            
+            
+            
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+                
+                // iterate through the java resultset
+                while (rs.next()) {
+                    idUser = rs.getInt("idUser");
+                    
+                }
+                rs.close();
+                st.closeOnCompletion();
+                
+                
+            }
+            
+        } catch (Exception es) {
+            System.err.println("Got an exception! 6");
+            System.err.println(es.getMessage());
+        }
+        
+        return idUser;
+    }
+
+    public ArrayList<Integer> getAllInvoiceForUser (String username, String password) {
+        int idUser = getUserID(username, password);
+        ArrayList<Integer> invoicesNumbers = new ArrayList<>();
+        try {
+            
+            
+            String query = "select invoice.invoice_id from invoice where idUser =" + "'" + idUser + "'" + ";";
+            
+            
+            
+            try ( // create the java statement
+                    Statement st = connection.createStatement()) {
+                // execute the query, and get a java resultset
+                ResultSet rs = st.executeQuery(query);
+                
+                // iterate through the java resultset
+                int invoice_id = 0;
+                
+                while (rs.next()) {
+                    invoice_id = rs.getInt("invoice_id");
+                    invoicesNumbers.add(invoice_id);
+                    
+                }
+                rs.close();
+                st.closeOnCompletion();
+                
+                
+                
+                
+            }
+            
+        } catch (Exception a) {
+            System.err.println("Got an exception! 7");
+            System.err.println(a.getMessage());
+        }
+        return invoicesNumbers;
     }
 
     public boolean isAdmin(String username, String password) {
@@ -625,11 +645,10 @@ public class DataMapper {
         Date date = null;
 
         try {
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            
             String query = "select idUser, username, password, balance from user;";
 
-            PreparedStatement pstmt = connection.prepareStatement(query);
+            
 
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
@@ -647,7 +666,7 @@ public class DataMapper {
                     allUsers.add(user);
 
                 }
-                connection.close();
+                
 
             }
 
@@ -659,11 +678,12 @@ public class DataMapper {
         return allUsers;
     }
 
-    public ArrayList<ArrayList<Invoice>> getAllInvoices(ArrayList<User> users) throws Exception {
+    public ArrayList<ArrayList<Invoice>> getAllInvoices() throws Exception {
+        ArrayList<User> users = getAllUsers();
         DataMapper mapper = new DataMapper();
         ArrayList<ArrayList<Invoice>> allInvoices = new ArrayList();
         for (int i = 0; i < users.size(); i++) {
-            allInvoices.add(mapper.getAllInvoicesForCustomer(users.get(i)));
+            allInvoices.add(mapper.getAllInvoicesForCustomer(users.get(i).getUserName(), users.get(i).getPassword()));
         }
 
         return allInvoices;
@@ -676,10 +696,12 @@ public class DataMapper {
 //          mapper.getAllInvoicesForCustomer(user);
 //          ArrayList<Invoice> list = mapper.getAllInvoicesForCustomer(user);
 //          System.out.println(list.toString());
+System.out.println(mapper.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()));
+
 //          
 //          shoppingCart cart = new shoppingCart();
-        ArrayList<ArrayList<Invoice>> list = mapper.getAllInvoices(mapper.getAllUsers());
-                  System.out.println(list.toString());
+//        ArrayList<ArrayList<Invoice>> list = mapper.getAllInvoices();
+//                  System.out.println(list.toString());
           
           
          
@@ -703,7 +725,7 @@ public class DataMapper {
 //        System.out.println(mapper.isAdmin("Ole", "1234"));
     }
     
-        public double getBalanceFromDB(String name, String password) {
+    public double getBalanceFromDB(String name, String password) {
         double balance = 0;
          try {
 
@@ -723,17 +745,19 @@ public class DataMapper {
                 while (rs.next()) {
                     
                     balance = rs.getDouble("balance");
-                    System.out.println("here");
+                    
 
                 }
+                rs.close();
+                st.closeOnCompletion();
 
-                connection.close();
+                
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
         }
-        System.out.println(balance);
+        
         return balance;
         
         
@@ -751,7 +775,7 @@ public class DataMapper {
 //                System.out.println(balance);
 //                }
 //            
-//            connection.close();
+//           
 //         }
 //            } catch (Exception e) {
 //            e.getLocalizedMessage();
