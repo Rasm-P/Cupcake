@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MakeDataNice {
     
     public String generateHTML(ArrayList<ArrayList<Invoice>> invoices) {
-        
+        return null;
     }
     
 }
