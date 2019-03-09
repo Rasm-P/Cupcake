@@ -1,6 +1,3 @@
-
-
-
 body{
     background-color: blue;
     background-image: url("cupcake-3723832_960_720.jpg");
@@ -30,7 +27,6 @@ body{
     width: 100%;
     display: inline-block;
 }
-
 
 #sitemenus a
 {
@@ -92,8 +88,8 @@ p {
 #Div1{
     margin: auto;
     text-align: center;
-    width:60vw;
-    color: green;}
+    width:40vw; /*Div1 er ikke centreret hvis width er større end 40, eller deromkring*/
+    color: black;}
 
 #Div2{
     margin: auto;
@@ -127,6 +123,8 @@ h2 {
 
 h3 {
     margin: 25px 50px;
+    color: red;
+    text-decoration: underline;
 }
 
 form {
@@ -167,5 +165,4 @@ body{
     height: 100%;
     z-index: -2;
     /*    opacity: 0.4;*/
-
 }
