@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-body {
-=======
+
+
+
 body{
     background-color: blue;
     background-image: url("cupcake-3723832_960_720.jpg");
@@ -9,7 +9,7 @@ body{
 
     max-width:vw;
     max-height:vh;
->>>>>>> b798c15e79b89cad461e5b098383d6b50417f6a9
+
     background-image: url("cupcake-3723832_960_720.jpg");
     background-size: cover;
     background-position: center;
@@ -31,7 +31,7 @@ body{
     display: inline-block;
 }
 
-<<<<<<< HEAD
+
 #sitemenus a
 {
     display: inline-block;
@@ -39,11 +39,12 @@ body{
     color: black;
     margin: 10px;
     padding: 10px;
-=======
+}
+
 h2{
     margin: auto;
     text-align: center;  
->>>>>>> b798c15e79b89cad461e5b098383d6b50417f6a9
+
 }
 
 h1{
@@ -146,9 +147,9 @@ p {
 #divLogin{
     margin: auto;
     text-align: center;
-<<<<<<< HEAD
+
     width:600px;
-=======
+
     width: 400;
 }
 
@@ -166,5 +167,5 @@ body{
     height: 100%;
     z-index: -2;
     /*    opacity: 0.4;*/
->>>>>>> b798c15e79b89cad461e5b098383d6b50417f6a9
+
 }
