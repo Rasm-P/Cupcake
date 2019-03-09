@@ -1,64 +1,113 @@
+<<<<<<< HEAD
+body {
+=======
 body{
+    background-color: blue;
+    background-image: url("cupcake-3723832_960_720.jpg");
+    background-size: 100%;
+    background-size: cover;
+
     max-width:vw;
     max-height:vh;
+>>>>>>> b798c15e79b89cad461e5b098383d6b50417f6a9
     background-image: url("cupcake-3723832_960_720.jpg");
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     content: "";
-    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -2;
-    /*    opacity: 0.4;*/
 }
 
 #sitemenus
 {
-    background: lightgrey;
+    background: white;
     width: 100%;
     display: inline-block;
 }
 
+<<<<<<< HEAD
 #sitemenus a
 {
     display: inline-block;
-    background: white;
+    background: whitesmoke;
     color: black;
     margin: 10px;
     padding: 10px;
+=======
+h2{
+    margin: auto;
+    text-align: center;  
+>>>>>>> b798c15e79b89cad461e5b098383d6b50417f6a9
 }
 
-#sitemenus #site
-{
+h1{
+    color: green;
+    margin: auto;
+    text-align: center; 
+}
+
+p{
+    margin: auto;
+    text-align: center;
+}
+p {
+    color: red;
+    font-size: 20px;
+    margin: auto;
+}
+
+#myp2 {
+    width: 50%;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    width:500px;}
+
+#sitemenus #site{
     width: 50%;
     float: left;
-    text-align: left;
-}
+    text-align: left;}
 
 #sitemenus #user
-{
-    width: 50%;
+{    width: 50%;
     float: right;
-    text-align: right;
-}
+    text-align: right;}
 
 #sitemenus #user form
 {
     float: right;
-    margin: 10px;
-}
+    margin: 10px;}
 
-#sitemenus #user form input
-{
+#sitemenus #user form input{
     border: solid black 1px;
-    padding: 10px;
+    padding: 10px;}
+
+#Div1{
+    margin: auto;
+    text-align: center;
+    width:60vw;
+    color: green;}
+
+#Div2{
+    margin: auto;
+    text-align: center;
+    width:300px;   
+}
+#myp2{
+    margin: auto;
+    text-align: center;
 }
 
 h1
 {
     text-align: center;
+
 }
 
 h1.solid {
@@ -97,7 +146,10 @@ p {
 #divLogin{
     margin: auto;
     text-align: center;
+<<<<<<< HEAD
     width:600px;
+=======
+    width: 400;
 }
 
 body{
@@ -114,6 +166,5 @@ body{
     height: 100%;
     z-index: -2;
     /*    opacity: 0.4;*/
+>>>>>>> b798c15e79b89cad461e5b098383d6b50417f6a9
 }
-
-

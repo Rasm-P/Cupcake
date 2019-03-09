@@ -8,6 +8,10 @@
     
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head> 
+
 <div id="divLogin">
     <h1>Login Registration</h1>
     <div id ="Div1" class="container">

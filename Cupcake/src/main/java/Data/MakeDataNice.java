@@ -14,8 +14,14 @@ import java.util.ArrayList;
  */
 public class MakeDataNice {
     
+<<<<<<< HEAD
     public String generateHTML(ArrayList<ArrayList<Invoice>> invoices) {
         return null;
     }
+=======
+//    public String generateHTML(ArrayList<ArrayList<Invoice>> invoices) {
+//        
+//    }
+>>>>>>> 53b089f666df89bce2deff14080ccd658a6aa811
     
 }
