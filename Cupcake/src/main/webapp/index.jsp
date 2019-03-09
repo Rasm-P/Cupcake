@@ -1,4 +1,3 @@
-
 <%-- 
     Document   : index
     Created on : Mar 4, 2019, 10:06:10 AM
@@ -16,29 +15,17 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="cssOld.css">
+        <link rel="stylesheet" type="text/css" href="css.css">
     </head>
-    <body>
-        <div id ="Div1"  class="container">
-            <div style="background:green !important" class = "jumbotron">
-                <h1>The Cupcake Shop!</h1>
-                <p class="p1"> Welcome to the cupcakeshop</p>
-            </div>
-            <br>         
+    <body>       
+        <div id ="Div1" style="background:pink !important" class = "jumbotron">
+            <h1>The Cupcake Shop!</h1>
+            <p> Welcome to the cupcake shop</p>
         </div>
-        <div id="Div2" class="container" style="background:red !important">
-            <p id="myp2" class="p1">Login to the cupcake shop here</p>
-            <br>
+        <br>         
+        <div id="Div2" class="container" style="background:pink !important">
+            <p id="p2" class="p2">Login to the cupcake shop here</p>
             <h2><a href="/Cupcake/FrontController">Log in</a></h2>
         </div>  
     </body>
-
 </html>
-
-
-    
-
-
-
-
-

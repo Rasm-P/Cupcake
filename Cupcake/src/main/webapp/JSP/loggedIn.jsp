@@ -17,6 +17,9 @@
 <%@page import="Data.transaction"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head> 
 
 <h1>Logged in</h1>
 <form action="/Cupcake/FrontController?action=addmoney" method="POST">
