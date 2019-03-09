@@ -27,8 +27,8 @@ public class MakeNewUser {
     public void createNewUser(User user) throws Exception {
 
         try {
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            
+            Connection connection = DBConnector.getConnection();
 
             String query = "INSERT INTO cupcake.user (username, password, balance) VALUES (?,?,?)";
 
