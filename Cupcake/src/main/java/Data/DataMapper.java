@@ -42,8 +42,8 @@ public class DataMapper {
         ArrayList<Invoice> invIdList = new ArrayList();
 
         try {
-            DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            
+            
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT invoice_id, user.* FROM invoice INNER JOIN user ON user.idUser = invoice.idUser WHERE username = " + "'" + inputUsername + "'" + ";";
@@ -689,41 +689,7 @@ public class DataMapper {
         return allInvoices;
     }
 
-    public static void main(String[] args) throws Exception {
-        User user = new User(2, "Ditlev", "12345", 2.5);
-//        CupcakeMapper cake = new CupcakeMapper();
-          DataMapper mapper = new DataMapper();
-//          mapper.getAllInvoicesForCustomer(user);
-//          ArrayList<Invoice> list = mapper.getAllInvoicesForCustomer(user);
-//          System.out.println(list.toString());
-System.out.println(mapper.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()));
-
-//          
-//          shoppingCart cart = new shoppingCart();
-//        ArrayList<ArrayList<Invoice>> list = mapper.getAllInvoices();
-//                  System.out.println(list.toString());
-          
-          
-         
-//          mapper.addToBalance(user, 10);
-          
-//          MakeNewUser newuser = new MakeNewUser();
-//          User user = new User(0, "Jorgen", "jorgen123", 100.0);
-//          newuser.createNewUser(user);
-//          System.out.println(user.toString());
-//          mapper.getInfoFromUsername("Jorgen", "jorgen123");
-          
-//          
-//          System.out.println(mapper.getAllInvoices(mapper.getAllUsers()) + "\n");
-//        List<Invoice> list = mapper.getAllInvoicesForCustomer(user);
-
-//        for (int i = 0; i < list.size(); i++) {
-//            System.out.println(list.get(i).toString());
-//            System.out.println(list.get(i).getCart().toString());
-//
-//        }
-//        System.out.println(mapper.isAdmin("Ole", "1234"));
-    }
+    
     
     public double getBalanceFromDB(String name, String password) {
         double balance = 0;
@@ -784,4 +750,12 @@ System.out.println(mapper.getAllInvoicesForCustomer(user.getUserName(), user.get
 //         System.out.println(balance);
 //         return balance;
         }
+    
+    public static void main(String[] args) throws Exception {
+        User user = new User(2, "Ditlev", "12345", 2.5);
+        DataMapper mapper = new DataMapper();
+        System.out.println(mapper.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()));
+
+
+    }
 }
