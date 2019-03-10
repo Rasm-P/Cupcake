@@ -20,8 +20,8 @@
             String in = (String) session.getAttribute("chosenInvoice");
             User u = (User) session.getAttribute("User");
             DataMapper data = new DataMapper();
-            if (data.getAllInvoicesForCustomer(u) != null) {
-                ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u);
+            if (data.getAllInvoicesForCustomer(u.getUserName(), u.getPassword()) != null) {
+                ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u.getUserName(), u.getPassword());
                 for (int i = 0; i < arIn.size(); i++) {
                     if (in.equals(arIn.get(i).getCart().toString())) {
                         out.println("<td><tr>" + arIn.get(i).toString() + "</td></tr>");
