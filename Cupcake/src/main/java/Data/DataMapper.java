@@ -674,7 +674,7 @@ public class DataMapper {
 
         return balance;
 
-    }
+}
 
     public static void main(String[] args) throws Exception {
         User user = new User(2, "Ditlev", "12345", 2.5);
