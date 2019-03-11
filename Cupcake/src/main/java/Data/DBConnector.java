@@ -23,34 +23,18 @@ public class DBConnector {
     private static final String USERNAME = "cupcakeuser";
     private static final String PASSWORD = "password1234";
     private static String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE;
+    
     public DBConnector() throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();        
 
         this.connection = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
     }
-    /*
-     public DBConnector() throws Exception {
-     Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-     String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE;
-     Properties props = new Properties();
-     props.put("user", USERNAME);
-     props.put("password", PASSWORD);
-     props.put("allowMultiQueries", true);
-     props.put("useUnicode", true);
-     props.put("useJDBCCompliantTimezoneShift", true);
-     props.put("useLegacyDatetimeCode", false);
-     props.put("serverTimezone", "CET");
-     this.connection = DriverManager.getConnection(url, props);
-        
-     }
-     */
+    
     public static Connection getConnection() {
         if (connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-                
-                
+                              
                 connection = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
             } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
