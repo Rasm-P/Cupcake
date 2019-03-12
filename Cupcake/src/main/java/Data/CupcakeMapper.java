@@ -115,7 +115,8 @@ public class CupcakeMapper {
             
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM toppings where toppingname = '" + toppingname + "' ;";
+            String query = "SELECT * FROM toppings where toppingname = '" 
+                    + toppingname + "' ;";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
@@ -155,7 +156,8 @@ public class CupcakeMapper {
             
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM bottoms where bottomname = '" + Bottomname + "' ;";
+            String query = "SELECT * FROM bottoms where bottomname = '" 
+                    + Bottomname + "' ;";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
@@ -191,7 +193,8 @@ public class CupcakeMapper {
             
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT toppings.price FROM toppings where toppingname=" + "'" + top + "'" + ";";
+            String query = "SELECT toppings.price FROM toppings where "
+                    + "toppingname=" + "'" + top + "'" + ";";
             
             
             // execute the query, and get a java resultset
@@ -227,7 +230,8 @@ public class CupcakeMapper {
             
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT bottoms.price FROM bottoms where bottomname=" + "'" + bottom + "'" + ";";
+            String query = "SELECT bottoms.price FROM bottoms where "
+                    + "bottomname=" + "'" + bottom + "'" + ";";
             
             
             // execute the query, and get a java resultset

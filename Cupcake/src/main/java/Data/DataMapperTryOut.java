@@ -11,7 +11,6 @@ import Cupcake.cupcake;
 import Shop.Invoice;
 import Shop.lineItems;
 import Shop.shoppingCart;
-import Users.User;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -36,7 +35,7 @@ public class DataMapperTryOut
 
         try {
             DBConnector conn = new DBConnector();
-            Connection connection = conn.getConnection();
+            Connection connection = DBConnector.getConnection();
             String query = "select user.* from user;";
 
             PreparedStatement pstmt = connection.prepareStatement(query);
@@ -64,7 +63,8 @@ public class DataMapperTryOut
         try {
             DBConnector conn = new DBConnector();
             Connection connection = conn.getConnection();
-            String query = "select invoice.invoice_id from invoice where idUser =" + "'" + idUser + "'" + ";";
+            String query = "select invoice.invoice_id from invoice where "
+                    + "idUser =" + "'" + idUser + "'" + ";";
 
             PreparedStatement pstmt = connection.prepareStatement(query);
 
@@ -91,18 +91,16 @@ public class DataMapperTryOut
             System.err.println(a.getMessage());
         }
 
-        for (int i = 0; i < invoicesNumbers.size(); i++) {
+        for (Integer invoicesNumber : invoicesNumbers) {
             shoppingCart cart = new shoppingCart();
             int lineitems_id = 0;
             ArrayList<cupcake> tempCup = new ArrayList<>();
-
             try {
                 DBConnector conn = new DBConnector();
                 Connection connection = conn.getConnection();
-                String query = "SELECT orders.lineitems_id, orders.orderdate from orders where invoice_id = " + invoicesNumbers.get(i) + ";";
-
+                String query = "SELECT orders.lineitems_id, orders.orderdate "
+                        + "from orders where invoice_id = " + invoicesNumber + ";";
                 PreparedStatement pstmt = connection.prepareStatement(query);
-
                 try ( // create the java statement
                         Statement st = connection.createStatement()) {
                     // execute the query, and get a java resultset
@@ -117,15 +115,16 @@ public class DataMapperTryOut
                     connection.close();
 
                 }
-            } catch (Exception es) {
+            }catch (Exception es) {
                 System.err.println("Got an exception! 8");
                 System.err.println(es.getMessage());
             }
-
             try {
                 DBConnector conn = new DBConnector();
                 Connection connection = conn.getConnection();
-                String query = "SELECT lineitems.bottomname, lineitems.toppingname, lineitems.quantity from lineitems where lineitems_id = " + lineitems_id + ";";
+                String query = "SELECT lineitems.bottomname, "
+                        + "lineitems.toppingname, lineitems.quantity from "
+                        + "lineitems where lineitems_id = " + lineitems_id + ";";
 
                 PreparedStatement pstmt = connection.prepareStatement(query);
 
@@ -159,16 +158,15 @@ public class DataMapperTryOut
 
                     }
                     
-                    for(int j = 0; j < tempCup.size();j++) {
+                    for (cupcake tempCup1 : tempCup) {
                         CupcakeMapper mapper = new CupcakeMapper();
-                        tempCup.get(j).getBottom().setPrice( mapper.getBottomPriceFromName(tempCup.get(j).getBottom().getName()));
-                        tempCup.get(j).getTop().setPrice(mapper.getTopPriceFromName(tempCup.get(j).getTop().getName()));
-                          mapper.getTopPriceFromName(tempCup.get(j).getTop().getName());
-                        tempCup.get(j).setPrice((tempCup.get(j).getPrice(tempCup.get(j).getBottom(), tempCup.get(j).getTop())));
-                        lineItems lineitem = new lineItems(quantity, tempCup.get(j));
+                        tempCup1.getBottom().setPrice(mapper.getBottomPriceFromName(tempCup1.getBottom().getName()));
+                        tempCup1.getTop().setPrice(mapper.getTopPriceFromName(tempCup1.getTop().getName()));
+                        mapper.getTopPriceFromName(tempCup1.getTop().getName());
+                        tempCup1.setPrice(tempCup1.getPrice(tempCup1.getBottom(), tempCup1.getTop()));
+                        lineItems lineitem = new lineItems(quantity, tempCup1);
                         cart.add(lineitem);
                     }
-
 //                    Invoice invoice = new Invoice(cart, user, date.toLocalDate());
 //                    allInvoices.add(invoice);
 //                    connection.close();
@@ -178,13 +176,9 @@ public class DataMapperTryOut
                 System.err.println("Got an exception! 9");
                 System.err.println(es.getMessage());
             }
-
         }
         return allInvoices;
 
     }
     
-    public static void main(String[] args) throws Exception {
-        getAllInvoicesForCustomer();
-    }
 }

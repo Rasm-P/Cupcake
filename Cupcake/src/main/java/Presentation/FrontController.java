@@ -106,19 +106,16 @@ public class FrontController extends HttpServlet {
     private void adminPage(HttpServletResponse response) throws IOException {
         System.out.println("7");
         response.sendRedirect("JSP/adminPage.jsp");
-        return;
     }
 
     private void invoice(String in, HttpSession session, HttpServletResponse response) throws IOException {
         System.out.println(in);
         session.setAttribute("chosenInvoice", in);
         response.sendRedirect("JSP/invoice.jsp");
-        return;
     }
 
     private void error(HttpServletResponse response) throws IOException {
         response.sendRedirect("JSP/error.jsp");
-        return;
     }
 
     private void addMoney(String amount, HttpSession session, HttpServletResponse response) throws NumberFormatException, IOException {
@@ -135,7 +132,6 @@ public class FrontController extends HttpServlet {
             session.setAttribute("User", newu);
         }
         response.sendRedirect("JSP/mainPage.jsp");
-        return;
     }
 
     private void confirmation(HttpSession session, HttpServletResponse response) throws IOException {
@@ -149,11 +145,14 @@ public class FrontController extends HttpServlet {
      
     }
 
-    private void shop(String topping, String bottom, String qty, HttpSession session, HttpServletResponse response) throws IOException, NumberFormatException {
+    private void shop(String topping, String bottom, String qty, HttpSession session,
+            HttpServletResponse response) throws IOException, NumberFormatException 
+    {
         System.out.println(topping);
         System.out.println(bottom);
         System.out.println(qty);
-        if (topping != null && !"".equals(topping) && bottom != null && !"".equals(bottom) && qty != null && !"".equals(qty) && Integer.parseInt(qty) >= 1) {
+        if (topping != null && !"".equals(topping) && bottom != null && !"".equals(bottom) 
+                && qty != null && !"".equals(qty) && Integer.parseInt(qty) >= 1) {
             //ArrayList<lineItems> arList = new ArrayList<>();
             shoppingCart arList = new shoppingCart();
             Bottoms b = cupdata.getOneBottom(bottom);
@@ -176,12 +175,10 @@ public class FrontController extends HttpServlet {
             System.out.println(session.getAttribute("ArrayList<lineItems>").toString());
             //PageShop.generateShop(response);
             response.sendRedirect("JSP/shop.jsp");
-            return;
         } else {
             //PageShop.generateShop(response);
             response.sendRedirect("JSP/shop.jsp");
         }
-        return;
     }
 
     private void logOut(HttpSession session, HttpServletResponse response) throws IOException {
@@ -191,14 +188,14 @@ public class FrontController extends HttpServlet {
         session.setAttribute("loggedIn", false);
         //PageLogin.generateLogin(response);
         response.sendRedirect("JSP/login.jsp");
-        return;
     }
 
     private void makeLogin(String username, String password, HttpServletResponse response) throws Exception {
         System.out.println(username);
         System.out.println(password);
         MakeNewUser mn = new MakeNewUser();
-        if (username != null && !"".equals(username) && password != null && !"".equals(password) && data.getInfo_Username_Password(username, password) == false) {
+        if (username != null && !"".equals(username) && password != null && !"".equals(password) 
+                && data.getInfo_Username_Password(username, password) == false) {
             System.out.println("2.5");
             User u = new User(1, username, password, 0.0);
             mn.createNewUser(u);
