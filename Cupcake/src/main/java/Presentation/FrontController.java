@@ -201,12 +201,10 @@ public class FrontController extends HttpServlet {
             mn.createNewUser(u);
             //PageLogin.generateLogin(response);
             response.sendRedirect("JSP/login.jsp");
-            return;
         } else {
             System.out.println("2.75");
             //PageMakeLogin.generateMakeLogin(response);
             response.sendRedirect("JSP/loginRegistration.jsp");
-            return;
         }
     }
 
@@ -220,11 +218,9 @@ public class FrontController extends HttpServlet {
             session.setAttribute("User", u);
             //PageLoggedIn.generateLoggedIn(response);
             response.sendRedirect("JSP/loggedIn.jsp");
-            return;
         } else {
             //PageLogin.generateLogin(response);
             response.sendRedirect("JSP/login.jsp");
-            return;
         }
     }
 
