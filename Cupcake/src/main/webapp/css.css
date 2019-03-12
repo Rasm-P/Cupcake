@@ -1,16 +1,4 @@
-<<<<<<< HEAD
 body {
-=======
-body{
-    background-color: blue;
-    background-image: url("cupcake-3723832_960_720.jpg");
-    background-size: 100%;
-    background-size: cover;
-
-    max-width:vw;
-    max-height:vh;
-
->>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
     background-image: url("cupcake-3723832_960_720.jpg");
     background-size: cover;
     background-position: center;
@@ -39,21 +27,6 @@ body{
     color: black;
     margin: 10px;
     padding: 10px;
-<<<<<<< HEAD
-=======
-}
-
-h2{
-    margin: auto;
-    text-align: center;  
-
-}
-
-h1{
-    color: green;
-    margin: auto;
-    text-align: center; 
->>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
 }
 
 #sitemenus #site
@@ -64,7 +37,6 @@ h1{
 }
 
 #sitemenus #user
-<<<<<<< HEAD
 {
     width: 50%;
     float: right;
@@ -76,40 +48,11 @@ h1{
     float: right;
     margin: 10px;
 }
-=======
-{    width: 50%;
-    float: left;
-    text-align: right;}
-
-#sitemenus #user form
-{
-    float: left;
-    margin: 10px;}
->>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
 
 #sitemenus #user form input
 {
     border: solid black 1px;
-<<<<<<< HEAD
     padding: 10px;
-=======
-    padding: 10px;}
-
-#Div1{
-    margin: auto;
-    text-align: center;
-    width:40vw; /*Div1 er ikke centreret hvis width er større end 40, eller deromkring*/
-    color: black;}
-
-#Div2{
-    margin: auto;
-    text-align: center;
-    width:300px;   
-}
-#myp2{
-    margin: auto;
-    text-align: center;
->>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
 }
 
 h1
@@ -133,13 +76,7 @@ h2 {
 }
 
 h3 {
-<<<<<<< HEAD
 /*    margin: 25px 50px;*/
-=======
-    margin: 25px 50px;
-    color: red;
-    text-decoration: underline;
->>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
 }
 
 form {
@@ -160,32 +97,9 @@ p {
 #divLogin{
     margin: auto;
     text-align: center;
-<<<<<<< HEAD
     width:600px;
 }
 
 input {
     height: 27px;
-=======
-
-    width:600px;
-
-    width: 400;
-}
-
-body{
-    max-width:vw;
-    max-height:vh;
-    background-image: url("cupcake-3723832_960_720.jpg");
-    background-size: cover;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    /*    opacity: 0.4;*/
->>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
 }
