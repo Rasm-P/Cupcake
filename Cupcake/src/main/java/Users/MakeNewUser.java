@@ -40,7 +40,7 @@ public class MakeNewUser {
             pstmt.closeOnCompletion();
 
         } catch (Exception e) {
-
+            System.out.println("Error in creating user!");
             e.printStackTrace();
         }
 
