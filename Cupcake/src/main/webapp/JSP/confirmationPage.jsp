@@ -40,5 +40,8 @@
         session.setAttribute("ArrayList<lineItems>", null);
     }
 %>
+<form action="/Cupcake/FrontController" method="post">
+    <input type="submit" value="Back to main page" />
+</form>
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>

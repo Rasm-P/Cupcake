@@ -40,14 +40,13 @@
         //        for (int j = 0; j < us.size(); j++) {
         //            User user = us.get(j);
         //            for (int i = 0; i < data.getAllInvoicesForCustomer(user).size(); i++) {
-        //                out.println("<tr><td>" + data.getAllInvoicesForCustomer(user).get(i).toString() + "</td></tr>");
-        //                out.println("<br>");
-        //                out.println("<br>");
+        //                out.println("<tr><td>" + data.getAllInvoicesForCustomer(user).get(i).toString());
+        //                out.println(" <form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + data.getAllInvoicesForCustomer(user).get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>"  + "<tr><td>");
         //            }
         //        }
         //    }
         //}
-%>
+    %>
 </table>
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>

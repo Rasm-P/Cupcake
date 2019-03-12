@@ -25,4 +25,3 @@
     </head>
     <body>
         <h1><img src="Logo.png" width="130pix" align="middle"/>Cupcakeshoppen</h1>
-

@@ -18,7 +18,6 @@
         <br>Username:<br><input type="text" name="username" value=""><br>
         Login:<br><input type="password" name="password" value=""><br>
         <br><input type="submit" value="Login"></form>
-    <br>
 </div>
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>
