@@ -33,6 +33,7 @@
 <h2>All User Invoices</h2>
 <table class="table">
     <%
+<<<<<<< HEAD
         //if (session.getAttribute("User") != null) {
         //    DataMapper data = new DataMapper();
         //    if (data.getAllInvoices(data.getAllUsers()) != null) {
@@ -47,6 +48,24 @@
         //    }
         //}
     %>
+=======
+        if (session.getAttribute("User") != null) {
+            DataMapper data = new DataMapper();
+            
+           if (data.getAllInvoices() != null) {
+               ArrayList<User> us = data.getAllUsers();
+                for (int j = 0; j < us.size(); j++) {
+                    User user = us.get(j);
+                    for (int i = 0; i < data.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()).size(); i++) {
+                        out.println("<tr><td>" + data.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()).get(i).toString() + "</td></tr>");
+                        out.println("<br>");
+                        out.println("<br>");
+                    }
+                }
+            }
+    }
+%>
+>>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
 </table>
 
 <jsp:include page='/JSP/sitefooter.jsp'></jsp:include>

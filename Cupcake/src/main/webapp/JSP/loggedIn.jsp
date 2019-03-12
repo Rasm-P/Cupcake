@@ -40,6 +40,7 @@
         <%
             User u = (User) session.getAttribute("User");
             DataMapper data = new DataMapper();
+<<<<<<< HEAD
             if (data.getAllInvoicesForCustomer(u) != null) {
                 ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u);
                 for (int i = 0; i < arIn.size(); i++) {
@@ -50,6 +51,18 @@
                     //out.println("<br>");
                     //out.println("</div>");
                 }
+=======
+            if (data.getAllInvoicesForCustomer(u.getUserName(), u.getPassword()) != null) {
+                ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u.getUserName(), u.getPassword());
+                for (int i = 0; i < arIn.size(); i++) {
+                    out.println("<h3> Invoice " + (i + 1) + ":" + "</h3>");
+                    out.println("<div id=\"divList\">");
+                    out.println("<p>" + arIn.get(i).getCart().toString() + arIn.get(i).getUser().toString() + arIn.get(i).getDate().toString() + "</p>");
+                    out.println(" <form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + arIn.get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>");
+                    out.println("<br>");
+                   out.println("</div>");
+               }
+>>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
             }
         %>
     </table>

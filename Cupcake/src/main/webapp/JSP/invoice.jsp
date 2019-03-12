@@ -14,6 +14,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <h1>Invoice</h1>
+<<<<<<< HEAD
 <form>
     <table class="table">
         <%
@@ -29,6 +30,19 @@
                                 out.println("<tr><td>" + arIn.get(i).getCart().get(j).toString() + "</tr></td>");
                             }
                         }
+=======
+<table class="table">
+    <%
+        if (session.getAttribute("chosenInvoice") != null) {
+            String in = (String) session.getAttribute("chosenInvoice");
+            User u = (User) session.getAttribute("User");
+            DataMapper data = new DataMapper();
+            if (data.getAllInvoicesForCustomer(u.getUserName(), u.getPassword()) != null) {
+                ArrayList<Invoice> arIn = data.getAllInvoicesForCustomer(u.getUserName(), u.getPassword());
+                for (int i = 0; i < arIn.size(); i++) {
+                    if (in.equals(arIn.get(i).getCart().toString())) {
+                        out.println("<td><tr>" + arIn.get(i).toString() + "</td></tr>");
+>>>>>>> 3360160bc498eca44ea52a50c1d6c8878b028fb5
                     }
                 }
             }

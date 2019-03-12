@@ -52,7 +52,8 @@ public class DBConnector {
                 
                 
                 connection = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
-            } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
+            } catch (ClassNotFoundException | SQLException | 
+                    InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
