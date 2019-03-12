@@ -57,10 +57,10 @@ public class DataEncryption {
     
     
     
-    public static void main(String[] args) {
-        DataEncryption de = new DataEncryption();
-        System.out.println(de.generateSalt().toString());
-        
-    }
+//    public static void main(String[] args) {
+//        DataEncryption de = new DataEncryption();
+//        System.out.println(de.generateSalt().toString());
+//        
+//    }
     
 }
