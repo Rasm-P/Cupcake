@@ -76,7 +76,7 @@ h2 {
 }
 
 h3 {
-/*    margin: 25px 50px;*/
+    margin: 25px 50px;
 }
 
 form {
@@ -87,10 +87,25 @@ p {
     margin: 25px 50px;
 }
 
+#pIn {
+    text-align: center;
+}
+
+#DivIn{
+    width: 50vw;
+    margin: auto;
+    text-align: center;
+}
+
+#Div2{
+    margin: auto;
+    text-align: center;
+    width: 30vw;
+}
+
 #divList {
     border: 1px solid black;
     margin: 25px 50px;
-    background-color: lightblue;
 }
 
 #divLogin{
@@ -135,4 +150,8 @@ input {
 #formAdmin{
     margin: auto;
     text-align: center;
+}
+
+#tdIn{
+    margin: 25px 50px;
 }
