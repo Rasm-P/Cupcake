@@ -32,7 +32,7 @@
 <form action="/Cupcake/FrontController?action=shop" method="post">
 
     <table class="table table-striped">
-        <thead><tr><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Select</th><th></th></tr></thead>
+        <thead id="tabled"><tr><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Select</th><th></th></tr></thead>
         <tbody>
             <tr>
                 <td><select name="topping" id="toppingSelect">
@@ -50,7 +50,7 @@
     </table>
 </form>
 <form> 
-    <table class="table">
+    <table id="shopped" class="table">
         <%
             double total = 0.0;
             if (session.getAttribute("ArrayList<lineItems>") != null) {
@@ -64,7 +64,7 @@
     </table>
 </form>
 
-<form>
+<form id="formed">
     <%
         out.println("<tr><td>" + "Total: " + total + "</td></tr>");
     %>

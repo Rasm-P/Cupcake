@@ -617,18 +617,14 @@ public class DataMapper {
 
                     User user = new User(idUser, username, password, balance);
                     allUsers.add(user);
-
                 }
                 rs.close();
                 st.closeOnCompletion();
-
             }
-
         } catch (Exception es) {
             System.err.println("Got an exception! 6");
             System.err.println(es.getMessage());
         }
-
         return allUsers;
     }
 
@@ -659,13 +655,10 @@ public class DataMapper {
 
                 // iterate through the java resultset
                 while (rs.next()) {
-
                     balance = rs.getDouble("balance");
-
                 }
                 rs.close();
                 st.closeOnCompletion();
-
             }
         } catch (Exception e) {
             System.err.println("Got an exception! ");
@@ -673,13 +666,11 @@ public class DataMapper {
         }
 
         return balance;
-
 }
 
     public static void main(String[] args) throws Exception {
         User user = new User(2, "Ditlev", "12345", 2.5);
         DataMapper mapper = new DataMapper();
         System.out.println(mapper.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()));
-
     }
 }

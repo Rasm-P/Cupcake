@@ -28,7 +28,7 @@
 </form>
 <%
     if (session.getAttribute("User") != null) {
-        DataMapper data = new DataMapper();
+        //DataMapper data = new DataMapper();
         User u = (User) session.getAttribute("User");
         out.println("<p>" + "User: " + u.getUserName() + ", Balance: " + u.getBalance() + "</p>");
     }

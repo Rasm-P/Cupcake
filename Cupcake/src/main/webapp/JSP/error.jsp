@@ -9,8 +9,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
-
 <h1>Error</h1>
 <p>Ups something went wrong!</p>
 <form action="/Cupcake/FrontController" method="post">
