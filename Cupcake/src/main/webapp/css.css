@@ -1,12 +1,4 @@
-body{
-    background-color: blue;
-    background-image: url("cupcake-3723832_960_720.jpg");
-    background-size: 100%;
-    background-size: cover;
-
-    max-width:vw;
-    max-height:vh;
-
+body {
     background-image: url("cupcake-3723832_960_720.jpg");
     background-size: cover;
     background-position: center;
@@ -37,68 +29,30 @@ body{
     padding: 10px;
 }
 
-h2{
-    margin: auto;
-    text-align: center;  
-
-}
-
-h1{
-    color: green;
-    margin: auto;
-    text-align: center; 
-}
-
-p{
-    margin: auto;
-    text-align: center;
-}
-p {
-    color: red;
-    font-size: 20px;
-    margin: auto;
-}
-
-#myp2 {
-    width: 50%;
-    padding: 20px;
-    margin: auto;
-    text-align: center;
-    width:500px;}
-
-#sitemenus #site{
+#sitemenus #site
+{
     width: 50%;
     float: left;
-    text-align: left;}
+    text-align: left;
+}
 
 #sitemenus #user
-{    width: 50%;
-    float: left;
-    text-align: right;}
+{
+    width: 50%;
+    float: right;
+    text-align: right;
+}
 
 #sitemenus #user form
 {
-    float: left;
-    margin: 10px;}
-
-#sitemenus #user form input{
-    border: solid black 1px;
-    padding: 10px;}
-
-#Div1{
-    margin: auto;
-    text-align: center;
-    width:40vw; /*Div1 er ikke centreret hvis width er større end 40, eller deromkring*/
-    color: black;}
-
-#Div2{
-    margin: auto;
-    text-align: center;
-    width:300px;   
+    float: right;
+    margin: 10px;
 }
-#myp2{
-    margin: auto;
-    text-align: center;
+
+#sitemenus #user form input
+{
+    border: solid black 1px;
+    padding: 10px;
 }
 
 h1
@@ -121,9 +75,7 @@ h2 {
 }
 
 h3 {
-    margin: 25px 50px;
-    color: red;
-    text-decoration: underline;
+/*    margin: 25px 50px;*/
 }
 
 form {
@@ -144,10 +96,7 @@ p {
 #divLogin{
     margin: auto;
     text-align: center;
-
     width:600px;
-
-    width: 400;
 }
 
 body{
@@ -177,5 +126,8 @@ body{
 }
 
 #tabled{
-    color: red;
+    color: red;}
+
+input {
+    height: 27px;
 }

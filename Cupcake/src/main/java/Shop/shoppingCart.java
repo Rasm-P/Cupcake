@@ -43,6 +43,14 @@ public class shoppingCart {
      public lineItems get(int index){
         return cart.get(index);               
     }
+     
+    public double getToal() {
+        double total = 0;
+        for (int i = 0; i < cart.size(); i++) {
+            total += cart.get(i).fullPrice;
+        }
+        return total;
+    }
     
      
     

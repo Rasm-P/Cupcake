@@ -36,7 +36,8 @@ public class DBConnector {
                 Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
                               
                 connection = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
-            } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
+            } catch (ClassNotFoundException | SQLException | 
+                    InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

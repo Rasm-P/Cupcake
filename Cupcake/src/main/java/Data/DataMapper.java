@@ -11,19 +11,16 @@ import Cupcake.cupcake;
 import Shop.Invoice;
 import Shop.lineItems;
 import Shop.shoppingCart;
-import Users.MakeNewUser;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import Users.User;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import jdk.nashorn.internal.ir.LiteralNode;
 
 /**
  *
@@ -46,7 +43,8 @@ public class DataMapper {
 
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT invoice_id, user.* FROM invoice INNER JOIN user ON user.idUser = invoice.idUser WHERE username = " + "'" + inputUsername + "'" + ";";
+            String query = "SELECT invoice_id, user.* FROM invoice INNER JOIN "
+                    + "user ON user.idUser = invoice.idUser WHERE username = " + "'" + inputUsername + "'" + ";";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
@@ -95,7 +93,8 @@ public class DataMapper {
 
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM user Where username = " + "'" + inputUsername + "'" + " and password = " + "'" + inputPassword + "'" + ";";
+            String query = "SELECT * FROM user Where username = " + "'" +
+                    inputUsername + "'" + " and password = " + "'" + inputPassword + "'" + ";";
 
             // execute the query, and get a java resultset
             try ( // create the java statement
@@ -184,7 +183,9 @@ public class DataMapper {
         int lineitems_number = 0;
         try {
 
-            String query = "select user.idUser from user where username = " + "'" + invoice.getUser().getUserName() + "'" + " and password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
+            String query = "select user.idUser from user where username = "
+                    + "" + "'" + invoice.getUser().getUserName() + "'" + " and "
+                    + "password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
@@ -217,7 +218,8 @@ public class DataMapper {
         }
         try {
 
-            String query = "select invoice.invoice_id from invoice where idUser = " + invoice.getUser().getIdUser() + ";";
+            String query = "select invoice.invoice_id from invoice where idUser "
+                    + "= " + invoice.getUser().getIdUser() + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
             // create the java statement
 
@@ -232,7 +234,8 @@ public class DataMapper {
         }
         try {
 
-            String query = "select invoice.invoice_id from invoice where idUser = " + invoice.getUser().getIdUser() + ";";
+            String query = "select invoice.invoice_id from invoice where "
+                    + "idUser = " + invoice.getUser().getIdUser() + ";";
 
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
@@ -271,7 +274,8 @@ public class DataMapper {
 
         try {
 
-            String query = "select orders.lineitems_id from orders where invoice_id = " + invoice_number + ";";
+            String query = "select orders.lineitems_id from orders where "
+                    + "invoice_id = " + invoice_number + ";";
 
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
@@ -299,7 +303,8 @@ public class DataMapper {
         for (int i = 0; i < invoice.getCart().getCart().size(); i++) {
             try {
 
-                String query = "INSERT INTO cupcake.lineitems (lineitems_id, bottomname, toppingname, quantity) VALUES (?,?,?,?);";
+                String query = "INSERT INTO cupcake.lineitems (lineitems_id, "
+                        + "bottomname, toppingname, quantity) VALUES (?,?,?,?);";
                 PreparedStatement pstmt = connection.prepareStatement(query);
                 ArrayList<lineItems> list = invoice.getCart().getCart();
 
@@ -320,7 +325,8 @@ public class DataMapper {
     }
 
     public void addToBalance(User user, double newMoney) {
-        String query = "UPDATE cupcake.user SET balance = balance +" + newMoney + "where idUser= " + user.getIdUser() + ";";
+        String query = "UPDATE cupcake.user SET balance = balance +" + newMoney 
+                + "where idUser= " + user.getIdUser() + ";";
         try {
 
             PreparedStatement pstmt = connection.prepareStatement(query);
@@ -333,7 +339,8 @@ public class DataMapper {
     }
 
     public void removeFromBalance(User user, double money) {
-        String query = "UPDATE cupcake.user SET balance = balance -" + money + "where idUser= " + user.getIdUser() + ";";
+        String query = "UPDATE cupcake.user SET balance = balance -" + money 
+                + "where idUser= " + user.getIdUser() + ";";
         try {
 
             PreparedStatement pstmt = connection.prepareStatement(query);
@@ -346,45 +353,6 @@ public class DataMapper {
 
     }
 
-//    public ArrayList<Invoice> getAllInvoicesForCustomerFromView(String Username) {
-//
-//        int idUser = 0;
-//        String username = "";
-//        String password = "";
-//
-//        try {
-//
-//            String query = "select * from cupcake.allInvoices2 where username = " + "'" + Username + "';";
-//
-//            PreparedStatement pstmt = connection.prepareStatement(query);
-//
-//            try ( // create the java statement
-//                    Statement st = connection.createStatement()) {
-//                // execute the query, and get a java resultset
-//                ResultSet rs = st.executeQuery(query);
-//
-//                // iterate through the java resultset
-//                while (rs.next()) {
-//                    idUser = rs.getInt("idUser");
-//                    username = rs.getString("username");
-//                    invoiceid = rs.getInt("invoice_id");
-//                    lineitems_id = rs.getInt("lineitems_id");
-//                    password = rs.getString("password");
-//
-//                    User user = new User(idUser, username, password, 0.0);
-//
-//                }
-//                connection.close();
-//
-//            }
-//
-//        } catch (Exception es) {
-//            System.err.println("Got an exception! 6");
-//            System.err.println(es.getMessage());
-//        }
-//
-//        return null;
-//    }
 
     public ArrayList<Invoice> getAllInvoicesForCustomer(String username, String password) throws Exception { //Giver exceptions på 9
         ArrayList<Invoice> allInvoices = new ArrayList<>();
@@ -396,7 +364,8 @@ public class DataMapper {
 
             try {
 
-                String query = "SELECT orders.lineitems_id, orders.orderdate from orders where invoice_id = " + invoicesNumbers.get(i) + ";";
+                String query = "SELECT orders.lineitems_id, orders.orderdate "
+                        + "from orders where invoice_id = " + invoicesNumbers.get(i) + ";";
 
                 try ( // create the java statement
                         Statement st = connection.createStatement()) {
@@ -421,7 +390,9 @@ public class DataMapper {
 
             try {
 
-                String query = "SELECT lineitems.bottomname, lineitems.toppingname, lineitems.quantity from lineitems where lineitems_id = " + lineitems_id + ";";
+                String query = "SELECT lineitems.bottomname, "
+                        + "lineitems.toppingname, lineitems.quantity "
+                        + "from lineitems where lineitems_id = " + lineitems_id + ";";
 
                 try ( // create the java statement
                         Statement st = connection.createStatement()) {
@@ -451,7 +422,8 @@ public class DataMapper {
                         User user = new User(idUser, username, password, balance);
 
                         cart.add(lineitems);
-                        Invoice invoice = new Invoice(cart, user, date.toLocalDate());
+                        Invoice invoice = new Invoice(cart, user, 
+                                date.toLocalDate());
                         allInvoices.add(invoice);
 
                     }
@@ -460,17 +432,25 @@ public class DataMapper {
 
                     CupcakeMapper cake = new CupcakeMapper();
                     for (int h = 0; h < allInvoices.size(); h++) {
-                        for (int q = 0; q < allInvoices.get(h).getCart().getCart().size(); q++) {
-                            double bottomPrice = cake.getBottomPriceFromName(allInvoices.get(h).getCart().get(q).getCup().getBottom().getName());
-                            allInvoices.get(h).getCart().get(q).getCup().getBottom().setPrice(bottomPrice);
+                        for (int q = 0; q < allInvoices.get(h).getCart().
+                                getCart().size(); q++) {
+                            double bottomPrice = cake.getBottomPriceFromName(allInvoices.
+                                    get(h).getCart().get(q).getCup().getBottom()
+                                    .getName());
+                            allInvoices.get(h).
+                                    getCart().get(q).getCup().getBottom().
+                                    setPrice(bottomPrice);
 
                         }
                     }
 
                     for (int a = 0; a < allInvoices.size(); a++) {
                         for (int b = 0; b < allInvoices.get(a).getCart().getCart().size(); b++) {
-                            double topPrice = cake.getTopPriceFromName(allInvoices.get(a).getCart().get(b).getCup().getTop().getName());
-                            allInvoices.get(a).getCart().get(b).getCup().getTop().setPrice(topPrice);
+                            double topPrice = cake.getTopPriceFromName(allInvoices
+                                    .get(a).getCart().get(b).getCup().getTop()
+                                    .getName());
+                            allInvoices.get(a).getCart().get(b).getCup().getTop()
+                                    .setPrice(topPrice);
 
                         }
                     }
@@ -478,9 +458,13 @@ public class DataMapper {
 
                         for (int z = 0; z < allInvoices.get(x).getCart().size(); z++) {
 
-                            double botPrice = allInvoices.get(x).getCart().get(z).getCup().getBottom().getPrice();
-                            double topPrice = allInvoices.get(x).getCart().get(z).getCup().getTop().getPrice();
-                            allInvoices.get(x).getCart().get(z).setFullPrice(botPrice + topPrice);
+                            double botPrice = allInvoices.get(x)
+                                    .getCart().get(z).getCup().
+                                    getBottom().getPrice();
+                            double topPrice = allInvoices.get(x).getCart().
+                                    get(z).getCup().getTop().getPrice();
+                            allInvoices.get(x).getCart().get(z)
+                                    .setFullPrice(botPrice + topPrice);
                         }
                     }
 
@@ -500,7 +484,9 @@ public class DataMapper {
         int idUser = 0;
         try {
 
-            String query = "select user.IdUser from user where username = " + "'" + username + "'" + " and password = " + "'" + password + "'" + ";";
+            String query = "select user.IdUser from user where username = " 
+                    + "'" + username + "'" + " and password = " + "'" 
+                    + password + "'" + ";";
 
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
