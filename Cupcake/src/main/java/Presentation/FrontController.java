@@ -43,7 +43,8 @@ public class FrontController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request,
+            HttpServletResponse response)
             throws ServletException, IOException, Exception {
         System.out.println("-------------------------");
         response.setContentType("text/html;charset=UTF-8");
@@ -108,7 +109,8 @@ public class FrontController extends HttpServlet {
         response.sendRedirect("JSP/adminPage.jsp");
     }
 
-    private void invoice(String in, HttpSession session, HttpServletResponse response) throws IOException {
+    private void invoice(String in, HttpSession session,
+            HttpServletResponse response) throws IOException {
         System.out.println(in);
         session.setAttribute("chosenInvoice", in);
         response.sendRedirect("JSP/invoice.jsp");
@@ -118,7 +120,8 @@ public class FrontController extends HttpServlet {
         response.sendRedirect("JSP/error.jsp");
     }
 
-    private void addMoney(String amount, HttpSession session, HttpServletResponse response) throws NumberFormatException, IOException {
+    private void addMoney(String amount, HttpSession session,
+            HttpServletResponse response) throws NumberFormatException, IOException {
         System.out.println("5");
         if (amount != null && !"".equals(amount) && Double.parseDouble(amount) >= 0.0) {
 
@@ -128,7 +131,8 @@ public class FrontController extends HttpServlet {
 
             d.addToBalance(u, Double.parseDouble(amount));
             System.out.println("6");
-            User newu = data.getInfoFromUsername(u.getUserName(), u.getPassword());
+            User newu = data.getInfoFromUsername(u.getUserName(),
+                    u.getPassword());
             session.setAttribute("User", newu);
         }
         response.sendRedirect("JSP/mainPage.jsp");
@@ -138,20 +142,21 @@ public class FrontController extends HttpServlet {
         System.out.println("3.95");
         if (session.getAttribute("ArrayList<lineItems>") != null) {
             response.sendRedirect("JSP/confirmationPage.jsp");
-            
+
         } else {
             response.sendRedirect("JSP/shop.jsp");
         }
-     
+
     }
 
-    private void shop(String topping, String bottom, String qty, HttpSession session,
-            HttpServletResponse response) throws IOException, NumberFormatException 
-    {
+    private void shop(String topping, String bottom, String qty,
+            HttpSession session,
+            HttpServletResponse response) throws IOException, NumberFormatException {
         System.out.println(topping);
         System.out.println(bottom);
         System.out.println(qty);
-        if (topping != null && !"".equals(topping) && bottom != null && !"".equals(bottom) 
+        if (topping != null && !"".equals(topping) && bottom != null && !"".equals(
+                bottom)
                 && qty != null && !"".equals(qty) && Integer.parseInt(qty) >= 1) {
             //ArrayList<lineItems> arList = new ArrayList<>();
             shoppingCart arList = new shoppingCart();
@@ -164,7 +169,8 @@ public class FrontController extends HttpServlet {
             lineItems l = new lineItems(Integer.parseInt(qty), c);
             arList.add(l);
             if (session.getAttribute("ArrayList<lineItems>") != null) {
-                shoppingCart arOld = (shoppingCart) session.getAttribute("ArrayList<lineItems>");
+                shoppingCart arOld = (shoppingCart) session.getAttribute(
+                        "ArrayList<lineItems>");
                 for (int i = 0; i < arOld.size(); i++) {
                     arList.add(arOld.get(i));
                     session.setAttribute("ArrayList<lineItems>", arList);
@@ -172,7 +178,8 @@ public class FrontController extends HttpServlet {
             } else {
                 session.setAttribute("ArrayList<lineItems>", arList);
             }
-            System.out.println(session.getAttribute("ArrayList<lineItems>").toString());
+            System.out.println(
+                    session.getAttribute("ArrayList<lineItems>").toString());
             //PageShop.generateShop(response);
             response.sendRedirect("JSP/shop.jsp");
         } else {
@@ -190,11 +197,13 @@ public class FrontController extends HttpServlet {
         response.sendRedirect("JSP/login.jsp");
     }
 
-    private void makeLogin(String username, String password, HttpServletResponse response) throws Exception {
+    private void makeLogin(String username, String password,
+            HttpServletResponse response) throws Exception {
         System.out.println(username);
         System.out.println(password);
         MakeNewUser mn = new MakeNewUser();
-        if (username != null && !"".equals(username) && password != null && !"".equals(password) 
+        if (username != null && !"".equals(username) && password != null && !"".equals(
+                password)
                 && data.getInfo_Username_Password(username, password) == false) {
             System.out.println("2.5");
             User u = new User(1, username, password, 0.0);
@@ -208,9 +217,11 @@ public class FrontController extends HttpServlet {
         }
     }
 
-    private void login(String username, String password, HttpSession session, HttpServletResponse response) throws IOException {
+    private void login(String username, String password, HttpSession session,
+            HttpServletResponse response) throws IOException {
         System.out.println("3");
-        if (username != null && password != null && data.getInfo_Username_Password(username, password) == true) {
+        if (username != null && password != null && data.getInfo_Username_Password(
+                username, password) == true) {
             System.out.println("3.25");
             session.setAttribute("loggedIn", true);
             double b = data.getBalanceFromDB(username, password);
@@ -234,12 +245,14 @@ public class FrontController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE,
+                    null, ex);
         }
     }
 
@@ -252,12 +265,14 @@ public class FrontController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request,
+            HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE,
+                    null, ex);
         }
     }
 
