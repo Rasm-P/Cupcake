@@ -72,6 +72,7 @@ h1.solid {
 
 h2 {
     margin: 25px 50px;
+    text-align: center;
 }
 
 h3 {
@@ -90,7 +91,6 @@ p {
     border: 1px solid black;
     margin: 25px 50px;
     background-color: lightblue;
-    width: vw;
 }
 
 #divLogin{
@@ -130,4 +130,9 @@ body{
 
 input {
     height: 27px;
+}
+
+#formAdmin{
+    margin: auto;
+    text-align: center;
 }

@@ -19,7 +19,7 @@
 
 <h1>Admin Page</h1>
 <h2>Du er logget ind som admin!</h2>
-<form action="/Cupcake/FrontController?action=addmoney" method="POST">
+<form id="formAdmin" action="/Cupcake/FrontController?action=addmoney" method="POST">
     <input type="text" name="amount" placeholder="Enter amount"/>
     <input type="submit" value="Add money to account"/>
 </form>
