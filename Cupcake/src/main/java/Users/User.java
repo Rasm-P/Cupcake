@@ -10,18 +10,18 @@ package Users;
  * @author rh
  */
 public class User {
-private int idUser;
-private String username, password, email;
-private double balance;
 
-    public User(int idUser,String userName, String password, Double balance) {
+    private int idUser;
+    private String username, password, email;
+    private double balance;
+
+    public User(int idUser, String userName, String password, Double balance) {
         this.username = userName;
         this.password = password;
         this.balance = balance;
         this.email = email;
         this.idUser = idUser;
     }
- 
 
     public String getUserName() {
         return username;
@@ -63,15 +63,10 @@ private double balance;
     public String toString() {
         return "UserId: " + idUser + ", username: " + username + ", password: " + password + ", email: " + email + ", balance: " + balance;
     }
-    
-   
-    
+
     public static void main(String[] args) {
         User user = new User(1, "Ole", "1234", 112.0);
-        
+
     }
-    
 
- 
 }
-
