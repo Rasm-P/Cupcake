@@ -47,7 +47,7 @@ public class shoppingCart {
     public double getToal() {
         double total = 0;
         for (int i = 0; i < cart.size(); i++) {
-            total += cart.get(i).fullPrice;
+            total += cart.get(i).getFullPrice();
         }
         return total;
     }
