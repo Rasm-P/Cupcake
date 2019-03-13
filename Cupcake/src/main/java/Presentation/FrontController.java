@@ -162,8 +162,6 @@ public class FrontController extends HttpServlet {
             } else {
                 session.setAttribute("ArrayList<lineItems>", arList);
             }
-            session.getAttribute("ArrayList<lineItems>").toString()
-            );
             //PageShop.generateShop(response);
             response.sendRedirect("JSP/shop.jsp");
         } else {
