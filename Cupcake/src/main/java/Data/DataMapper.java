@@ -209,7 +209,7 @@ public class DataMapper {
 
         try {
 
-            String query = "select orders.lineitems_id from orders where "
+            String query = "select orders.orders_id from orders where "
                     + "invoice_id = " + invoice_number + ";";
 
             try (
@@ -220,7 +220,7 @@ public class DataMapper {
 
                 while (rs.next()) {
 
-                    lineitems_number = rs.getInt("lineitems_id");
+                    lineitems_number = rs.getInt("orders_id");
                     list.add(lineitems_number);
 
                 }
@@ -236,7 +236,7 @@ public class DataMapper {
         }
         for (int i = 0; i < invoice.getCart().getCart().size(); i++) {
             try {
-                String query = "INSERT INTO cupcake.lineitems (lineitems_id, "
+                String query = "INSERT INTO cupcake.lineitems (orders_id, "
                         + "bottomname, toppingname, quantity) VALUES (?,?,?,?);";
                 PreparedStatement pstmt = connection.prepareStatement(query);
                 ArrayList<lineItems> list = invoice.getCart().getCart();
@@ -288,16 +288,16 @@ public class DataMapper {
                 password);
         for (int i = 0; i < invoicesNumbers.size(); i++) {
             shoppingCart cart = new shoppingCart();
-            int lineitems_id = 0;
+            int orders_id = 0;
             try {
-                String query = "SELECT orders.lineitems_id, orders.orderdate "
+                String query = "SELECT orders.orders_id, orders.orderdate "
                         + "from orders where invoice_id = " + invoicesNumbers.get(
                                 i) + ";";
                 try (
                         Statement st = connection.createStatement()) {
                     ResultSet rs = st.executeQuery(query);
                     while (rs.next()) {
-                        lineitems_id = rs.getInt("lineitems_id");
+                        orders_id = rs.getInt("orders_id");
                         date = rs.getDate("orderdate");
                     }
                     rs.close();
@@ -313,7 +313,7 @@ public class DataMapper {
 
                 String query = "SELECT lineitems.bottomname, "
                         + "lineitems.toppingname, lineitems.quantity "
-                        + "from lineitems where lineitems_id = " + lineitems_id + ";";
+                        + "from lineitems where orders_id = " + orders_id + ";";
                 try (Statement st = connection.createStatement()) {
                     ResultSet rs = st.executeQuery(query);
                     String bottomname = "";
