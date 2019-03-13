@@ -26,9 +26,6 @@ public class CupcakeMapper {
         ArrayList<Toppings> toppings = new ArrayList();
 
         try {
-
-            
-            
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM toppings;";
@@ -55,7 +52,7 @@ public class CupcakeMapper {
                 
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Error in getting toppings from database! ");
             System.err.println(e.getMessage());
         }
         
@@ -97,7 +94,7 @@ public class CupcakeMapper {
                 
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! ");
+            System.err.println("Error in getting bottoms from database! ");
             System.err.println(e.getMessage());
         }
         
@@ -139,7 +136,7 @@ public class CupcakeMapper {
                 
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! t");
+            System.err.println("Error in getting topping from database!");
             System.err.println(e.getMessage());
         }
         return top;
@@ -179,7 +176,7 @@ public class CupcakeMapper {
              
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! b");
+            System.err.println("Error in getting topping from database! ");
             System.err.println(e.getMessage());
         }
             
@@ -215,7 +212,7 @@ public class CupcakeMapper {
                 
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! b");
+            System.err.println("Error in getting price for topping! ");
             System.err.println(e.getMessage());
         }
        
@@ -252,7 +249,7 @@ public class CupcakeMapper {
                 
             }
         } catch (Exception e) {
-            System.err.println("Got an exception! b");
+            System.err.println("Error in getting price for bottom!");
             System.err.println(e.getMessage());
         }
         
