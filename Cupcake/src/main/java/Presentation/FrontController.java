@@ -52,9 +52,9 @@ public class FrontController extends HttpServlet {
         String action = request.getParameter("action");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String topping = request.getParameter("topping"); //bliver sendt fra shop.jsp
-        String bottom = request.getParameter("bottom"); //bliver sendt fra shop.jsp
-        String qty = request.getParameter("qty"); //bliver sendt fra shop.jsp
+        String topping = request.getParameter("topping"); //is sent from shop.jsp
+        String bottom = request.getParameter("bottom"); //is sent from shop.jsp
+        String qty = request.getParameter("qty"); //is sent from shop.jsp
         String amount = request.getParameter("amount");
         String in = request.getParameter("in");
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
@@ -98,21 +98,50 @@ public class FrontController extends HttpServlet {
             }
         }
     }
-
+    
+    /**
+     * Redirects user to adminPage.jsp
+     * 
+     * @param response
+     * @throws IOException 
+     */
     private void adminPage(HttpServletResponse response) throws IOException {
         response.sendRedirect("JSP/adminPage.jsp");
     }
 
+    /**
+     * Sets the attribute for invoice 
+     * 
+     * @param in
+     * @param session
+     * @param response
+     * @throws IOException 
+     */
     private void invoice(String in, HttpSession session,
             HttpServletResponse response) throws IOException {
         session.setAttribute("chosenInvoice", in);
         response.sendRedirect("JSP/invoice.jsp");
     }
 
+    /**
+     * Redirects user to the error page
+     * 
+     * @param response
+     * @throws IOException 
+     */
     private void error(HttpServletResponse response) throws IOException {
         response.sendRedirect("JSP/error.jsp");
     }
-
+    
+    /**
+     * Adds a specified amount to the account of the user that is currently logged in
+     * 
+     * @param amount
+     * @param session
+     * @param response
+     * @throws NumberFormatException
+     * @throws IOException 
+     */
     private void addMoney(String amount, HttpSession session,
             HttpServletResponse response) throws NumberFormatException, IOException {
         if (amount != null && !"".equals(amount) && Double.parseDouble(amount) >= 0.0) {
@@ -137,7 +166,18 @@ public class FrontController extends HttpServlet {
             response.sendRedirect("JSP/shop.jsp");
         }
     }
-
+    
+    /**
+     * 
+     * 
+     * @param topping
+     * @param bottom
+     * @param qty
+     * @param session
+     * @param response
+     * @throws IOException
+     * @throws NumberFormatException 
+     */
     private void shop(String topping, String bottom, String qty,
             HttpSession session,
             HttpServletResponse response) throws IOException, NumberFormatException {
