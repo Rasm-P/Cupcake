@@ -33,7 +33,7 @@ public class DataMapper {
     /**
     *  @param JavaDoc
     * 
-    * This method return an user object from the input og a name and a password
+    * This method return an user object from the input of a name and a password
     */
 
     public User getInfoFromUsername(String inputUsername, String inputPassword) {
