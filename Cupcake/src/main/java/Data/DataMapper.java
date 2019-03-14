@@ -53,8 +53,7 @@ public class DataMapper {
                     id = rs.getInt("idUser");
                     username = rs.getString("username");
                     password = rs.getString("password");
-                    balance = rs.getDouble("balance");
-
+                    balance = rs.getDouble("balance");                   
                 }
                 rs.close();
                 st.closeOnCompletion();
@@ -101,7 +100,7 @@ public class DataMapper {
                     username = rs.getString("username");
                     password = rs.getString("password");
                     balance = rs.getDouble("balance");
-
+                    
                 }
                 rs.close();
                 st.closeOnCompletion();
@@ -272,11 +271,10 @@ public class DataMapper {
             System.err.println("Got an exception in removeFromBalance");
             e.getLocalizedMessage();
         }
-
     }
 
     public ArrayList<Invoice> getAllInvoicesForCustomer(String username,
-            String password) throws Exception { //Giver exceptions på 9
+            String password) throws Exception { //Gives exceptions on 9
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         Date date = null;
         ArrayList<Integer> invoicesNumbers = getAllInvoiceForUser(username,
@@ -343,7 +341,6 @@ public class DataMapper {
                 System.err.println("Got an exception in getAllInvoicesForCustomer nr 2");
                 System.err.println(es.getMessage());
             }
-
         }
 
         return allInvoices;

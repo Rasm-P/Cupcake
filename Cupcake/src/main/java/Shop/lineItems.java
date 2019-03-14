@@ -49,7 +49,5 @@ public class lineItems {
 
     public void setFullPrice(double fullPrice) {
         this.fullPrice = fullPrice;
-    }
-    
-    
+    }   
 }

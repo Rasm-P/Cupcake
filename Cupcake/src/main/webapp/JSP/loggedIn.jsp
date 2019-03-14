@@ -52,6 +52,11 @@
                         //out.println("<form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + arIn.get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>"  + "</td></tr>");
                         //out.println("<br>");
                     out.println("</div>");
+                    //out.println("<div id=\"divList\">");
+                    out.println("<tr><td>" + "Total: " + arIn.get(i).getCart().getToal() + " Invoice size: " + arIn.get(i).getCart().size() + " User: " + arIn.get(i).getUser().getUserName() + " Date: " + arIn.get(i).getDate().toString());
+                    out.println(" <form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + arIn.get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>"  + "<tr><td>");
+                    //out.println("<br>");
+                    //out.println("</div>");
                 }
             }
         %>

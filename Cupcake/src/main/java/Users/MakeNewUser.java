@@ -43,17 +43,5 @@ public class MakeNewUser {
             System.out.println("Error in creating user!");
             e.printStackTrace();
         }
-
     }
-
-    public static void main(String[] args) throws Exception {
-        MakeNewUser mn = new MakeNewUser();
-        User user = mn.generateUser(0, "ral@hemmingsen.com", "Raller",
-                "raller123", 0.0);
-        System.out.println(user.getUserName() + user.getPassword());
-
-        mn.createNewUser(user);
-
-    }
-
 }
