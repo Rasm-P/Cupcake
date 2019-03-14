@@ -27,10 +27,14 @@ public class DataMapper {
     private Connection connection = DBConnector.getConnection();
     
     /**
-    *  @param JavaDoc
-    * 
-    * This method return an user object from the input og a name and a password
-    */
+     * This method returns a user object from the input of a name and a password of an user.
+     * The method send a query to the database and check if there is a user with 
+     * the matching username and password. If the user don't exist, it will return null. 
+     * 
+     * @param inputUsername
+     * @param inputPassword
+     * @return User object who have the matching username and password
+     */
 
     public User getInfoFromUsername(String inputUsername, String inputPassword) {
         double balance = 0.0;
@@ -71,6 +75,14 @@ public class DataMapper {
         }
     }
 
+    /**
+     * Return true or false to whether or not there is a user in the database with the given
+     * username and password.
+     * 
+     * @param inputUsername
+     * @param inputPassword
+     * @return true or false
+     */
     public boolean getInfo_Username_Password(String inputUsername,
         String inputPassword) {
         boolean findUser = false;
@@ -118,6 +130,17 @@ public class DataMapper {
         }
     }
 
+    
+    /**
+     * create an invoice in the database. An invoice object consist of an user, a shoppingCart
+     * and a date. It inserts the idUser into the invoice table which generate a unused number.
+     * the invoice number for the idUser is inserted into the order table along with a orderdate
+     * the order_id generate a unique order_id which is inserted into the lineitems table along with
+     * all the objects in the shoppingCart.
+     * 
+     * @param invoice
+     * @throws Exception 
+     */
     public void createOrder(Invoice invoice) throws Exception {
         int invoice_number = 0;
         int lineitems_number = 0;
@@ -245,8 +268,15 @@ public class DataMapper {
         }
     }
 
-    public void addToBalance(User user, double newMoney) {
-        String query = "UPDATE cupcake.user SET balance = balance +" + newMoney
+    /**
+     * adds money to the user in the database who match the given user and idUser.
+     * It finds the user from the idUser in the user object.
+     * @param user
+     * @param money 
+     */
+    
+    public void addToBalance(User user, double money) {
+        String query = "UPDATE cupcake.user SET balance = balance +" + money
                 + "where idUser= " + user.getIdUser() + ";";
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);
@@ -258,6 +288,13 @@ public class DataMapper {
         }
     }
 
+    /**
+     * removes money to the user in the database who match the given user and idUser.
+     * It finds the user from the idUser in the user object
+     * @param user
+     * @param money 
+     */
+    
     public void removeFromBalance(User user, double money) {
         String query = "UPDATE cupcake.user SET balance = balance -" + money
                 + "where idUser= " + user.getIdUser() + ";";
@@ -271,11 +308,20 @@ public class DataMapper {
         }
     }
 
+    /**
+     * returns an arraylist with all the invoices from user with the matching
+     * username and password. 
+     * @param username
+     * @param password
+     * @return Arraylist of invoice objects
+     * @throws Exception 
+     */
+    
     public ArrayList<Invoice> getAllInvoicesForCustomer(String username,
             String password) throws Exception { //Gives exceptions on 9
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         Date date = null;
-        ArrayList<Integer> invoicesNumbers = getAllInvoiceForUser(username,
+        ArrayList<Integer> invoicesNumbers = getAllInvoiceIDForUser(username,
                 password);
         for (int i = 0; i < invoicesNumbers.size(); i++) {
             shoppingCart cart = new shoppingCart();
@@ -344,6 +390,13 @@ public class DataMapper {
         return allInvoices;
     }
 
+    /**
+     * finds the idUser in the database with the matching username and password.
+     * @param username
+     * @param password
+     * @return an unique id for the user
+     */
+    
     public int getUserID(String username, String password) {
         int idUser = 0;
         try {
@@ -370,7 +423,13 @@ public class DataMapper {
         return idUser;
     }
 
-    public ArrayList<Integer> getAllInvoiceForUser(String username,
+    /**
+     * finds all the invoice_id which is created by the user with the given username and password 
+     * @param username
+     * @param password
+     * @return an arraylist of invoice_id
+     */
+    public ArrayList<Integer> getAllInvoiceIDForUser(String username,
             String password) {
         int idUser = getUserID(username, password);
         ArrayList<Integer> invoicesNumbers = new ArrayList<>();
@@ -401,6 +460,12 @@ public class DataMapper {
         return invoicesNumbers;
     }
 
+    /**
+     * checks whether the user with the matching username and password is an admin.
+     * @param username
+     * @param password
+     * @return true or false
+     */
     public boolean isAdmin(String username, String password) {
         int isAdmin = 0;
         try {
@@ -430,6 +495,11 @@ public class DataMapper {
         }
     }
 
+    
+    /**
+     * finds all the registrated users in the user table in the database.
+     * @return an Arraylist of user objects
+     */
     public ArrayList<User> getAllUsers() {
         ArrayList<User> allUsers = new ArrayList<>();
         int idUser = 0;
@@ -458,6 +528,13 @@ public class DataMapper {
         return allUsers;
     }
 
+    /**
+     * this method loops through a list of all users and finds all the invoices
+     * for that user. 
+     * @return an arraylist of arraylist of invoices. Each index of the arraylist consist
+     * of all invoices for an user.
+     * @throws Exception 
+     */
     public ArrayList<ArrayList<Invoice>> getAllInvoices() throws Exception {
         ArrayList<User> users = getAllUsers();
         DataMapper mapper = new DataMapper();
@@ -470,11 +547,18 @@ public class DataMapper {
         return allInvoices;
     }
 
-    public double getBalanceFromDB(String name, String password) {
+    
+    /**
+     * given the username and password the methods find the balance of the user
+     * @param name
+     * @param password
+     * @return a double which represent the current balance of the user
+     */
+    public double getBalanceFromDB(String username, String password) {
         double balance = 0;
         try {
             String query = "SELECT balance from cupcake.user where user.username = "
-                    + "'" + name + "'" + " and user.password = " + "'" + password + "'" + ";";
+                    + "'" + username + "'" + " and user.password = " + "'" + password + "'" + ";";
             try (Statement st = connection.createStatement()) {
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
@@ -489,20 +573,7 @@ public class DataMapper {
         }
         return balance;
     }
-    
-    public static void main(String[] args) throws Exception {
-        User user = new User(2, "Ditlev", "12345", 2.5);
-        DataMapper mapper = new DataMapper();
 
-        System.out.println(mapper.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()));
-        System.out.println(mapper.getAllInvoicesForCustomer(user.getUserName(),
-                user.getPassword()));    
-        long start = System.currentTimeMillis();
-        System.out.println(mapper.getAllInvoices().toString());
-        long elapsedTimeMillis = System.currentTimeMillis() - start;
-        float elapsedTimeSec = elapsedTimeMillis / 1000F;
-        System.out.println(elapsedTimeSec);
-    }
 }
 
 
