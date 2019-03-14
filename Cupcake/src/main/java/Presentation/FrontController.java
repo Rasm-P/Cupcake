@@ -53,9 +53,9 @@ public class FrontController extends HttpServlet {
         String action = request.getParameter("action");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String topping = request.getParameter("topping");
-        String bottom = request.getParameter("bottom");
-        String qty = request.getParameter("qty");
+        String topping = request.getParameter("topping"); //bliver sendt fra shop.jsp
+        String bottom = request.getParameter("bottom"); //bliver sendt fra shop.jsp
+        String qty = request.getParameter("qty"); //bliver sendt fra shop.jsp
         String amount = request.getParameter("amount");
         String in = request.getParameter("in");
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
@@ -146,7 +146,6 @@ public class FrontController extends HttpServlet {
         } else {
             response.sendRedirect("JSP/shop.jsp");
         }
-
     }
 
     private void shop(String topping, String bottom, String qty,

@@ -38,6 +38,5 @@ public class Bottoms {
     @Override
     public String toString() {
         return name + ", bottom-price: " + price;
-    }
-    
+    }   
 }
