@@ -37,8 +37,5 @@ public class Toppings {
     @Override
     public String toString() {
         return name + ", topping-price: " + price;
-    }
-    
-    
-    
+    }  
 }

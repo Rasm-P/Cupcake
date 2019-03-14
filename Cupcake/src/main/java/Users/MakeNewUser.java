@@ -43,8 +43,5 @@ public class MakeNewUser {
             System.out.println("Error in creating user!");
             e.printStackTrace();
         }
-
     }
-
-
 }

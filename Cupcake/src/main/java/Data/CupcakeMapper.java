@@ -46,10 +46,7 @@ public class CupcakeMapper {
 
                 }
                 st.closeOnCompletion();
-                rs.close();
-                
-
-                
+                rs.close();              
             }
         } catch (Exception e) {
             System.err.println("Error in getting toppings from database! ");
@@ -66,9 +63,6 @@ public class CupcakeMapper {
         ArrayList<Bottoms> bottoms = new ArrayList();
 
         try {
-
-            
-            
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM bottoms;";
@@ -86,12 +80,9 @@ public class CupcakeMapper {
                     price = rs.getDouble("price");
                     Bottoms bot = new Bottoms(name, price);
                     bottoms.add(bot);
-
                 }
                 st.closeOnCompletion();
-                rs.close();
-
-                
+                rs.close();              
             }
         } catch (Exception e) {
             System.err.println("Error in getting bottoms from database! ");
@@ -107,9 +98,7 @@ public class CupcakeMapper {
         Double price;
         Toppings top = null;
 
-        try {
-
-            
+        try {        
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM toppings where toppingname = '" 
@@ -127,13 +116,9 @@ public class CupcakeMapper {
                     name = rs.getString("toppingname");
                     price = rs.getDouble("price");
                     top = new Toppings(name, price);
-
                 }
                 rs.close();
                 st.closeOnCompletion();
-                
-
-                
             }
         } catch (Exception e) {
             System.err.println("Error in getting topping from database!");
@@ -149,8 +134,6 @@ public class CupcakeMapper {
         Bottoms bot = null;
 
         try {
-
-            
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM bottoms where bottomname = '" 
@@ -158,7 +141,7 @@ public class CupcakeMapper {
 
             // execute the query, and get a java resultset
             try ( // create the java statement
-                    Statement st = connection.createStatement()) {
+                Statement st = connection.createStatement()) {
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
 
@@ -171,9 +154,7 @@ public class CupcakeMapper {
 
                 }
                 rs.close();
-                st.closeOnCompletion();
-
-             
+                st.closeOnCompletion();          
             }
         } catch (Exception e) {
             System.err.println("Error in getting topping from database! ");
@@ -185,15 +166,12 @@ public class CupcakeMapper {
     
     public double getTopPriceFromName(String top) {
         double price = 0.0;
-        try {
-
-            
+        try {       
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT toppings.price FROM toppings where "
                     + "toppingname=" + "'" + top + "'" + ";";
-            
-            
+                       
             // execute the query, and get a java resultset
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
@@ -203,34 +181,26 @@ public class CupcakeMapper {
                 // iterate through the java resultset
                 while (rs.next()) {
                     price = rs.getDouble("price");
-                    
-
                 }
-
                 st.closeOnCompletion();
-                rs.close();
-                
+                rs.close();                
             }
         } catch (Exception e) {
             System.err.println("Error in getting price for topping! ");
             System.err.println(e.getMessage());
         }
-       
-      
+             
          return price;
     }
     
     public double getBottomPriceFromName(String bottom) {
         double price = 0.0;
         try {
-
-            
             // our SQL SELECT query. 
             // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT bottoms.price FROM bottoms where "
                     + "bottomname=" + "'" + bottom + "'" + ";";
-            
-            
+                       
             // execute the query, and get a java resultset
             try ( // create the java statement
                     Statement st = connection.createStatement()) {
@@ -239,23 +209,16 @@ public class CupcakeMapper {
 
                 // iterate through the java resultset
                 while (rs.next()) {
-                    price = rs.getDouble("price");
-                    
-
+                    price = rs.getDouble("price");                    
                 }
-
                 st.closeOnCompletion();
-                rs.close();
-                
+                rs.close();                
             }
         } catch (Exception e) {
             System.err.println("Error in getting price for bottom!");
             System.err.println(e.getMessage());
         }
         
-         return price;
-         
-    }
-    
-    
+         return price;         
+    }        
 }

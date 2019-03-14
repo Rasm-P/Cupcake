@@ -66,7 +66,5 @@ public class User {
 
     public static void main(String[] args) {
         User user = new User(1, "Ole", "1234", 112.0);
-
     }
-
 }

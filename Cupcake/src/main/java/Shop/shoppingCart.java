@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class shoppingCart {
 
-//    public void addToCart(cupcake cup, int qua){
     public void addToCart(lineItems li) {
         for (int i = 0; i < cart.size(); i++) {
             if (cart.get(i).getCup().getBottom().equals(li.getCup().getBottom()) && cart.get(
@@ -22,7 +21,6 @@ public class shoppingCart {
             }
         }
 
-//        cart.add(new lineItems(qua, cup));
         cart.add(li);
     }
 
@@ -52,11 +50,6 @@ public class shoppingCart {
         return total;
     }
 
-//    public static void main(String [] args){
-//        Bottoms b = new Bottoms("Choco", 2.0);
-//        Toppings t = new Toppings("Banana", 3.0);
-//        cupcake c = new cupcake(b, t, "2");
-//    }
     @Override
     public String toString() {
         return "shoppingCart: " + "cart: " + cart;

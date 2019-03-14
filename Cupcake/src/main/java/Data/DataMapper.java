@@ -22,9 +22,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DataMapper {
-    
-    
+public class DataMapper { 
 
     private Connection connection = DBConnector.getConnection();
     
@@ -49,7 +47,7 @@ public class DataMapper {
                     + inputUsername + "'" + " and password = " + "'" + inputPassword + "'" + ";";
 
             try (
-                    Statement st = connection.createStatement()) {
+                Statement st = connection.createStatement()) {
 
                 ResultSet rs = st.executeQuery(query);
 
@@ -57,8 +55,7 @@ public class DataMapper {
                     id = rs.getInt("idUser");
                     username = rs.getString("username");
                     password = rs.getString("password");
-                    balance = rs.getDouble("balance");
-
+                    balance = rs.getDouble("balance");                   
                 }
                 rs.close();
                 st.closeOnCompletion();
@@ -87,7 +84,7 @@ public class DataMapper {
      * @return true or false
      */
     public boolean getInfo_Username_Password(String inputUsername,
-            String inputPassword) {
+        String inputPassword) {
         boolean findUser = false;
         double balance = 0.0;
         String password = "";
@@ -113,7 +110,7 @@ public class DataMapper {
                     username = rs.getString("username");
                     password = rs.getString("password");
                     balance = rs.getDouble("balance");
-
+                    
                 }
                 rs.close();
                 st.closeOnCompletion();
@@ -154,10 +151,9 @@ public class DataMapper {
                     + "password=" + "'" + invoice.getUser().getPassword() + "'" + ";";
             PreparedStatement pstmt = connection.prepareStatement(query);
             try (
-                    Statement st = connection.createStatement()) {
+                Statement st = connection.createStatement()) {
 
                 pstmt.execute();
-
             }
 
             pstmt.closeOnCompletion();
@@ -165,7 +161,6 @@ public class DataMapper {
         } catch (Exception e) {
             System.err.println("Got an exception in createOrder nr 1");
             e.getLocalizedMessage();
-
         }
 
         try {
@@ -190,10 +185,9 @@ public class DataMapper {
         } catch (Exception e) {
             System.err.println("Got an exception in createOrder nr 3");
             e.getLocalizedMessage();
-
         }
+        
         try {
-
             String query = "select invoice.invoice_id from invoice where "
                     + "idUser = " + invoice.getUser().getIdUser() + ";";
 
@@ -312,7 +306,6 @@ public class DataMapper {
             System.err.println("Got an exception in removeFromBalance");
             e.getLocalizedMessage();
         }
-
     }
 
     /**
@@ -325,7 +318,7 @@ public class DataMapper {
      */
     
     public ArrayList<Invoice> getAllInvoicesForCustomer(String username,
-            String password) throws Exception { //Giver exceptions på 9
+            String password) throws Exception { //Gives exceptions on 9
         ArrayList<Invoice> allInvoices = new ArrayList<>();
         Date date = null;
         ArrayList<Integer> invoicesNumbers = getAllInvoiceIDForUser(username,
@@ -392,7 +385,6 @@ public class DataMapper {
                 System.err.println("Got an exception in getAllInvoicesForCustomer nr 2");
                 System.err.println(es.getMessage());
             }
-
         }
 
         return allInvoices;
@@ -533,7 +525,6 @@ public class DataMapper {
             System.err.println("Got an exception in getAllUsers");
             System.err.println(es.getMessage());
         }
-
         return allUsers;
     }
 
@@ -575,7 +566,6 @@ public class DataMapper {
                 }
                 rs.close();
                 st.closeOnCompletion();
-
             }
         } catch (Exception e) {
             System.err.println("Got an exception in getBalanceFromDB");
@@ -583,4 +573,7 @@ public class DataMapper {
         }
         return balance;
     }
+
 }
+
+

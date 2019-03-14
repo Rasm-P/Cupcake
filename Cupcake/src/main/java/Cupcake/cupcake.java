@@ -43,7 +43,6 @@ public class cupcake {
 
     @Override
     public String toString() {
-        return "Bottom: " + bottom + ", Top: " + top + ", Cupcake-Price: " + getPrice(bottom,top);
-    }
-    
+        return "Bottom: " + bottom + ", Top: " + top + ", Cupcake-Price: " + price;
+    }  
 }
