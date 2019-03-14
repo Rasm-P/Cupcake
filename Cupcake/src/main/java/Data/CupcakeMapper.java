@@ -12,12 +12,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- *
- * @author rh
- */
+
 public class CupcakeMapper {
     private Connection connection = DBConnector.getConnection();
+    
+    /**
+     * the method sends a query to the database and ask to get everything
+     * from the Topping table
+     * @return an arraylist of topping objects
+     */
 
     public ArrayList<Toppings> getToppings() {
         int id = 0;
@@ -25,26 +28,19 @@ public class CupcakeMapper {
         Double price;
         ArrayList<Toppings> toppings = new ArrayList();
 
-        try {
-            // our SQL SELECT query. 
-            // if you only need a few columns, specify them by name instead of using "*"
+        try { 
             String query = "SELECT * FROM toppings;";
-
-            // execute the query, and get a java resultset
-            try ( // create the java statement
+            
+            try ( 
                     Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
-
-                // iterate through the java resultset
-                while (rs.next()) {
+                 while (rs.next()) {
                     id = rs.getInt("idtoppings");
                     name = rs.getString("toppingname");
                     price = rs.getDouble("price");
                     Toppings top = new Toppings(name, price);
                     toppings.add(top);
-
-                }
+                    }
                 st.closeOnCompletion();
                 rs.close();              
             }
@@ -56,25 +52,23 @@ public class CupcakeMapper {
         return toppings;
     }
 
+    /**
+     * the method sends a query to the database and ask to get everything
+     * from the bottom table
+     * @return an arraylist of bottom objects
+     */
     public ArrayList<Bottoms> getBottoms() {
         int id = 0;
         String name;
         Double price;
         ArrayList<Bottoms> bottoms = new ArrayList();
 
-        try {
-            // our SQL SELECT query. 
-            // if you only need a few columns, specify them by name instead of using "*"
+        try { 
             String query = "SELECT * FROM bottoms;";
-
-            // execute the query, and get a java resultset
-            try ( // create the java statement
+                try ( 
                     Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
-                ResultSet rs = st.executeQuery(query);
-
-                // iterate through the java resultset
-                while (rs.next()) {
+                    ResultSet rs = st.executeQuery(query);
+                   while (rs.next()) {
                     id = rs.getInt("idBottoms");
                     name = rs.getString("bottomname");
                     price = rs.getDouble("price");
@@ -91,26 +85,25 @@ public class CupcakeMapper {
         
         return bottoms;
     }
-
+    
+    /**
+     * finds the topping in the database with the matching name
+     * @param toppingname
+     * @return a topping object
+     */
     public Toppings getOneToppings(String toppingname) {
         int id = 0;
         String name;
         Double price;
         Toppings top = null;
 
-        try {        
-            // our SQL SELECT query. 
-            // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM toppings where toppingname = '" 
+        try {   String query = "SELECT * FROM toppings where toppingname = '" 
                     + toppingname + "' ;";
 
-            // execute the query, and get a java resultset
-            try ( // create the java statement
+            
+            try (
                     Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
-                ResultSet rs = st.executeQuery(query);
-
-                // iterate through the java resultset
+                    ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
                     id = rs.getInt("idtoppings");
                     name = rs.getString("toppingname");
@@ -127,6 +120,12 @@ public class CupcakeMapper {
         return top;
     }
 
+    /**
+     * finds the information of the bottom with the matching name the method
+     * is given
+     * @param Bottomname
+     * @return a bottoms object
+     */
     public Bottoms getOneBottom(String Bottomname) {
         int id = 0;
         String name;
@@ -134,24 +133,16 @@ public class CupcakeMapper {
         Bottoms bot = null;
 
         try {
-            // our SQL SELECT query. 
-            // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT * FROM bottoms where bottomname = '" 
                     + Bottomname + "' ;";
-
-            // execute the query, and get a java resultset
-            try ( // create the java statement
+            try ( 
                 Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
-
-                // iterate through the java resultset
                 while (rs.next()) {
                     id = rs.getInt("idBottoms");
                     name = rs.getString("bottomname");
                     price = rs.getDouble("price");
                     bot = new Bottoms(name, price);
-
                 }
                 rs.close();
                 st.closeOnCompletion();          
@@ -164,21 +155,25 @@ public class CupcakeMapper {
         return bot;
     }
     
+    /**
+     * this method finds the price of the topping that match the name the method
+     * is given
+     * @param top
+     * @return a double which represent the price of the topping
+     */
     public double getTopPriceFromName(String top) {
         double price = 0.0;
         try {       
-            // our SQL SELECT query. 
-            // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT toppings.price FROM toppings where "
                     + "toppingname=" + "'" + top + "'" + ";";
                        
-            // execute the query, and get a java resultset
-            try ( // create the java statement
+            
+            try ( 
                     Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
+                
                 ResultSet rs = st.executeQuery(query);
 
-                // iterate through the java resultset
+                
                 while (rs.next()) {
                     price = rs.getDouble("price");
                 }
@@ -193,21 +188,20 @@ public class CupcakeMapper {
          return price;
     }
     
+    /**
+     * this method finds the price for the bottom that has the matching bottomname
+     * @param bottom
+     * @return a double that represent the price of the bottom
+     */
     public double getBottomPriceFromName(String bottom) {
         double price = 0.0;
         try {
-            // our SQL SELECT query. 
-            // if you only need a few columns, specify them by name instead of using "*"
             String query = "SELECT bottoms.price FROM bottoms where "
                     + "bottomname=" + "'" + bottom + "'" + ";";
-                       
-            // execute the query, and get a java resultset
-            try ( // create the java statement
+            try ( 
                     Statement st = connection.createStatement()) {
-                // execute the query, and get a java resultset
-                ResultSet rs = st.executeQuery(query);
+               ResultSet rs = st.executeQuery(query);
 
-                // iterate through the java resultset
                 while (rs.next()) {
                     price = rs.getDouble("price");                    
                 }
