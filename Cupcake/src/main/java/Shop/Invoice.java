@@ -22,32 +22,69 @@ public class Invoice {
     private Users.User user;
     private LocalDate date;
 
+    /**
+     * Constructor for invoice takes a shoppingCart object, a user objet and a localDate object
+     * 
+     * @param cart
+     * @param user
+     * @param date 
+     */
     public Invoice(shoppingCart cart, Users.User user, LocalDate date) {
         this.cart = cart;
         this.user = user;
         this.date = date;
     }
 
+    /**
+     * returns cart 
+     * 
+     * @return cart
+     */
     public shoppingCart getCart() {
         return cart;
     }
 
+    /**
+     * sets cart 
+     * 
+     * @param cart 
+     */  
     public void setCart(shoppingCart cart) {
         this.cart = cart;
     }
 
+    /**
+     * returns user
+     * 
+     * @return uzer
+     */
     public Users.User getUser() {
         return user;
     }
 
+    /**
+     * sets user
+     * 
+     * @param user 
+     */
     public void setUser(Users.User user) {
         this.user = user;
     }
 
+    /**
+     * returns date
+     * 
+     * @return date
+     */
     public LocalDate getDate() {
         return date;
     }
 
+    /**
+     * sets date
+     * 
+     * @param date 
+     */
     public void setDate(LocalDate date) {
         this.date = date;
     }   
