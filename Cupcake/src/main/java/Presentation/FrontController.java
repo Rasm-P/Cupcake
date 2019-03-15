@@ -94,6 +94,7 @@ public class FrontController extends HttpServlet {
                 case "admin":
                     adminPage(response);
                     break;
+                
             }
         }
     }
