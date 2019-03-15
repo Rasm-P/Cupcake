@@ -1,5 +1,8 @@
 package Shop;
 
+import Cupcake.Bottoms;
+import Cupcake.Toppings;
+import Cupcake.cupcake;
 import java.util.ArrayList;
 
 /*
@@ -12,6 +15,8 @@ import java.util.ArrayList;
  * @author Ludvig
  */
 public class shoppingCart {
+    
+    private ArrayList<lineItems> cart = new ArrayList();
 
     public void addToCart(lineItems li) {
         for (int i = 0; i < cart.size(); i++) {
@@ -23,8 +28,6 @@ public class shoppingCart {
 
         cart.add(li);
     }
-
-    private ArrayList<lineItems> cart = new ArrayList();
 
     public int size() {
         return cart.size();
@@ -54,6 +57,4 @@ public class shoppingCart {
     public String toString() {
         return "shoppingCart: " + "cart: " + cart;
     }
-    
-    
 }

@@ -1,5 +1,9 @@
 package Shop;
 
+import Cupcake.Bottoms;
+import Cupcake.Toppings;
+import Cupcake.cupcake;
+import Users.User;
 import java.time.LocalDate;
 
 /*
@@ -51,5 +55,5 @@ public class Invoice {
     @Override
     public String toString() {
         return "Invoice: " + "cart: " + cart + ", user: " + user + ", date: " + date + '}' + "\n";
-    }   
+    } 
 }

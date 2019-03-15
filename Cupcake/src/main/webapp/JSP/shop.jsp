@@ -42,7 +42,7 @@
                 <td><select name="bottom" id="bottomSelect">
                         <option value="0">Choose bottom</option>
                         <option value="Chocolate">Chocolate: 5.0</option><option value="Vanilla">Vanilla: 5.0</option><option value="Nutmeg">Nutmeg: 5.0</option><option value="Pistacio">Pistacio: 6.0</option><option value="Almond">Almond: 7.0</option>
-                </td>
+                </select></td>
                 <td><input type="text" name="qty" placeholder="quantity" id="qtyInput"></td>
                 <td><input type="submit" name="submit" value="Add to cart"></td><td><span id="errorContainer"></span></td>
             </tr>

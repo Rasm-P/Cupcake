@@ -60,7 +60,6 @@ public class FrontController extends HttpServlet {
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
 
         if (loggedIn == null && username == null && !"makeLogin".equals(action)) {
-            //PageLogin.generateLogin(response);
             response.sendRedirect("JSP/login.jsp");
         }
 
@@ -110,7 +109,7 @@ public class FrontController extends HttpServlet {
     }
 
     /**
-     * Sets the attribute for invoice 
+     * Sets the attribute for invoice and redirects to invoice.jsp
      * 
      * @param in
      * @param session
@@ -134,7 +133,8 @@ public class FrontController extends HttpServlet {
     }
     
     /**
-     * Adds a specified amount to the account of the user that is currently logged in
+     * Adds a specified amount of money to the account of the user that is currently logged in 
+     * and redirects to mainPage.jsp
      * 
      * @param amount
      * @param session
@@ -158,6 +158,14 @@ public class FrontController extends HttpServlet {
         response.sendRedirect("JSP/mainPage.jsp");
     }
 
+    /**
+     * Redirects the user to confirmationPage.jsp if the user has made an order, 
+     * otherwise the user stays in the shop.jsp
+     * 
+     * @param session
+     * @param response
+     * @throws IOException 
+     */
     private void confirmation(HttpSession session, HttpServletResponse response) throws IOException {
         if (session.getAttribute("ArrayList<lineItems>") != null) {
             response.sendRedirect("JSP/confirmationPage.jsp");
@@ -168,7 +176,8 @@ public class FrontController extends HttpServlet {
     }
     
     /**
-     * 
+     * Sets an arraylist of lineitems as attribute when making an order in the shop
+     * and redirects to shop.jsp
      * 
      * @param topping
      * @param bottom
@@ -184,7 +193,6 @@ public class FrontController extends HttpServlet {
         if (topping != null && !"".equals(topping) && bottom != null && !"".equals(
                 bottom)
                 && qty != null && !"".equals(qty) && Integer.parseInt(qty) >= 1) {
-            //ArrayList<lineItems> arList = new ArrayList<>();
             shoppingCart arList = new shoppingCart();
             Bottoms b = cupdata.getOneBottom(bottom);
             Toppings t = cupdata.getOneToppings(topping);
@@ -201,22 +209,35 @@ public class FrontController extends HttpServlet {
             } else {
                 session.setAttribute("ArrayList<lineItems>", arList);
             }
-            //PageShop.generateShop(response);
             response.sendRedirect("JSP/shop.jsp");
         } else {
-            //PageShop.generateShop(response);
             response.sendRedirect("JSP/shop.jsp");
         }
     }
 
+    /**
+     * Changes all attributes so the user is logged out and redirects to login.jsp
+     * 
+     * @param session
+     * @param response
+     * @throws IOException 
+     */
     private void logOut(HttpSession session, HttpServletResponse response) throws IOException {
         session.setAttribute("User", null);
         session.setAttribute("ArrayList<lineItems>", null);
         session.setAttribute("loggedIn", false);
-        //PageLogin.generateLogin(response);
         response.sendRedirect("JSP/login.jsp");
     }
 
+    /**
+     * Creates a new user and redirects to login.jsp,
+     * or redirects one to loginRegistration.jsp
+     * 
+     * @param username
+     * @param password
+     * @param response
+     * @throws Exception 
+     */
     private void makeLogin(String username, String password,
             HttpServletResponse response) throws Exception {
         MakeNewUser mn = new MakeNewUser();
@@ -225,14 +246,21 @@ public class FrontController extends HttpServlet {
                 && data.getInfo_Username_Password(username, password) == false) {
             User u = new User(1, username, password, 0.0);
             mn.createNewUser(u);
-            //PageLogin.generateLogin(response);
             response.sendRedirect("JSP/login.jsp");
         } else {
-            //PageMakeLogin.generateMakeLogin(response);
             response.sendRedirect("JSP/loginRegistration.jsp");
         }
     }
 
+    /**
+     * Logs an existing user in or redirects to login.jsp
+     * 
+     * @param username
+     * @param password
+     * @param session
+     * @param response
+     * @throws IOException 
+     */
     private void login(String username, String password, HttpSession session,
             HttpServletResponse response) throws IOException {
         if (username != null && password != null && data.getInfo_Username_Password(
@@ -241,10 +269,8 @@ public class FrontController extends HttpServlet {
             double b = data.getBalanceFromDB(username, password);
             User u = new User(1, username, password, b);
             session.setAttribute("User", u);
-            //PageLoggedIn.generateLoggedIn(response);
             response.sendRedirect("JSP/loggedIn.jsp");
         } else {
-            //PageLogin.generateLogin(response);
             response.sendRedirect("JSP/login.jsp");
         }
     }

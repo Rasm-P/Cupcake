@@ -104,7 +104,6 @@ p {
 }
 
 #divList {
-    border: 1px solid black;
     margin: 25px 50px;
 }
 
@@ -154,4 +153,9 @@ input {
 
 #tdIn{
     margin: 25px 50px;
+}
+
+#tableIn{
+    margin: 25px 50px;
+    width: 90vw;
 }
