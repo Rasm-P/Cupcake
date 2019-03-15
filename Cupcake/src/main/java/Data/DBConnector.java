@@ -23,12 +23,22 @@ public class DBConnector {
     private static final String PASSWORD = "password1234";
     private static String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE;
     
+    /**
+     * constructor for DBConnector, creates a connection to use in the rest of the program
+     * 
+     * @throws Exception 
+     */
     public DBConnector() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();        
 
         this.connection = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
     }
     
+    /**
+     * creates and returns a connection 
+     * 
+     * @return Connection
+     */
     public static Connection getConnection() {
         if (connection == null) {
             try {
