@@ -19,7 +19,7 @@
 
 <h1>Admin Page</h1>
 <h2>Du er logget ind som admin!</h2>
-<form id="formAdmin" action="/Cupcake/FrontController?action=addmoney" method="POST">
+<form action="/Cupcake/FrontController?action=addmoney" method="POST">
     <input type="text" name="amount" placeholder="Enter amount"/>
     <input type="submit" value="Add money to account"/>
 </form>
@@ -31,7 +31,7 @@
 %>
 <br>
 <h2>All User Invoices</h2>
-<table class="table">
+<table id="tableIn" class="table">
     <%
         if (session.getAttribute("User") != null) {
             DataMapper data = new DataMapper();
@@ -39,9 +39,9 @@
                 ArrayList<User> us = data.getAllUsers();
                 for (int j = 0; j < us.size(); j++) {
                     User user = us.get(j);
-                    for (int i = 0; i < data.getAllInvoicesForCustomer(user.getUserName(),user.getPassword()).size(); i++) {
-                        out.println("<tr><td>" + data.getAllInvoicesForCustomer(user.getUserName(),user.getPassword()).get(i).toString());
-                        out.println(" <form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + data.getAllInvoicesForCustomer(user.getUserName(),user.getPassword()).get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>"  + "<tr><td>");
+                    for (int i = 0; i < data.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()).size(); i++) {
+                        out.println("<tr><td>" + "<p>" + data.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()).get(i).toString() + "</p>");
+                        out.println("<form action=\"/Cupcake/FrontController?action=invoice\" method=\"post\"> <input type=\"hidden\" name=\"in\" value=\"" + data.getAllInvoicesForCustomer(user.getUserName(), user.getPassword()).get(i).getCart().toString() + "\"> <input type=\"submit\" value=\"See invoice\" /> </form>" + "<tr><td>");
                     }
                 }
             }
