@@ -16,6 +16,13 @@ import java.time.LocalDate;
  */
 public class transaction extends Invoice {
 
+    /**
+     * Creates an invoice
+     * 
+     * @param cart
+     * @param user
+     * @param date 
+     */
     public transaction(shoppingCart cart, User user, LocalDate date) {
         super(cart, user, date);
     }

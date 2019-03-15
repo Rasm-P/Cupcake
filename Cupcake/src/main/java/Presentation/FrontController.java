@@ -52,9 +52,9 @@ public class FrontController extends HttpServlet {
         String action = request.getParameter("action");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String topping = request.getParameter("topping"); //is sent from shop.jsp
-        String bottom = request.getParameter("bottom"); //is sent from shop.jsp
-        String qty = request.getParameter("qty"); //is sent from shop.jsp
+        String topping = request.getParameter("topping");
+        String bottom = request.getParameter("bottom");
+        String qty = request.getParameter("qty");
         String amount = request.getParameter("amount");
         String in = request.getParameter("in");
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
@@ -110,7 +110,7 @@ public class FrontController extends HttpServlet {
     }
 
     /**
-     * Sets the attribute for invoice and redirects to invoice.jsp
+     * Sets the attribute for invoice and redirects user to invoice.jsp
      * 
      * @param in
      * @param session
@@ -177,7 +177,7 @@ public class FrontController extends HttpServlet {
     }
     
     /**
-     * Sets an arraylist of lineitems as attribute when making an order in the shop
+     * Sets an arraylist of lineitems as attribute when making an order in the shop or updates an existing one 
      * and redirects to shop.jsp
      * 
      * @param topping
@@ -232,7 +232,7 @@ public class FrontController extends HttpServlet {
 
     /**
      * Creates a new user and redirects to login.jsp,
-     * or redirects one to loginRegistration.jsp
+     * or redirects one to loginRegistration.jsp if the registration was not valid
      * 
      * @param username
      * @param password

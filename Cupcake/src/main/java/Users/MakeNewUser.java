@@ -17,20 +17,34 @@ public class MakeNewUser {
 
     private Connection connection = DBConnector.getConnection();
 
+    /**
+     * constructor creates a new user
+     * 
+     * @param idUser
+     * @param email
+     * @param userName
+     * @param password
+     * @param balance
+     * @return user
+     */
     public User generateUser(int idUser, String email, String userName,
             String password, double balance) {
         User user = new User(idUser, userName, password, balance);
         return user;
     }
 
+    /**
+     * inserts a new user into SQL database
+     * 
+     * @param user
+     * @throws Exception 
+     */
     public void createNewUser(User user) throws Exception {
-
         try {
 
             String query = "INSERT INTO cupcake.user (username, password, balance) VALUES (?,?,?)";
 
             PreparedStatement pstmt = connection.prepareStatement(query);
-//            Statement statement = connection.createStatement();
 
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getPassword());
