@@ -7,10 +7,10 @@
 
 <jsp:include page='/JSP/sitemenus.jsp'></jsp:include>
 
-<%@page import="Shop.Invoice"%>
+<%@page import="CupcakeLogic.Invoice"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Users.User"%>
-<%@page import="Data.DataMapper"%>
+<%@page import="CupcakeLogic.User"%>
+<%@page import="CupcakeData.DataMapper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <head>

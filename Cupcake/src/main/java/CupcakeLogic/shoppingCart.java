@@ -1,8 +1,8 @@
-package Shop;
+package CupcakeLogic;
 
-import Cupcake.Bottoms;
-import Cupcake.Toppings;
-import Cupcake.cupcake;
+import CupcakeLogic.Bottoms;
+import CupcakeLogic.Toppings;
+import CupcakeLogic.cupcake;
 import java.util.ArrayList;
 
 /*

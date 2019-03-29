@@ -8,13 +8,13 @@
 <jsp:include page='/JSP/sitemenus.jsp'></jsp:include>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="Data.DataMapper"%>
-<%@page import="Users.User"%>
+<%@page import="CupcakeData.DataMapper"%>
+<%@page import="CupcakeLogic.User"%>
 <%@page import="java.time.LocalDate"%>
-<%@page import="Shop.Invoice"%>
-<%@page import="Shop.lineItems"%>
-<%@page import="Shop.shoppingCart"%>
-<%@page import="Data.transaction"%>
+<%@page import="CupcakeLogic.Invoice"%>
+<%@page import="CupcakeLogic.lineItems"%>
+<%@page import="CupcakeLogic.shoppingCart"%>
+<%@page import="CupcakeLogic.transaction"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <head>

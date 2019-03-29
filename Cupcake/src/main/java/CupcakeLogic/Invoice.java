@@ -1,9 +1,8 @@
-package Shop;
+package CupcakeLogic;
 
-import Cupcake.Bottoms;
-import Cupcake.Toppings;
-import Cupcake.cupcake;
-import Users.User;
+import CupcakeLogic.Bottoms;
+import CupcakeLogic.Toppings;
+import CupcakeLogic.cupcake;
 import java.time.LocalDate;
 
 /*
@@ -19,7 +18,7 @@ import java.time.LocalDate;
 public class Invoice {
 
     private shoppingCart cart;
-    private Users.User user;
+    private CupcakeLogic.User user;
     private LocalDate date;
 
     /**
@@ -29,7 +28,7 @@ public class Invoice {
      * @param user
      * @param date 
      */
-    public Invoice(shoppingCart cart, Users.User user, LocalDate date) {
+    public Invoice(shoppingCart cart, CupcakeLogic.User user, LocalDate date) {
         this.cart = cart;
         this.user = user;
         this.date = date;
@@ -58,7 +57,7 @@ public class Invoice {
      * 
      * @return uzer
      */
-    public Users.User getUser() {
+    public CupcakeLogic.User getUser() {
         return user;
     }
 
@@ -67,7 +66,7 @@ public class Invoice {
      * 
      * @param user 
      */
-    public void setUser(Users.User user) {
+    public void setUser(CupcakeLogic.User user) {
         this.user = user;
     }
 

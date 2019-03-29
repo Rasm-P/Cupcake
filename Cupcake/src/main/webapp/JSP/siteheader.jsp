@@ -20,8 +20,8 @@
 
         <!--         Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="css.css">
+        <link type="text/css" rel="stylesheet" href="CSS/css.css">
 
     </head>
     <body>
-        <h1><img src="Logo.png" width="130pix" align="middle"/>Cupcakeshoppen</h1>
+        <h1><img src="Pictures/Logo.png" width="130pix" align="middle"/>Cupcakeshoppen</h1>

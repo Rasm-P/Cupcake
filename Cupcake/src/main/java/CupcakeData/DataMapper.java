@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Data;
+package CupcakeData;
 
-import Cupcake.Bottoms;
-import Cupcake.Toppings;
-import Cupcake.cupcake;
-import Shop.Invoice;
-import Shop.lineItems;
-import Shop.shoppingCart;
+import CupcakeLogic.Bottoms;
+import CupcakeLogic.Toppings;
+import CupcakeLogic.cupcake;
+import CupcakeLogic.Invoice;
+import CupcakeLogic.lineItems;
+import CupcakeLogic.shoppingCart;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import Users.User;
+import CupcakeLogic.User;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;

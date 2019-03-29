@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation;
+package CupcakePresentation;
 
-import Cupcake.Bottoms;
-import Cupcake.Toppings;
-import Cupcake.cupcake;
-import Data.CupcakeMapper;
-import Data.DataMapper;
-import Shop.lineItems;
-import Shop.shoppingCart;
-import Users.MakeNewUser;
-import Users.User;
+import CupcakeLogic.Bottoms;
+import CupcakeLogic.Toppings;
+import CupcakeLogic.cupcake;
+import CupcakeData.CupcakeMapper;
+import CupcakeData.DataMapper;
+import CupcakeLogic.lineItems;
+import CupcakeLogic.shoppingCart;
+import CupcakeData.MakeNewUser;
+import CupcakeLogic.User;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,16 +94,17 @@ public class FrontController extends HttpServlet {
                 case "admin":
                     adminPage(response);
                     break;
-                
+                default:
+                    error(response);
             }
         }
     }
-    
+
     /**
      * Redirects user to adminPage.jsp
-     * 
+     *
      * @param response
-     * @throws IOException 
+     * @throws IOException
      */
     private void adminPage(HttpServletResponse response) throws IOException {
         response.sendRedirect("JSP/adminPage.jsp");
@@ -111,11 +112,11 @@ public class FrontController extends HttpServlet {
 
     /**
      * Sets the attribute for invoice and redirects user to invoice.jsp
-     * 
+     *
      * @param in
      * @param session
      * @param response
-     * @throws IOException 
+     * @throws IOException
      */
     private void invoice(String in, HttpSession session,
             HttpServletResponse response) throws IOException {
@@ -125,23 +126,23 @@ public class FrontController extends HttpServlet {
 
     /**
      * Redirects user to the error page
-     * 
+     *
      * @param response
-     * @throws IOException 
+     * @throws IOException
      */
     private void error(HttpServletResponse response) throws IOException {
         response.sendRedirect("JSP/error.jsp");
     }
-    
+
     /**
-     * Adds a specified amount of money to the account of the user that is currently logged in 
-     * and redirects to mainPage.jsp
-     * 
+     * Adds a specified amount of money to the account of the user that is
+     * currently logged in and redirects to mainPage.jsp
+     *
      * @param amount
      * @param session
      * @param response
      * @throws NumberFormatException
-     * @throws IOException 
+     * @throws IOException
      */
     private void addMoney(String amount, HttpSession session,
             HttpServletResponse response) throws NumberFormatException, IOException {
@@ -160,12 +161,12 @@ public class FrontController extends HttpServlet {
     }
 
     /**
-     * Redirects the user to confirmationPage.jsp if the user has made an order, 
+     * Redirects the user to confirmationPage.jsp if the user has made an order,
      * otherwise the user stays in the shop.jsp
-     * 
+     *
      * @param session
      * @param response
-     * @throws IOException 
+     * @throws IOException
      */
     private void confirmation(HttpSession session, HttpServletResponse response) throws IOException {
         if (session.getAttribute("ArrayList<lineItems>") != null) {
@@ -175,18 +176,18 @@ public class FrontController extends HttpServlet {
             response.sendRedirect("JSP/shop.jsp");
         }
     }
-    
+
     /**
-     * Sets an arraylist of lineitems as attribute when making an order in the shop or updates an existing one 
-     * and redirects to shop.jsp
-     * 
+     * Sets an arraylist of lineitems as attribute when making an order in the
+     * shop or updates an existing one and redirects to shop.jsp
+     *
      * @param topping
      * @param bottom
      * @param qty
      * @param session
      * @param response
      * @throws IOException
-     * @throws NumberFormatException 
+     * @throws NumberFormatException
      */
     private void shop(String topping, String bottom, String qty,
             HttpSession session,
@@ -217,11 +218,12 @@ public class FrontController extends HttpServlet {
     }
 
     /**
-     * Changes all attributes so the user is logged out and redirects to login.jsp
-     * 
+     * Changes all attributes so the user is logged out and redirects to
+     * login.jsp
+     *
      * @param session
      * @param response
-     * @throws IOException 
+     * @throws IOException
      */
     private void logOut(HttpSession session, HttpServletResponse response) throws IOException {
         session.setAttribute("User", null);
@@ -231,13 +233,13 @@ public class FrontController extends HttpServlet {
     }
 
     /**
-     * Creates a new user and redirects to login.jsp,
-     * or redirects one to loginRegistration.jsp if the registration was not valid
-     * 
+     * Creates a new user and redirects to login.jsp, or redirects one to
+     * loginRegistration.jsp if the registration was not valid
+     *
      * @param username
      * @param password
      * @param response
-     * @throws Exception 
+     * @throws Exception
      */
     private void makeLogin(String username, String password,
             HttpServletResponse response) throws Exception {
@@ -255,12 +257,12 @@ public class FrontController extends HttpServlet {
 
     /**
      * Logs an existing user in or redirects to login.jsp
-     * 
+     *
      * @param username
      * @param password
      * @param session
      * @param response
-     * @throws IOException 
+     * @throws IOException
      */
     private void login(String username, String password, HttpSession session,
             HttpServletResponse response) throws IOException {

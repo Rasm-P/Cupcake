@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Users;
+package CupcakeData;
 
-import Data.DBConnector;
+import CupcakeData.DBConnector;
+import CupcakeLogic.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 

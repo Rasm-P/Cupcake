@@ -1,6 +1,6 @@
-package Shop;
+package CupcakeLogic;
 
-import Cupcake.cupcake;
+import CupcakeLogic.cupcake;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

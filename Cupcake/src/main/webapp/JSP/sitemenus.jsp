@@ -1,5 +1,5 @@
-<%@page import="Data.DataMapper"%>
-<%@page import="Users.User"%>
+<%@page import="CupcakeData.DataMapper"%>
+<%@page import="CupcakeLogic.User"%>
 
 <%
     User userLoggedIn = (User) session.getAttribute("User");

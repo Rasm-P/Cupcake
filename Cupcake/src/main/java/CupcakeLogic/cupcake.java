@@ -1,5 +1,5 @@
 
-package Cupcake;
+package CupcakeLogic;
 
 /**
  *
